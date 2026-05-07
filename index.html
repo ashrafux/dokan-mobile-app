@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dokan Mobile App — Turn Your Marketplace Into a Seamless Mobile Experience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f7f5f1;
+    --bg-soft: #efece6;
+    --bg-card: #ffffff;
+    --ink: #14161a;
+    --ink-soft: #5b6068;
+    --ink-mute: #8a8f97;
+    --line: #e4e0d8;
+    --accent: #ff6a3d;       /* Dokan-ish warm orange */
+    --accent-2: #ffb366;
+    --accent-deep: #d04a1d;
+    --pill-bg: #1a1c20;
+    --pill-ink: #fbf9f3;
+    --shadow-sm: 0 1px 2px rgba(20,22,26,.06), 0 2px 8px rgba(20,22,26,.04);
+    --shadow-md: 0 8px 28px rgba(20,22,26,.08), 0 2px 6px rgba(20,22,26,.04);
+    --shadow-lg: 0 24px 60px rgba(20,22,26,.12), 0 6px 18px rgba(20,22,26,.06);
+    --radius-sm: 12px;
+    --radius: 18px;
+    --radius-lg: 26px;
+    --radius-xl: 34px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  img,svg{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none}
+  .serif{font-family:'Fraunces',serif;font-style:italic;font-weight:500}
+  .container{max-width:1200px;margin:0 auto;padding:0 28px}
+
+  /* ============ NAV ============ */
+  nav.top{
+    position:sticky;top:0;z-index:50;
+    background:rgba(247,245,241,.85);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(228,224,216,.6);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:-0.01em}
+  .brand-mark{
+    width:34px;height:34px;border-radius:10px;
+    background:linear-gradient(135deg,var(--accent) 0%,var(--accent-deep) 100%);
+    display:grid;place-items:center;color:#fff;font-weight:700;
+    box-shadow:0 4px 14px rgba(255,106,61,.35);
+  }
+  .nav-links{display:flex;gap:34px;font-size:14.5px;color:var(--ink-soft);font-weight:500}
+  .nav-links a{transition:color .15s ease}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a.active{color:var(--ink)}
+  .nav-cta{display:flex;gap:10px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 20px;border-radius:999px;font-size:14px;font-weight:600;
+    transition:transform .15s ease, background .15s ease, box-shadow .15s ease;
+  }
+  .btn-ghost{border:1px solid var(--line);color:var(--ink);background:#fff}
+  .btn-ghost:hover{border-color:var(--ink);}
+  .btn-dark{background:var(--pill-bg);color:var(--pill-ink)}
+  .btn-dark:hover{transform:translateY(-1px);box-shadow:var(--shadow-md)}
+  .btn-light{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .btn-light:hover{transform:translateY(-1px);box-shadow:var(--shadow-md)}
+  .btn-accent{background:var(--accent);color:#fff;box-shadow:0 6px 18px rgba(255,106,61,.32)}
+  .btn-accent:hover{transform:translateY(-1px);background:var(--accent-deep)}
+  .btn .arrow{display:inline-block;transition:transform .2s ease}
+  .btn:hover .arrow{transform:translate(2px,-2px)}
+
+  @media (max-width: 880px){
+    .nav-links{display:none}
+  }
+
+  /* ============ HERO (Finced-inspired) ============ */
+  .hero{
+    position:relative;overflow:hidden;
+    background:#eceef0;
+    padding:0 0 80px;
+  }
+  /* inner panel — slightly lighter than page edges, like the reference */
+  .hero-panel{
+    position:relative;
+    margin:18px;
+    background:#f1f3f5;
+    border-radius:14px;
+    overflow:hidden;
+    min-height:640px;
+  }
+  /* decorative dashed curves */
+  .hero-bg-svg{
+    position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;
+  }
+  .hero-bg-svg .curve{fill:none;stroke:#9aa0a8;stroke-width:1.2;stroke-dasharray:2 6;opacity:.55}
+  .hero-bg-svg .dot{fill:#9aa0a8;opacity:.55}
+
+  .hero-grid{
+    position:relative;z-index:2;
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:40px;align-items:center;
+    max-width:1240px;margin:0 auto;padding:80px 60px 60px;
+  }
+
+  /* LEFT column */
+  .hero-left{position:relative;max-width:520px}
+  h1.hero-title{
+    font-family:'Inter',sans-serif;
+    font-weight:700;letter-spacing:-0.035em;line-height:1.02;
+    font-size:clamp(40px, 5.6vw, 68px);
+    color:#0e1014;
+    margin-bottom:20px;
+  }
+  h1 .ital{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:#0e1014;letter-spacing:-0.02em}
+  .hero-sub{
+    color:#3b4047;font-size:16px;line-height:1.6;
+    max-width:420px;margin-bottom:34px;
+  }
+  /* email pill + button group */
+  .email-pill{
+    display:flex;align-items:center;gap:6px;
+    background:#fff;border-radius:999px;padding:6px 6px 6px 22px;
+    box-shadow:0 6px 22px rgba(20,22,26,.08);
+    max-width:430px;
+  }
+  .email-pill .mail-icon{color:var(--ink-mute);flex-shrink:0}
+  .email-pill input{
+    flex:1;border:none;background:transparent;outline:none;
+    padding:12px 8px;font-family:inherit;font-size:14.5px;color:var(--ink);
+    min-width:0;
+  }
+  .email-pill input::placeholder{color:var(--ink-mute)}
+  .email-pill .pill-cta{
+    background:var(--accent);color:#fff;border-radius:999px;
+    padding:11px 22px;font-size:14px;font-weight:600;white-space:nowrap;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .email-pill .pill-cta:hover{background:var(--accent-deep);transform:translateY(-1px)}
+
+  /* social-proof badge (purple in the ref → orange-deep here for Dokan) */
+  .proof-badge{
+    margin-top:50px;
+    display:inline-flex;align-items:center;gap:14px;
+    background:linear-gradient(135deg,var(--accent-deep) 0%, #a83712 100%);
+    color:#fff;border-radius:14px;padding:12px 20px 12px 12px;
+    box-shadow:0 14px 28px rgba(208,74,29,.32);
+    position:relative;
+  }
+  .proof-badge .pb-ico{
+    width:42px;height:42px;border-radius:10px;background:rgba(255,255,255,.18);
+    display:grid;place-items:center;flex-shrink:0;
+  }
+  .proof-badge .pb-text{font-size:13.5px;line-height:1.25;font-weight:500}
+  .proof-badge .pb-text b{display:block;font-weight:700;font-size:14px}
+  /* doodle arrow above badge */
+  .proof-doodle{
+    position:absolute;left:-46px;top:-22px;color:#3b4047;opacity:.7;
+  }
+
+  /* RIGHT column — phone in hand */
+  .hero-right{position:relative;display:flex;justify-content:center;align-items:center;min-height:560px}
+  .hand-phone-wrap{
+    position:relative;
+    width:100%;max-width:440px;
+    display:flex;justify-content:center;
+  }
+  /* hand placeholder using a dark grayscale gradient column behind the phone, with realistic shading */
+  .hand-shape{
+    position:absolute;
+    bottom:-80px;left:50%;transform:translateX(-50%);
+    width:340px;height:520px;
+    background:
+      radial-gradient(ellipse 60% 40% at 50% 100%, rgba(0,0,0,.55) 0%, transparent 70%),
+      linear-gradient(180deg, #6b7075 0%, #4a4f54 35%, #2c3034 100%);
+    border-radius:160px 160px 30px 30px / 90px 90px 30px 30px;
+    box-shadow:0 30px 60px rgba(0,0,0,.25);
+    z-index:1;
+  }
+  .hand-shape::before{
+    /* thumb wrap on the left of phone */
+    content:"";position:absolute;
+    top:60px;left:-30px;width:90px;height:200px;
+    background:linear-gradient(135deg,#5a5f64 0%, #383c40 100%);
+    border-radius:50px 30px 60px 40px;
+    transform:rotate(-12deg);
+    box-shadow:6px 8px 16px rgba(0,0,0,.2);
+  }
+  .hand-shape::after{
+    /* fingers wrap on the right of phone */
+    content:"";position:absolute;
+    top:80px;right:-22px;width:60px;height:240px;
+    background:linear-gradient(225deg,#5a5f64 0%, #383c40 100%);
+    border-radius:30px 50px 40px 60px;
+    transform:rotate(8deg);
+    box-shadow:-6px 8px 16px rgba(0,0,0,.2);
+  }
+
+  .phone-mock{
+    position:relative;z-index:2;
+    width:260px;
+    background:#0e1014;border-radius:38px;padding:8px;
+    box-shadow:0 30px 60px rgba(0,0,0,.4), inset 0 0 0 1px rgba(255,255,255,.05);
+    transform:rotate(-4deg);
+  }
+  .phone-mock::before{
+    content:"";position:absolute;top:14px;left:50%;transform:translateX(-50%);
+    width:90px;height:22px;background:#0e1014;border-radius:999px;z-index:3;
+  }
+  .phone-screen{
+    width:100%;aspect-ratio:9/19;
+    border-radius:30px;
+    background:#0e1014;color:#fff;
+    overflow:hidden;display:flex;flex-direction:column;
+    position:relative;
+  }
+  .ps-status{
+    padding:18px 22px 10px;display:flex;justify-content:space-between;align-items:center;
+    font-size:11px;font-weight:600;
+  }
+  .ps-status .ps-title{position:absolute;left:50%;transform:translateX(-50%);top:18px;font-size:11px;color:#9aa0a8;font-weight:500}
+  .ps-balance{padding:14px 22px 6px;color:#9aa0a8;font-size:11px}
+  .ps-amount{padding:0 22px 14px;font-size:32px;font-weight:700;letter-spacing:-0.02em}
+  .ps-card{
+    margin:0 16px;border-radius:14px;padding:12px 14px;
+    background:linear-gradient(135deg,#1a1c20 0%, #2a2d31 100%);
+    border:1px solid rgba(255,255,255,.06);
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .ps-card .pcl{font-size:10px;color:#9aa0a8}
+  .ps-card .pcl b{display:block;color:#fff;font-size:13px;margin-top:2px;font-weight:600}
+  .ps-card .pcr{font-size:13px;font-weight:600}
+  .ps-actions{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+    padding:14px 16px;
+  }
+  .ps-act{
+    aspect-ratio:1/.85;border-radius:14px;display:grid;place-items:center;color:#fff;
+  }
+  .ps-act.green{background:linear-gradient(135deg,#3ee08a,#1bb866)}
+  .ps-act.blue{background:linear-gradient(135deg,#5a7df0,#3a55c4)}
+  .ps-act.dark{background:#1a1c20;border:1px solid rgba(255,255,255,.08)}
+  .ps-today{padding:10px 22px 6px;color:#9aa0a8;font-size:11px}
+  .ps-tx{display:flex;flex-direction:column;gap:8px;padding:0 16px}
+  .ps-tx-row{
+    display:flex;align-items:center;gap:10px;
+    background:#1a1c20;border-radius:12px;padding:9px 12px;
+    border:1px solid rgba(255,255,255,.05);
+  }
+  .ps-tx-icon{width:28px;height:28px;border-radius:8px;background:#2a2d31;display:grid;place-items:center;flex-shrink:0;color:#9aa0a8}
+  .ps-tx-meta{flex:1;min-width:0}
+  .ps-tx-meta .t1{font-size:11px;font-weight:600;color:#fff}
+  .ps-tx-meta .t2{font-size:9px;color:#6b7075;margin-top:1px}
+  .ps-tx-amt{font-size:11px;font-weight:600;color:#fff}
+  .ps-nav{
+    margin-top:auto;display:flex;justify-content:space-around;align-items:center;
+    padding:10px 16px 14px;color:#6b7075;
+  }
+  .ps-nav .ps-fab{
+    width:42px;height:42px;border-radius:50%;
+    background:linear-gradient(135deg,#5a7df0,#3a55c4);
+    display:grid;place-items:center;color:#fff;
+    box-shadow:0 6px 14px rgba(58,85,196,.45);
+    transform:translateY(-12px);
+  }
+
+  /* floating circular icon bubbles */
+  .float-bubble{
+    position:absolute;width:54px;height:54px;border-radius:50%;
+    background:#fff;display:grid;place-items:center;
+    box-shadow:0 8px 22px rgba(20,22,26,.12);
+    z-index:3;
+  }
+  .float-bubble svg{width:24px;height:24px}
+  .fb-1{top:18%;right:6%;color:var(--accent-deep)}
+  .fb-2{top:50%;right:-2%;color:#5a7df0}
+  .fb-3{bottom:8%;left:14%;color:var(--accent)}
+
+  /* AppStore pill in nav (right-side) */
+  .nav-cta .appstore-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:#0e1014;color:#fff;border-radius:10px;padding:8px 14px;
+    font-size:12px;line-height:1.1;
+  }
+  .nav-cta .appstore-pill svg{width:22px;height:22px}
+  .nav-cta .appstore-pill small{display:block;font-size:9px;opacity:.7}
+  .nav-cta .appstore-pill strong{display:block;font-weight:600;font-size:13px}
+
+  /* generic store-btn (used in QR CTA section further down) */
+  .store-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:9px 18px;background:#0e1014;color:#fff;border-radius:12px;
+    font-size:13px;
+  }
+  .store-btn .label{display:flex;flex-direction:column;line-height:1.1}
+  .store-btn .label small{font-size:10px;opacity:.7}
+  .store-btn .label strong{font-size:14px;font-weight:600}
+
+  @media(max-width:980px){
+    .hero-grid{grid-template-columns:1fr;padding:60px 30px 40px;text-align:center}
+    .hero-left{margin:0 auto}
+    .hero-sub{margin-left:auto;margin-right:auto}
+    .email-pill{margin:0 auto}
+    .proof-badge{margin-left:auto;margin-right:auto}
+    .proof-doodle{display:none}
+    .hero-right{min-height:520px;margin-top:20px}
+    .hand-shape{width:280px;height:440px;bottom:-60px}
+    .phone-mock{width:230px}
+  }
+
+  /* ============ TRUST STRIP ============ */
+  .trust{
+    background:var(--bg-soft);
+    padding:80px 0 50px;margin-top:60px;
+  }
+  .trust-text{text-align:center;color:var(--ink-soft);font-size:14px;margin-bottom:30px}
+  .trust-logos{display:flex;justify-content:space-around;flex-wrap:wrap;gap:30px;align-items:center;opacity:.7}
+  .tl{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px;color:var(--ink-soft);letter-spacing:-0.01em}
+  .tl svg{width:22px;height:22px}
+
+  /* ============ SECTION HEADERS ============ */
+  .section-eyebrow{text-align:center;font-size:13px;color:var(--ink-mute);font-weight:500;letter-spacing:0.02em;margin-bottom:8px}
+  .section-eyebrow b{color:var(--ink);font-weight:600}
+  .section-title{
+    text-align:center;font-size:clamp(32px,4.4vw,52px);
+    font-weight:600;letter-spacing:-0.025em;line-height:1.08;
+    max-width:760px;margin:0 auto;
+  }
+  .section-title .ital{font-family:'Fraunces',serif;font-style:italic;font-weight:500}
+  .section-sub{text-align:center;color:var(--ink-soft);max-width:560px;margin:14px auto 0;font-size:15.5px;line-height:1.55}
+
+  /* ============ WHY CHOOSE (FEATURES GRID) ============ */
+  .why{padding:90px 0 80px;background:var(--bg-soft)}
+  .why-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px;
+  }
+  .why-card{
+    background:#fff;border-radius:var(--radius-lg);padding:28px;
+    box-shadow:var(--shadow-sm);
+    border:1px solid var(--line);
+    transition:transform .2s ease, box-shadow .2s ease;
+    position:relative;overflow:hidden;
+  }
+  .why-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+  .why-icon{
+    width:52px;height:52px;border-radius:14px;
+    background:linear-gradient(135deg,#fff3eb,#ffe1cc);
+    display:grid;place-items:center;margin-bottom:18px;
+    color:var(--accent-deep);
+  }
+  .why-card h3{font-size:19px;font-weight:600;letter-spacing:-0.015em;margin-bottom:8px}
+  .why-card p{color:var(--ink-soft);font-size:14.5px;line-height:1.55}
+  @media(max-width:880px){.why-grid{grid-template-columns:1fr}}
+
+  /* ============ DIFFERENT (3-CARD WITH IMAGES like Bankly) ============ */
+  .different{padding:100px 0;background:var(--bg)}
+  .diff-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:54px;
+  }
+  .diff-card{
+    background:#fff;border-radius:var(--radius-lg);
+    padding:18px 18px 26px;
+    box-shadow:var(--shadow-sm);
+    border:1px solid var(--line);
+  }
+  .diff-img{
+    border-radius:var(--radius);height:200px;
+    background:linear-gradient(135deg,#cfd9d8 0%, #a8b8b9 50%, #6f7e7d 100%);
+    position:relative;overflow:hidden;
+    display:grid;place-items:center;
+  }
+  .diff-img.alt{background:linear-gradient(135deg,#ffd8c2 0%, #ff8b5e 50%, var(--accent-deep) 100%)}
+  .diff-img.alt2{background:linear-gradient(135deg,#fce7a3 0%, #f5d573 50%, #c69a2a 100%)}
+  .diff-img .ico{
+    width:64px;height:64px;border-radius:18px;background:rgba(255,255,255,.2);
+    backdrop-filter:blur(8px);display:grid;place-items:center;color:#fff;
+    border:1px solid rgba(255,255,255,.3);
+  }
+  .diff-card h3{font-size:20px;font-weight:600;margin:18px 4px 6px;letter-spacing:-0.015em}
+  .diff-card p{color:var(--ink-soft);font-size:14.5px;padding:0 4px;line-height:1.55}
+  @media(max-width:880px){.diff-grid{grid-template-columns:1fr}}
+
+  /* ============ STATS (BIG SERIF NUMBERS) ============ */
+  .stats{
+    padding:60px 0 90px;background:var(--bg);
+    border-top:1px solid var(--line);
+  }
+  .stats-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center;
+  }
+  .stat-num{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+    font-size:clamp(44px, 6vw, 72px);letter-spacing:-0.02em;
+    color:var(--ink);line-height:1;
+    background:linear-gradient(180deg,#0e1014 0%, #3b4047 100%);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  }
+  .stat-num em{font-style:italic}
+  .stat-label{margin-top:12px;color:var(--ink-soft);font-size:13.5px;font-weight:500;line-height:1.4}
+  @media(max-width:880px){.stats-grid{grid-template-columns:repeat(2,1fr);gap:40px 20px}}
+
+  /* ============ COMPLETE SHOPPERS APP / FEATURE SHOWCASE ============ */
+  .feature-show{
+    padding:100px 0;background:var(--bg-soft);
+  }
+  .feature-show .container{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:center}
+  .fs-eyebrow{font-size:13px;color:var(--ink-mute);font-weight:500;margin-bottom:10px}
+  .fs-eyebrow b{color:var(--ink)}
+  .fs-title{font-size:clamp(30px,3.6vw,44px);font-weight:600;letter-spacing:-0.025em;line-height:1.1}
+  .fs-title .ital{font-family:'Fraunces',serif;font-style:italic;font-weight:500}
+  .fs-body{color:var(--ink-soft);font-size:15.5px;margin:18px 0 28px;line-height:1.6}
+  .fs-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+  .fs-tag{padding:7px 14px;background:#fff;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--ink-soft);font-weight:500}
+  .fs-tag.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .fs-visual{
+    position:relative;background:#fff;border-radius:var(--radius-xl);
+    padding:30px;box-shadow:var(--shadow-lg);border:1px solid var(--line);
+    aspect-ratio:1.2/1;
+    background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80');
+    background-size:cover;background-position:center;
+    overflow:hidden;
+  }
+  .fs-visual::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(247,245,241,0) 30%, rgba(247,245,241,.7) 100%);
+  }
+  .fs-phones{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:14px;z-index:1;
+  }
+  .fs-phone{
+    width:130px;aspect-ratio:9/17.5;background:#0e1014;border-radius:22px;padding:6px;
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+  }
+  .fs-phone-screen{width:100%;height:100%;border-radius:18px;background:linear-gradient(180deg,#fdfaf4,#fff);overflow:hidden;padding:18px 8px 8px;display:flex;flex-direction:column;gap:4px}
+  .fs-phone-screen .row{display:flex;gap:4px}
+  .fs-phone-screen .chip{flex:1;height:14px;background:#f0ece4;border-radius:4px}
+  .fs-phone-screen .chip.dark{background:#0e1014}
+  .fs-phone-screen .grid2{display:grid;grid-template-columns:1fr 1fr;gap:4px;flex:1;margin-top:4px}
+  .fs-phone-screen .cell{background:#f0ece4;border-radius:6px}
+  .fs-phone-screen .cell.a{background:linear-gradient(135deg,#ffd8c2,#ff8b5e)}
+  .fs-phone-screen .cell.b{background:linear-gradient(135deg,#cfd9d8,#6f7e7d)}
+  .fs-phone-screen .cell.c{background:linear-gradient(135deg,#fce7a3,#e8b94d)}
+  .fs-phone-screen .cell.d{background:linear-gradient(135deg,#dcd5e6,#9c8fb3)}
+  .fs-phone.tilt-l{transform:rotate(-6deg) translateY(10px)}
+  .fs-phone.tilt-r{transform:rotate(6deg) translateY(10px)}
+  @media(max-width:880px){
+    .feature-show .container{grid-template-columns:1fr}
+    .fs-visual{aspect-ratio:1.4/1}
+  }
+
+  /* ============ EASIEST WAY (3-STEP) ============ */
+  .steps{padding:100px 0;background:var(--bg);text-align:center}
+  .steps-grid{
+    display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;
+    align-items:center;margin-top:60px;max-width:1000px;margin-left:auto;margin-right:auto;
+  }
+  .step-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);
+    padding:30px 22px;box-shadow:var(--shadow-sm);
+  }
+  .step-num{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+    font-size:46px;color:var(--accent);line-height:1;margin-bottom:10px;
+  }
+  .step-card h4{font-size:17px;font-weight:600;letter-spacing:-0.015em;line-height:1.3}
+  .step-arrow{color:var(--ink-mute);font-size:22px}
+  @media(max-width:880px){
+    .steps-grid{grid-template-columns:1fr}
+    .step-arrow{transform:rotate(90deg)}
+  }
+
+  /* ============ OPPORTUNITY (BIG STATS WITH HIGHLIGHT) ============ */
+  .opportunity{
+    padding:100px 0;background:var(--bg-soft);
+  }
+  .opp-title{font-size:clamp(32px,4vw,48px);font-weight:600;letter-spacing:-0.025em;line-height:1.15;text-align:center;max-width:760px;margin:0 auto 60px}
+  .opp-title .ital{font-family:'Fraunces',serif;font-style:italic;font-weight:500}
+  .opp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:980px;margin:0 auto}
+  .opp-card{
+    background:#fff;border-radius:var(--radius-lg);padding:32px;
+    border:1px solid var(--line);box-shadow:var(--shadow-sm);
+    display:flex;align-items:flex-start;gap:22px;
+  }
+  .opp-pct{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+    font-size:64px;line-height:1;letter-spacing:-0.03em;
+    color:var(--accent-deep);min-width:120px;
+  }
+  .opp-text{color:var(--ink);font-size:15.5px;line-height:1.5;font-weight:500;padding-top:8px}
+  @media(max-width:880px){
+    .opp-grid{grid-template-columns:1fr}
+    .opp-card{padding:24px}
+    .opp-pct{font-size:52px;min-width:auto}
+  }
+
+  /* ============ AUTHENTIC (3 COL) ============ */
+  .authentic{padding:100px 0;background:var(--bg)}
+  .auth-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px}
+  .auth-card{
+    background:linear-gradient(180deg,#fff 0%, #fbf9f3 100%);
+    border:1px solid var(--line);border-radius:var(--radius-lg);
+    padding:30px;text-align:center;
+  }
+  .auth-icon{
+    width:68px;height:68px;border-radius:18px;margin:0 auto 18px;
+    background:linear-gradient(135deg,var(--accent) 0%,var(--accent-deep) 100%);
+    display:grid;place-items:center;color:#fff;
+    box-shadow:0 8px 20px rgba(255,106,61,.3);
+  }
+  .auth-card h4{font-size:18px;font-weight:600;margin-bottom:10px;letter-spacing:-0.015em}
+  .auth-card p{color:var(--ink-soft);font-size:14.5px;line-height:1.55}
+  @media(max-width:880px){.auth-grid{grid-template-columns:1fr}}
+
+  /* ============ APP SCREENSHOTS / QR CTA ============ */
+  .qr-cta{
+    padding:100px 0;background:var(--bg-soft);
+    background-image:
+      radial-gradient(70% 50% at 50% 100%, #d9e3ec 0%, transparent 70%),
+      var(--bg-soft);
+  }
+  .qr-card{
+    max-width:1000px;margin:0 auto;
+    background:#fff;border-radius:var(--radius-xl);
+    border:1px solid var(--line);
+    padding:54px;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;
+    align-items:center;box-shadow:var(--shadow-md);
+    position:relative;overflow:hidden;
+  }
+  .qr-card::before{
+    content:"";position:absolute;top:-100px;right:-100px;
+    width:300px;height:300px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,106,61,.15),transparent 70%);
+  }
+  .qr-card h3{font-size:clamp(28px,3vw,36px);font-weight:600;letter-spacing:-0.025em;line-height:1.15;margin-bottom:14px}
+  .qr-card h3 .ital{font-family:'Fraunces',serif;font-style:italic;font-weight:500}
+  .qr-card p{color:var(--ink-soft);font-size:15px;line-height:1.55;margin-bottom:24px;max-width:420px}
+  .qr-stores{display:flex;gap:10px;flex-wrap:wrap}
+  .qr-visual{
+    display:flex;flex-direction:column;align-items:center;gap:14px;position:relative;z-index:1;
+  }
+  .qr-square{
+    width:160px;height:160px;background:#0e1014;border-radius:18px;padding:12px;
+    box-shadow:var(--shadow-md);
+  }
+  .qr-square svg{width:100%;height:100%}
+  .qr-logo{font-weight:700;font-size:15px;color:var(--ink);display:flex;align-items:center;gap:8px}
+  @media(max-width:880px){
+    .qr-card{grid-template-columns:1fr;text-align:center;padding:36px 24px}
+    .qr-stores{justify-content:center}
+    .qr-card p{margin-left:auto;margin-right:auto}
+  }
+
+  /* ============ FOOTER ============ */
+  footer{
+    background:var(--bg);padding:60px 0 32px;border-top:1px solid var(--line);
+  }
+  .foot-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--line)}
+  .foot-brand p{color:var(--ink-soft);font-size:14px;margin:14px 0 18px;max-width:320px;line-height:1.5}
+  .foot-social{display:flex;gap:10px}
+  .foot-social a{
+    width:34px;height:34px;border-radius:50%;background:#fff;border:1px solid var(--line);
+    display:grid;place-items:center;color:var(--ink-soft);transition:all .15s ease;
+  }
+  .foot-social a:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .foot-col h5{font-size:13px;font-weight:600;margin-bottom:14px;letter-spacing:0.02em;text-transform:uppercase;color:var(--ink-mute)}
+  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .foot-col a{color:var(--ink-soft);font-size:14px;transition:color .15s ease}
+  .foot-col a:hover{color:var(--ink)}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;color:var(--ink-mute);font-size:13px;flex-wrap:wrap;gap:12px}
+  @media(max-width:880px){.foot-top{grid-template-columns:1fr 1fr;gap:30px}}
+  @media(max-width:560px){.foot-top{grid-template-columns:1fr}}
+
+  /* generic fade-in */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  .reveal{animation:fadeUp .8s ease both}
+  .d1{animation-delay:.1s} .d2{animation-delay:.2s} .d3{animation-delay:.3s}
+
+  /* divider serif label */
+  .divider-label{
+    text-align:center;color:var(--ink-mute);font-size:13px;
+    margin-bottom:6px;font-family:'Fraunces',serif;font-style:italic;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============== NAV ============== -->
+<nav class="top">
+  <div class="container nav-inner">
+    <a href="#" class="brand">
+      <span class="brand-mark">D</span>
+      <span>Dokan</span>
+    </a>
+    <div class="nav-links">
+      <a href="#" class="active">Overview</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#help">Get Help</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#" class="appstore-pill">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.03-3.05 2.49-4.51 2.6-4.58-1.42-2.07-3.62-2.36-4.4-2.39-1.87-.19-3.66 1.1-4.61 1.1-.96 0-2.42-1.08-3.99-1.05-2.05.03-3.95 1.19-5 3.02-2.13 3.7-.55 9.18 1.53 12.18 1.02 1.46 2.23 3.11 3.81 3.05 1.53-.06 2.11-.99 3.96-.99 1.84 0 2.37.99 3.99.96 1.65-.03 2.69-1.49 3.7-2.97 1.16-1.7 1.64-3.36 1.66-3.45-.04-.02-3.18-1.22-3.21-4.83zM14.05 3.04c.85-1.03 1.42-2.46 1.26-3.89-1.22.05-2.7.81-3.58 1.84-.78.91-1.47 2.36-1.29 3.76 1.36.1 2.76-.69 3.61-1.71z"/></svg>
+        <span><small>Download on the</small><strong>AppStore</strong></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============== HERO (Finced-inspired) ============== -->
+<section class="hero">
+  <div class="hero-panel">
+
+    <!-- decorative dashed curves + dots -->
+    <svg class="hero-bg-svg" viewBox="0 0 1240 700" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- big sweeping ellipse around the phone -->
+      <path class="curve" d="M 720 60 C 1080 60, 1240 280, 1180 480 C 1120 660, 820 700, 600 640" />
+      <!-- inner ellipse -->
+      <path class="curve" d="M 760 130 C 1000 150, 1140 320, 1080 460 C 1020 590, 820 620, 660 580" />
+      <!-- small left curve near badge -->
+      <path class="curve" d="M 60 480 C 160 460, 240 470, 320 520" />
+      <!-- scattered dots -->
+      <circle class="dot" cx="430" cy="120" r="3"/>
+      <circle class="dot" cx="380" cy="170" r="2.5"/>
+      <circle class="dot" cx="540" cy="200" r="3"/>
+      <circle class="dot" cx="460" cy="540" r="3"/>
+      <circle class="dot" cx="380" cy="640" r="2.5"/>
+      <circle class="dot" cx="900" cy="660" r="3"/>
+      <circle class="dot" cx="1180" cy="160" r="3"/>
+    </svg>
+
+    <!-- main grid -->
+    <div class="hero-grid">
+
+      <!-- LEFT -->
+      <div class="hero-left reveal">
+        <h1 class="hero-title">
+          Turn Your Customers' <span class="ital">Shopping Experience</span> into a Seamless Journey
+        </h1>
+        <p class="hero-sub">
+          With the WooCommerce mobile app from Dokan, let your customers shop easier and smarter. Maximize your sales with Dokan powered marketplace.
+        </p>
+
+        <form class="email-pill" onsubmit="event.preventDefault()">
+          <svg class="mail-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          <input type="email" placeholder="you@example.com" aria-label="Email address" />
+          <button type="submit" class="pill-cta">Get Started</button>
+        </form>
+
+        <div class="proof-badge">
+          <svg class="proof-doodle" width="36" height="40" viewBox="0 0 36 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 4 C 12 8, 22 18, 28 32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <path d="M22 28 L 28 32 L 26 25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <div class="pb-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7l3-7z" fill="currentColor"/></svg>
+          </div>
+          <div class="pb-text">
+            <b>10,000+ Marketplace</b>
+            owners trust Dokan
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="hero-right">
+        <div class="hand-phone-wrap">
+          <div class="hand-shape" aria-hidden="true"></div>
+
+          <div class="phone-mock">
+            <div class="phone-screen">
+              <div class="ps-status">
+                <span>9:41</span>
+                <span class="ps-title">Wallet</span>
+                <span style="color:#9aa0a8">●●●</span>
+              </div>
+              <div class="ps-balance">Your balance</div>
+              <div class="ps-amount">$30,84.00</div>
+              <div class="ps-card">
+                <div class="pcl">This month spent<b>Marketplace</b></div>
+                <div class="pcr">$18,84.00</div>
+              </div>
+              <div class="ps-actions">
+                <div class="ps-act green">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                </div>
+                <div class="ps-act blue">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="6" width="16" height="12" rx="2"/><path d="M4 10h16"/></svg>
+                </div>
+                <div class="ps-act dark">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9aa0a8" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                </div>
+              </div>
+              <div class="ps-today">Today</div>
+              <div class="ps-tx">
+                <div class="ps-tx-row">
+                  <div class="ps-tx-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h12"/></svg>
+                  </div>
+                  <div class="ps-tx-meta">
+                    <div class="t1">Clothing store</div>
+                    <div class="t2">05.02.2024</div>
+                  </div>
+                  <div class="ps-tx-amt">−14.50</div>
+                </div>
+                <div class="ps-tx-row">
+                  <div class="ps-tx-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2l1 4h10l1-4M5 6h14l-1 16H6L5 6z"/></svg>
+                  </div>
+                  <div class="ps-tx-meta">
+                    <div class="t1">Home shopping</div>
+                    <div class="t2">04.02.2024</div>
+                  </div>
+                  <div class="ps-tx-amt">−22.50</div>
+                </div>
+              </div>
+              <div class="ps-nav">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12L12 4l9 8M5 10v10h14V10"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
+                <div class="ps-fab">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                </div>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M4 10h16"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- floating bubbles -->
+          <div class="float-bubble fb-1" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18l-2 12H5L3 7zM8 7V5a4 4 0 018 0v2"/></svg>
+          </div>
+          <div class="float-bubble fb-2" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg>
+          </div>
+          <div class="float-bubble fb-3" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M3 3h2l3 12h11l2-8H6"/></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============== TRUST STRIP ============== -->
+<section class="trust">
+  <div class="container">
+    <p class="trust-text">Trusted by marketplace owners worldwide</p>
+    <div class="trust-logos">
+      <div class="tl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L19.82 8 12 11.82 4.18 8 12 4.18z"/></svg> Foresight</div>
+      <div class="tl"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg> Goodwell</div>
+      <div class="tl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18"/></svg> Luminary</div>
+      <div class="tl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-1 4-3 6-7 7 4 1 6 3 7 7 1-4 3-6 7-7-4-1-6-3-7-7z"/></svg> Magnolia</div>
+      <div class="tl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6L12 2z"/></svg> Norse Star</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== WHY CHOOSE ============== -->
+<section class="why" id="features">
+  <div class="container">
+    <p class="section-eyebrow"><b>Why Choose</b></p>
+    <h2 class="section-title">Dokan <span class="ital">Mobile App</span></h2>
+    <p class="section-sub">Turn your marketplace website into a smart mobile app. The advance features you'll be getting.</p>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>
+        </div>
+        <h3>Android + iOS App</h3>
+        <p>Whether you are targeting customers on Play Store or App Store, the robust Dokan app is compatible with both.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
+        <h3>Save 2000+ hours</h3>
+        <p>Build a multivendor shopping app from scratch with the complete Dokan Mobile App, and save over 2000 hours of coding.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2v20M5 9l7-7 7 7M5 15l7 7 7-7"/></svg>
+        </div>
+        <h3>Reduce Cost by 70%</h3>
+        <p>Save thousands of dollars from hiring app developers by getting the Dokan App instead.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7h18v10H3z"/><path d="M3 11h18"/></svg>
+        </div>
+        <h3>Whitelabel</h3>
+        <p>Your brand name & logo will be everywhere on the app. Your customers won't see any Dokan branding.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3>Secure Payment</h3>
+        <p>All WooCommerce payments along with Dokan integrated gateways including Google & Apple Pay are available to offer your shoppers an easy payment experience.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5a2 2 0 012-2h10l4 4v12a2 2 0 01-2 2H6a2 2 0 01-2-2z"/><path d="M14 3v4h4M8 13h8M8 17h5"/></svg>
+        </div>
+        <h3>No Training Required</h3>
+        <p>No course or training is necessary to get the most out of the app. For any assistance, view our detailed user manual.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== WHAT MAKES IT DIFFERENT ============== -->
+<section class="different">
+  <div class="container">
+    <p class="section-eyebrow"><b>What Makes</b></p>
+    <h2 class="section-title">The App <span class="ital">Different?</span></h2>
+    <p class="section-sub">Looking for the best value-for-money multi-vendor mobile app? Check out what you're getting from Dokan Shoppers' App.</p>
+
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-img">
+          <div class="ico">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>
+          </div>
+        </div>
+        <h3>Multi-language + RTL Support</h3>
+        <p>Easily use the app for different audiences with multi-lingual & right-to-left (RTL) support.</p>
+      </div>
+
+      <div class="diff-card">
+        <div class="diff-img alt">
+          <div class="ico">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z"/></svg>
+          </div>
+        </div>
+        <h3>Support On-demand</h3>
+        <p>Our attentive & experienced support team is 24/7 ready to take care of any issue regarding your app.</p>
+      </div>
+
+      <div class="diff-card">
+        <div class="diff-img alt2">
+          <div class="ico">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="9" r="4"/><path d="M5 21a7 7 0 0114 0"/></svg>
+          </div>
+        </div>
+        <h3>Personalized Profile</h3>
+        <p>Customers can edit their profiles, manage settings, and make changes to their wishlists, all from one place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== STATS ============== -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div>
+        <div class="stat-num">90<em>%</em></div>
+        <div class="stat-label">of mobile time is spent<br/>using apps over browsers</div>
+      </div>
+      <div>
+        <div class="stat-num">53<em>%</em></div>
+        <div class="stat-label">of smartphone users buy from<br/>company-specific apps</div>
+      </div>
+      <div>
+        <div class="stat-num">50<em>%</em></div>
+        <div class="stat-label">of all internet traffic<br/>shops from mobile devices</div>
+      </div>
+      <div>
+        <div class="stat-num">3<em>X</em></div>
+        <div class="stat-label">higher conversion in mobile<br/>apps vs mobile sites</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== COMPLETE SHOPPERS APP / FEATURE SHOWCASE ============== -->
+<section class="feature-show">
+  <div class="container">
+    <div>
+      <p class="fs-eyebrow"><b>Complete Shoppers' App</b></p>
+      <h2 class="fs-title">Multiple Lists of <span class="ital">Products</span></h2>
+      <p class="fs-body">Boost sales by showing users all types of lists like Featured Products, Best Selling Products, Top Rated Products, and New Arrivals along with All Categories, Vendors, and Products List.</p>
+      <div class="fs-tags">
+        <span class="fs-tag on">Featured</span>
+        <span class="fs-tag">Best Selling</span>
+        <span class="fs-tag">Top Rated</span>
+        <span class="fs-tag">New Arrivals</span>
+        <span class="fs-tag">Categories</span>
+        <span class="fs-tag">Vendors</span>
+      </div>
+      <a href="#" class="btn btn-dark">Discover All Features <span class="arrow">↗</span></a>
+    </div>
+
+    <div class="fs-visual">
+      <div class="fs-phones">
+        <div class="fs-phone tilt-l">
+          <div class="fs-phone-screen">
+            <div class="row"><div class="chip dark" style="flex:0 0 30%"></div><div class="chip"></div></div>
+            <div class="row"><div class="chip"></div><div class="chip" style="flex:0 0 40%"></div></div>
+            <div class="grid2">
+              <div class="cell a"></div><div class="cell b"></div>
+              <div class="cell c"></div><div class="cell d"></div>
+              <div class="cell b"></div><div class="cell a"></div>
+            </div>
+          </div>
+        </div>
+        <div class="fs-phone" style="transform:translateY(-20px)">
+          <div class="fs-phone-screen">
+            <div class="row"><div class="chip"></div></div>
+            <div class="row"><div class="chip dark"></div></div>
+            <div class="grid2">
+              <div class="cell c"></div><div class="cell a"></div>
+              <div class="cell d"></div><div class="cell b"></div>
+              <div class="cell a"></div><div class="cell c"></div>
+            </div>
+          </div>
+        </div>
+        <div class="fs-phone tilt-r">
+          <div class="fs-phone-screen">
+            <div class="row"><div class="chip" style="flex:0 0 50%"></div><div class="chip dark"></div></div>
+            <div class="row"><div class="chip"></div></div>
+            <div class="grid2">
+              <div class="cell b"></div><div class="cell d"></div>
+              <div class="cell a"></div><div class="cell c"></div>
+              <div class="cell d"></div><div class="cell b"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== EASIEST WAY (3-STEP) ============== -->
+<section class="steps">
+  <div class="container">
+    <p class="section-eyebrow">Easiest Way to</p>
+    <h2 class="section-title">Get the <span class="ital">App</span></h2>
+    <p class="section-sub">The process of getting your app is so simple that all you have to do is wish for it.</p>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <h4>Purchase the App<br/>for Your Marketplace</h4>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <h4>Submit the Credentials<br/>For Us to Build It</h4>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <h4>Get the App Ready<br/>For Your Customers</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== OPPORTUNITY ============== -->
+<section class="opportunity">
+  <div class="container">
+    <h2 class="opp-title">Don't Miss the Opportunity of <span class="ital">Capturing Smartphone Users</span></h2>
+    <div class="opp-grid">
+      <div class="opp-card">
+        <div class="opp-pct">90%</div>
+        <p class="opp-text">of mobile time is spent using apps compared to browsers</p>
+      </div>
+      <div class="opp-card">
+        <div class="opp-pct">53%</div>
+        <p class="opp-text">of smartphone users buy from company-specific apps</p>
+      </div>
+      <div class="opp-card">
+        <div class="opp-pct">50%</div>
+        <p class="opp-text">of all internet traffic shops from mobile devices</p>
+      </div>
+      <div class="opp-card">
+        <div class="opp-pct">3X</div>
+        <p class="opp-text">Conversion rate is higher in Mobile apps than that in mobile sites</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== AUTHENTIC ============== -->
+<section class="authentic">
+  <div class="container">
+    <h2 class="section-title">The Most <span class="ital">Authentic Mobile App</span> for Your Marketplace</h2>
+
+    <div class="auth-grid">
+      <div class="auth-card">
+        <div class="auth-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7l3-7z"/></svg>
+        </div>
+        <h4>Created by Dokan</h4>
+        <p>Get the app from the most authentic source – weDevs, the creator of Dokan Multi-vendor.</p>
+      </div>
+
+      <div class="auth-card">
+        <div class="auth-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z"/></svg>
+        </div>
+        <h4>Support On-demand</h4>
+        <p>Our attentive & experienced support team is 24/7 ready to take care of any issue regarding your app.</p>
+      </div>
+
+      <div class="auth-card">
+        <div class="auth-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h14l-1 16H6L5 4z"/><path d="M9 4V2h6v2"/></svg>
+        </div>
+        <h4>All Service in One Bucket</h4>
+        <p>From uploading your app to App Store and Google Play to update, bug-fixing – everything is taken care of by us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== QR CTA ============== -->
+<section class="qr-cta">
+  <div class="container">
+    <div class="qr-card">
+      <div>
+        <p class="divider-label">Get the app today</p>
+        <h3>Get Your <span class="ital">Dokan</span><br/>Multivendor App</h3>
+        <p>We are here to provide you with the right tools, but it is You who must believe in your ability and start.</p>
+        <div class="qr-stores">
+          <a href="#" class="store-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.03-3.05 2.49-4.51 2.6-4.58-1.42-2.07-3.62-2.36-4.4-2.39-1.87-.19-3.66 1.1-4.61 1.1-.96 0-2.42-1.08-3.99-1.05-2.05.03-3.95 1.19-5 3.02-2.13 3.7-.55 9.18 1.53 12.18 1.02 1.46 2.23 3.11 3.81 3.05 1.53-.06 2.11-.99 3.96-.99 1.84 0 2.37.99 3.99.96 1.65-.03 2.69-1.49 3.7-2.97 1.16-1.7 1.64-3.36 1.66-3.45-.04-.02-3.18-1.22-3.21-4.83zM14.05 3.04c.85-1.03 1.42-2.46 1.26-3.89-1.22.05-2.7.81-3.58 1.84-.78.91-1.47 2.36-1.29 3.76 1.36.1 2.76-.69 3.61-1.71z"/></svg>
+            <span class="label"><small>Download on the</small><strong>App Store</strong></span>
+          </a>
+          <a href="#" class="store-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 1.5c-.3.3-.5.8-.5 1.4v18.2c0 .6.2 1.1.5 1.4l.1.1L13.8 12 3.7 1.4l-.1.1zM17.3 15.5l-3.4-3.5 3.4-3.4 4.1 2.3c1.2.7 1.2 1.8 0 2.4l-4.1 2.2zM5.1 22.8c.4.4 1 .4 1.7.1L18.5 16l-3.7-3.8L5.1 22.8zM5.1 1.2L14.8 11l3.7-3.8L6.8 1c-.7-.4-1.3-.3-1.7.2z"/></svg>
+            <span class="label"><small>GET IT ON</small><strong>Google Play</strong></span>
+          </a>
+        </div>
+      </div>
+      <div class="qr-visual">
+        <div class="qr-square">
+          <!-- decorative QR-like pattern -->
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" fill="#0e1014"/>
+            <g fill="#ffffff">
+              <!-- corners -->
+              <rect x="6" y="6" width="22" height="22" rx="3"/>
+              <rect x="72" y="6" width="22" height="22" rx="3"/>
+              <rect x="6" y="72" width="22" height="22" rx="3"/>
+              <rect x="11" y="11" width="12" height="12" rx="1.5" fill="#0e1014"/>
+              <rect x="77" y="11" width="12" height="12" rx="1.5" fill="#0e1014"/>
+              <rect x="11" y="77" width="12" height="12" rx="1.5" fill="#0e1014"/>
+              <rect x="14" y="14" width="6" height="6" rx="1" fill="#ffffff"/>
+              <rect x="80" y="14" width="6" height="6" rx="1" fill="#ffffff"/>
+              <rect x="14" y="80" width="6" height="6" rx="1" fill="#ffffff"/>
+              <!-- random dots -->
+              <rect x="34" y="8" width="4" height="4"/><rect x="42" y="8" width="4" height="4"/><rect x="56" y="8" width="4" height="4"/>
+              <rect x="34" y="16" width="4" height="4"/><rect x="50" y="16" width="4" height="4"/><rect x="64" y="16" width="4" height="4"/>
+              <rect x="42" y="24" width="4" height="4"/><rect x="58" y="24" width="4" height="4"/>
+              <rect x="8" y="34" width="4" height="4"/><rect x="20" y="34" width="4" height="4"/><rect x="34" y="34" width="4" height="4"/><rect x="48" y="34" width="4" height="4"/><rect x="62" y="34" width="4" height="4"/><rect x="76" y="34" width="4" height="4"/>
+              <rect x="14" y="42" width="4" height="4"/><rect x="28" y="42" width="4" height="4"/><rect x="40" y="42" width="4" height="4"/><rect x="54" y="42" width="4" height="4"/><rect x="68" y="42" width="4" height="4"/><rect x="82" y="42" width="4" height="4"/>
+              <rect x="8" y="50" width="4" height="4"/><rect x="22" y="50" width="4" height="4"/><rect x="36" y="50" width="4" height="4"/><rect x="46" y="50" width="4" height="4"/><rect x="60" y="50" width="4" height="4"/><rect x="78" y="50" width="4" height="4"/>
+              <rect x="16" y="58" width="4" height="4"/><rect x="30" y="58" width="4" height="4"/><rect x="44" y="58" width="4" height="4"/><rect x="58" y="58" width="4" height="4"/><rect x="72" y="58" width="4" height="4"/>
+              <rect x="34" y="66" width="4" height="4"/><rect x="46" y="66" width="4" height="4"/><rect x="60" y="66" width="4" height="4"/><rect x="74" y="66" width="4" height="4"/><rect x="86" y="66" width="4" height="4"/>
+              <rect x="40" y="74" width="4" height="4"/><rect x="52" y="74" width="4" height="4"/><rect x="66" y="74" width="4" height="4"/>
+              <rect x="34" y="82" width="4" height="4"/><rect x="48" y="82" width="4" height="4"/><rect x="62" y="82" width="4" height="4"/><rect x="76" y="82" width="4" height="4"/>
+              <rect x="42" y="90" width="4" height="4"/><rect x="56" y="90" width="4" height="4"/>
+            </g>
+          </svg>
+        </div>
+        <div class="qr-logo">
+          <span class="brand-mark" style="width:28px;height:28px;border-radius:8px;font-size:14px">D</span>
+          Dokan
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#" class="brand"><span class="brand-mark">D</span><span>Dokan</span></a>
+        <p>The complete WordPress multivendor marketplace solution. Build, scale, and grow your eCommerce business.</p>
+        <div class="foot-social">
+          <a href="#" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8H6v4h3v12h5V12h3.6l.4-4h-4V6.3c0-1 .2-1.3 1.1-1.3H17V0h-3.4C9.9 0 9 1.6 9 4.2V8z"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3.3l-7.2 8.2L22.5 22h-6.6l-5.2-6.8L4.8 22H1.5l7.7-8.8L1.2 2h6.8l4.7 6.2L18 2zm-1.2 18h1.8L7.2 4H5.3l11.5 16z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23 7s-.2-1.6-.9-2.3c-.8-.9-1.7-.9-2.2-1C17 3.5 12 3.5 12 3.5s-5 0-7.9.2c-.5.1-1.4.1-2.2 1C1.2 5.4 1 7 1 7S.8 8.9.8 10.7v1.7c0 1.9.2 3.7.2 3.7s.2 1.6.9 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.7.2 7.7.2s5 0 7.9-.2c.5-.1 1.4-.1 2.2-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.7v-1.7c0-1.9-.2-3.7-.2-3.7zM9.7 14.6V8.4l6.4 3.1-6.4 3.1z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.8 0-5 2.2-5 5v14c0 2.8 2.2 5 5 5h14c2.8 0 5-2.2 5-5V5c0-2.8-2.2-5-5-5zM8 19H5V8h3v11zM6.5 6.7c-1 0-1.7-.8-1.7-1.7s.8-1.7 1.7-1.7c1 0 1.7.8 1.7 1.7s-.7 1.7-1.7 1.7zM20 19h-3v-5.6c0-1.4-.5-2.3-1.7-2.3-.9 0-1.5.6-1.7 1.2-.1.2-.1.5-.1.8V19h-3V8h3v1.3c.4-.6 1.1-1.5 2.7-1.5 2 0 3.5 1.3 3.5 4.1V19z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h5>Solutions</h5>
+        <ul>
+          <li><a href="#">Marketplace</a></li>
+          <li><a href="#">Dokan Mobile App</a></li>
+          <li><a href="#">Delivery Driver App</a></li>
+          <li><a href="#">wePOS</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Video Tutorials</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Brand Assets</a></li>
+          <li><a href="#">Career</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026, Dokan. All Rights Reserved.</span>
+      <div style="display:flex;gap:24px">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Refund Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // simple tab toggle for the Featured chips (decorative)
+  document.querySelectorAll('.fs-tags .fs-tag').forEach(tag => {
+    tag.addEventListener('click', () => {
+      document.querySelectorAll('.fs-tags .fs-tag').forEach(t => t.classList.remove('on'));
+      tag.classList.add('on');
+    });
+  });
+
+  // simple intersection observer for scroll reveals on cards
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.animation = 'fadeUp .7s ease both';
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.why-card, .diff-card, .step-card, .auth-card, .opp-card').forEach(el => {
+    el.style.opacity = '0';
+    io.observe(el);
+  });
+</script>
+
+</body>
+</html>
