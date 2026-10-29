@@ -63,12 +63,26 @@
       </div>
 
       <div class="billing-tabs" role="tablist" aria-label="Billing period">
-        <button class="billing-tabs__tab is-active" type="button" role="tab" aria-selected="true" aria-controls="plans" data-billing-tab="monthly">Monthly</button>
-        <button class="billing-tabs__tab" type="button" role="tab" aria-selected="false" aria-controls="plans" data-billing-tab="yearly">Yearly <span class="billing-tabs__save">Save 20%</span></button>
-        <button class="billing-tabs__tab" type="button" role="tab" aria-selected="false" aria-controls="plans" data-billing-tab="lifetime">Lifetime</button>
+        <div class="billing-tabs__seg" role="presentation">
+          <button class="billing-tabs__tab is-active" type="button" role="tab" aria-selected="true" aria-controls="plans" data-billing-tab="monthly">Monthly</button>
+          <button class="billing-tabs__tab" type="button" role="tab" aria-selected="false" aria-controls="plans" data-billing-tab="yearly">Yearly <span class="billing-tabs__save">Save 20%</span></button>
+        </div>
+        <!-- Lifetime is the Black Friday / Cyber Monday deal, so it sits apart -->
+        <button class="billing-tabs__tab billing-tabs__deal" type="button" role="tab" aria-selected="false" aria-controls="plans" data-billing-tab="lifetime" aria-label="Lifetime, Black Friday deal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="7.5" r="1"/><path d="M3 6v5.17a2 2 0 0 0 .59 1.42l7.71 7.71a2.41 2.41 0 0 0 3.41 0l5.58-5.58a2.41 2.41 0 0 0 0-3.41l-7.71-7.71A2 2 0 0 0 11.17 3H6a3 3 0 0 0-3 3z"/></svg><span class="billing-tabs__deal-text">Lifetime</span></button>
       </div>
 
       <div class="plans" id="plans" data-active="monthly">
+        <!-- Lifetime tab only: the deal it belongs to -->
+        <aside class="lt-promo" data-billing="lifetime" aria-label="Black Friday and Cyber Monday deal">
+          <span class="lt-promo__tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 6.9H22l-6 4.4 2.3 7L12 16l-6.3 4.3 2.3-7-6-4.4h7.6z"/></svg>Limited-time deal</span>
+          <h3 class="lt-promo__title">Black Friday<br>&amp; Cyber Monday<br><span>Special</span></h3>
+          <p class="lt-promo__text">Lifetime access is only offered during our Black Friday and Cyber Monday sale. Pay once and keep the Business plan for good.</p>
+          <ul class="lt-promo__list">
+            <li>One-time payment, no renewals</li>
+            <li>Android + iOS apps included</li>
+          </ul>
+          <p class="lt-promo__note">Available until the Cyber Monday sale ends.</p>
+        </aside>
         <article class="plan" data-billing="monthly yearly">
           <div class="plan__in">
             <div class="plan__top">

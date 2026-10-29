@@ -31,12 +31,25 @@ a.p-tag:hover { color: #7047eb; }
 }
 .p-tag__label { color: #64748b; }
 
-.billing-tabs { position: relative; width: fit-content; margin: 120px auto 0; display: flex; align-items: center; gap: 4px; padding: 6px; border: 1px solid #e4e4e4; border-radius: 9999px; background: #fff; }
+.billing-tabs { position: relative; width: fit-content; margin: 120px auto 0; display: flex; align-items: stretch; justify-content: center; gap: 20px; }
+.billing-tabs__seg { display: flex; align-items: center; gap: 4px; padding: 6px; border: 1px solid #e4e4e4; border-radius: 9999px; background: #fff; }
 .billing-tabs__tab { display: flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 9999px; font: 600 16px/1.2 'Poppins', sans-serif; color: #25252d; white-space: nowrap; transition: background-color .2s ease, color .2s ease; }
 .billing-tabs__tab:hover { color: #7047eb; }
 .billing-tabs__tab.is-active { background: #7047eb; color: #fff; }
 .billing-tabs__save { padding: 4px 8px; border-radius: 20px; background: #dff5ee; font: 700 12px/1 'Lato', sans-serif; color: #00845f; transition: background-color .2s, color .2s; }
 .billing-tabs__tab.is-active .billing-tabs__save { background: #fff; color: #00845f; }
+/* Lifetime = Black Friday deal: black pill, gradient stroke and text; filled with the gradient when chosen */
+.billing-tabs__deal {
+  padding: 0 28px; border: 2px solid transparent;
+  background: linear-gradient(#0e0e0f, #0e0e0f) padding-box, linear-gradient(90deg, #ff8a5c, #e23b7b, #9b6bff) border-box;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.billing-tabs__deal svg { width: 18px; height: 18px; flex: none; color: #ff8a5c; }
+.billing-tabs__deal-text { background: linear-gradient(90deg, #ff8a5c, #e23b7b 50%, #b49dff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.billing-tabs__deal:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(226, 59, 123, .55); }
+.billing-tabs__deal.is-active { background: linear-gradient(100deg, #ff8a5c, #e23b7b 50%, #7047eb) border-box; }
+.billing-tabs__deal.is-active svg { color: #fff; }
+.billing-tabs__deal.is-active .billing-tabs__deal-text { background: none; color: #fff; }
 
 .plans { position: relative; left: 260px; width: 1400px; margin-top: 48px; display: flex; align-items: stretch; gap: 10px; }
 /* Billing tabs: each card, price row and fee line lists the periods it belongs to. */
@@ -44,6 +57,36 @@ a.p-tag:hover { color: #7047eb; }
 .plans[data-active="yearly"] [data-billing]:not([data-billing~="yearly"]),
 .plans[data-active="lifetime"] [data-billing]:not([data-billing~="lifetime"]) { display: none; }
 .plans[data-active="lifetime"] { justify-content: center; }
+
+/* Lifetime tab: Black Friday / Cyber Monday panel beside the Business card */
+.lt-promo {
+  position: relative; display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
+  padding: 56px 52px; border-radius: 20px; overflow: hidden; background: #0e0e0f; color: #fff;
+}
+.lt-promo::before {
+  content: ""; position: absolute; right: -120px; top: -120px; width: 360px; height: 360px; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(226, 59, 123, .45), rgba(112, 71, 235, .25) 55%, transparent);
+  pointer-events: none;
+}
+.lt-promo > * { position: relative; }
+.lt-promo__tag {
+  display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 14px; border-radius: 999px;
+  background: rgba(255, 255, 255, .1); font: 700 13px/1 'Lato', sans-serif; color: #fff;
+}
+.lt-promo__tag svg { width: 14px; height: 14px; color: #ff8a5c; }
+.lt-promo__title { margin: 24px 0 0; font: 700 clamp(30px, 2.6vw, 44px)/1.15 'Poppins', sans-serif; color: #fff; }
+.lt-promo__title span {
+  background: linear-gradient(90deg, #ff8a5c, #e23b7b 45%, #9b6bff); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.lt-promo__text { max-width: 420px; margin: 20px 0 0; font: 400 17px/1.55 'Lato', sans-serif; color: rgba(255, 255, 255, .72); }
+.lt-promo__list { display: flex; flex-direction: column; gap: 10px; margin: 24px 0 0; padding: 0; list-style: none; }
+.lt-promo__list li { display: flex; align-items: center; gap: 10px; font: 400 16px/1.4 'Lato', sans-serif; color: #fff; }
+.lt-promo__list li::before {
+  content: ""; flex: none; width: 18px; height: 18px; border-radius: 50%; background: #7047eb
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center / 11px no-repeat;
+}
+.lt-promo__note { margin: 28px 0 0; font: 400 13px/1.4 'Lato', sans-serif; color: rgba(255, 255, 255, .5); }
+@media (max-width: 767px) { .lt-promo { padding: 36px 28px; } }
 .plan {
   display: flex; flex-direction: column; width: 460px; padding: 47.5px 37px;
   border: 1px solid #e4e4e4; border-radius: 20px; background: #fff; overflow: hidden;
@@ -135,7 +178,7 @@ a.p-tag:hover { color: #7047eb; }
   .p-head { width: auto; margin-top: 100px; }
 
   .plans { position: static; left: auto; width: auto; margin-top: 48px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); justify-content: center; }
-  .plans[data-active="lifetime"] { width: auto; grid-template-columns: minmax(0, 460px); }
+  .plans[data-active="lifetime"] { width: auto; grid-template-columns: minmax(0, 560px) minmax(0, 460px); column-gap: 24px; }
   .plan { width: auto; }
 
   .compare { padding: 144px 0; }
@@ -160,7 +203,7 @@ a.p-tag:hover { color: #7047eb; }
 }
 
 @media (max-width: 767px) {
-  .plans { grid-template-columns: minmax(0, 460px); }
+  .plans, .plans[data-active="lifetime"] { grid-template-columns: minmax(0, 460px); row-gap: 20px; }
 
   .ctable__title, .crow__label { flex: 2 1 0; }
   .ctable__cell { gap: 12px; padding: 24px 2px; }
@@ -180,7 +223,9 @@ a.p-tag:hover { color: #7047eb; }
   .p-head__side { margin-top: 20px; }
   .p-tag { height: 32px; padding: 0 12px; font-size: 13px; }
   .billing-tabs { margin-top: 40px; }
+  .billing-tabs { flex-wrap: wrap; gap: 12px; }
   .billing-tabs__tab { gap: 6px; padding: 10px 14px; font-size: 14px; }
+  .billing-tabs__deal { padding: 10px 20px; }
   .billing-tabs__save { padding: 3px 6px; font-size: 11px; }
   .plans { margin-top: 32px; }
   .plan, .plan--featured { padding: 24px 20px; }
