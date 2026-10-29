@@ -1,0 +1,174 @@
+/* Features page (Figma 53:29593). Layout is fluid; values at 1920 match the design. */
+
+/* ---------- Hero ---------- */
+.f-hero { position: relative; background: #0a0a0a; overflow: hidden; }
+/* The hero fills the rest of the screen under the menu (102px; 90px ≤1200; 72px ≤560), content centred. */
+.f-hero {
+  --nav-h: 102px;
+  display: flex; flex-direction: column; min-height: calc(100vh - var(--nav-h)); min-height: calc(100svh - var(--nav-h));
+  padding: 56px 0 50px;
+}
+.f-hero > .wrap { display: flex; flex-direction: column; justify-content: center; flex: 1 0 auto; }
+@media (max-width: 1200px) { .f-hero { --nav-h: 90px; } }
+@media (max-width: 560px) { .f-hero { --nav-h: 72px; } }
+.f-hero__grid {
+  display: grid; grid-template-columns: minmax(0, 602fr) minmax(0, 886fr); align-items: start;
+  column-gap: clamp(40px, 5vw, 97px);
+  /* the art bleeds past the content edge on wide screens, as in the design */
+  margin-right: min(0px, calc((1496px - 100vw) / 2 + 75px));
+}
+.f-hero__copy { display: flex; flex-direction: column; align-items: flex-start; }
+.f-tag {
+  display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px;
+  background: rgba(255, 255, 255, .2); box-shadow: 0 2px 5px rgba(0, 0, 0, .06);
+  font: 400 14px/1.3 'Lato', sans-serif; color: #fff;
+}
+.f-tag__dot { width: 6px; height: 6px; border-radius: 3px; background: #1aaa55; }
+.f-hero__title { margin-top: 28px; color: #fff; white-space: nowrap; }
+.f-hero__desc { max-width: 520px; margin-top: 28px; color: #fff; opacity: .7; }
+.f-hero__actions { margin-top: 56px; }
+.f-hero__stores { display: flex; flex-wrap: wrap; gap: 14.924px; margin-top: 167px; }
+/* Store buttons (Figma "Store download button"): built from the icons + text, not a bitmap */
+.store-btn {
+  position: relative; display: block; flex: none; width: 179.093px; height: 59.698px; overflow: hidden;
+  border: 2px solid #3b3b3b; border-radius: 6px; background: #000; color: #fff;
+  transition: transform .2s ease, border-color .2s ease;
+}
+.store-btn:hover { transform: translateY(-2px); border-color: #5c5c5c; }
+.store-btn__icon { position: absolute; left: 11.94px; top: 11.94px; width: 29.849px; height: 35.819px; }
+.store-btn__icon--play { width: 31.341px; }
+.store-btn__text { position: absolute; left: 53.73px; top: 50%; width: 116.41px; transform: translateY(-50%); display: flex; flex-direction: column; }
+.store-btn__small { font: 500 13.43px/13.432px 'SF Compact Text', -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; white-space: nowrap; }
+.store-btn__big { font: 500 26.86px/1 'SF Compact Display', -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; letter-spacing: -.47px; white-space: nowrap; }
+.store-btn__text--play { top: 7.46px; width: auto; gap: 4.477px; transform: none; }
+.store-btn__get { font: 400 14.92px/normal 'Product Sans', 'Google Sans', 'Inter', sans-serif; text-transform: uppercase; }
+.store-btn__gp { width: 110.441px; height: 22.387px; transform: scaleY(-1); }
+
+.f-hero__art {
+  position: relative; margin-top: -31px; aspect-ratio: 886 / 633; border-radius: 50px; overflow: hidden;
+  background: #fff;
+}
+.f-hero__art::before {
+  content: ""; position: absolute; inset: 0; filter: blur(4px);
+  background:
+    radial-gradient(99.5% 98.5% at 30% 30%, rgba(235, 152, 96, 1) 0, rgba(255, 212, 182, 0) 60%),
+    radial-gradient(99.5% 98.5% at 70% 70%, rgba(121, 78, 231, 1) 0, rgba(149, 115, 235, .75) 13.75%, rgba(176, 153, 238, .5) 27.5%, rgba(232, 227, 245, 0) 55%),
+    radial-gradient(112.8% 111.6% at 50% 100%, rgba(84, 182, 109, 1) 0, rgba(120, 197, 139, .75) 15%, rgba(156, 211, 169, .5) 30%, rgba(227, 239, 230, 0) 60%);
+}
+.f-hero__art img { position: absolute; left: 8.75%; top: 9.8%; width: 83.02%; height: auto; }
+
+/* ---------- Shared feature copy ---------- */
+.fcard__title, .frow__title { font-size: clamp(28px, 2.6vw, 42px); line-height: 1.3; }
+.fcard__desc { max-width: 444px; }
+
+/* ---------- Bento cards ---------- */
+.f-bento { padding-top: 148px; }
+.f-bento + .frow { margin-top: 144px; }
+.f-bento--last { padding: 144px 0; }
+.f-bento .wrap > * + * { margin-top: 48px; }
+.f-bento__pair { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+
+.fcard {
+  display: flex; flex-direction: column; min-height: 850px; padding: 66px 69px 0;
+  border-radius: 20px; background: var(--bg); overflow: hidden;
+}
+.fcard__text { display: flex; flex-direction: column; gap: 24px; max-width: 470px; }
+.fcard__media { width: min(442px, 100%); margin: auto 0 0 -11px; padding-top: 48px; }
+/* Phones are cropped by their card: object-fit keeps the visible window's ratio at every width. */
+.fcard__media img, .fwide__clip img { display: block; width: 100%; height: auto; aspect-ratio: 442 / 499; object-fit: cover; object-position: top; }
+
+/* Social login: phone sits at the top, cut off above the card; copy at the bottom. */
+.fcard--top { padding: 0 69px 70px; }
+.fcard--top .fcard__media { order: -1; margin: 0; padding-top: 0; }
+.fcard--top .fcard__media img { aspect-ratio: 442 / 495; object-position: bottom; }
+.fcard--top .fcard__text { margin-top: auto; padding-top: 48px; }
+
+/* Wide cards */
+.fwide {
+  display: flex; justify-content: space-between; gap: 40px; min-height: 560px; padding: 90px 97px 0 90px;
+  border-radius: 20px; background: #f1f5f9; overflow: hidden;
+}
+.fwide__text { display: flex; flex-direction: column; gap: 24px; max-width: 470px; }
+.fwide__media { position: relative; flex: 0 0 auto; width: 442px; }
+.fwide__clip img { aspect-ratio: 442 / 470; }
+.fwide--flip { flex-direction: row-reverse; justify-content: flex-end; gap: 173px; padding: 90px 0 0 103px; }
+.fwide--orders { padding-right: 52px; }
+.fwide--orders .fwide__media { margin-top: -57px; }
+.fwide--orders .fwide__clip img { aspect-ratio: 442 / 527; }
+
+/* Push notification popup over the phone */
+.fnote {
+  position: absolute; left: -129px; top: 184px; z-index: 1; display: flex; flex-direction: column; width: 353px;
+  padding: 27px 24px 28px; border-radius: 20px; background: #fff;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, .25);
+}
+.fnote__logo { display: flex; align-items: center; gap: 6.5px; height: 22px; margin-bottom: 25px; }
+.fnote__logo img:last-child { width: 57.3px; height: auto; }
+.fnote__time { position: absolute; top: 10px; right: 20px; font: 400 16px/1.3 'Lato', sans-serif; color: #475569; }
+.fnote__title { font: 600 18px/1.3 'Poppins', sans-serif; color: #0f172a; }
+.fnote__text { margin-top: 6px; font: 400 16px/1.3 'Lato', sans-serif; color: #475569; }
+
+/* ---------- Full-width rows ---------- */
+.frow { display: grid; grid-template-columns: 1fr 1fr; }
+.frow__media {
+  display: flex; justify-content: flex-end; align-items: center;
+  padding: 140px clamp(32px, 9.5vw, 183px) 140px 32px; background: var(--c);
+}
+.frow__media img { width: 322px; height: auto; }
+.frow__text { display: flex; align-items: center; padding: 64px 32px 64px clamp(32px, 7vw, 135px); background: #f1f5f9; }
+.frow__copy { display: flex; flex-direction: column; gap: 28px; max-width: 535px; }
+.frow__title { color: #000; }
+.frow__desc { max-width: 447px; color: #575757; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1279px) {
+  .f-hero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 40px; }
+  .f-hero__title { font-size: clamp(40px, 4.2vw, 52px); }
+  .f-hero__stores { margin-top: 72px; }
+  .fcard { padding: 56px 48px 0; }
+  .fcard--top { padding: 0 48px 56px; }
+  .fwide { padding: 72px 48px 0 56px; }
+  .fwide--flip { gap: 64px; padding: 72px 0 0 56px; }
+  .fwide--orders { padding-right: 32px; }
+  .fnote { left: -96px; }
+}
+
+@media (max-width: 1023px) {
+  .f-hero__grid { grid-template-columns: minmax(0, 1fr); }
+  .f-hero__title { white-space: normal; }
+  .f-hero__stores { margin-top: 40px; }
+  .f-hero__art { width: 100%; max-width: 760px; margin: 56px auto 0; border-radius: clamp(24px, 5vw, 50px); }
+
+  .f-bento { padding-top: 96px; }
+  .f-bento + .frow { margin-top: 96px; }
+  .f-bento--last { padding: 96px 0; }
+  .f-bento .wrap > * + * { margin-top: 32px; }
+  .f-bento__pair { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .fcard { min-height: 0; padding: 48px 40px 0; }
+  .fcard__media { margin: 0 auto; }
+  .fcard--top { padding: 0 40px 48px; }
+  .fcard--top .fcard__media { margin: 0 auto; }
+
+  .fwide, .fwide--flip { flex-direction: column; justify-content: flex-start; gap: 0; min-height: 0; padding: 48px 40px 0; }
+  .fwide__media, .fwide--orders .fwide__media { width: min(442px, 100%); margin: 48px auto 0; }
+  .fnote { left: -48px; top: 38%; }
+
+  .frow { grid-template-columns: minmax(0, 1fr); }
+  .frow__media { justify-content: center; padding: 64px 32px; }
+  .frow__media img { width: min(322px, 80%); }
+  .frow__text { padding: 48px 32px 64px; }
+  .frow__copy { gap: 20px; margin: 0 auto; }
+}
+
+@media (max-width: 639px) {
+  .f-hero__desc { margin-top: 20px; }
+  .f-hero__actions { margin-top: 36px; }
+  .f-hero__stores .store-btn { zoom: .84; }
+  .fcard { padding: 36px 24px 0; }
+  .fcard--top { padding: 0 24px 36px; }
+  .fwide, .fwide--flip { padding: 36px 24px 0; }
+  .fnote { left: -12px; width: min(300px, 92%); padding: 18px 18px 20px; border-radius: 16px; }
+  .fnote__logo { margin-bottom: 16px; }
+  .frow__media { padding: 48px 16px; }
+  .frow__text { padding: 40px 16px 56px; }
+}

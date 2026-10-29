@@ -1,0 +1,65 @@
+/* ══════════ Dokan FAQ — "Have Questions?" ══════════
+   Drop-in styles for faq.html. Every selector starts with .faq-, so nothing
+   else on the host page is touched.
+
+   Fonts: Poppins (600, 700) and Lato (400). If the host site doesn't already
+   load them, add this to <head>:
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+   Layout: a centred 952px column — 62px heading, 18px lede, then question
+   rows (#F7F7F9, 14px radius, 119px tall, 20px apart) and a dark "Ask
+   Question" pill. */
+
+/* ---- scoped reset (zero specificity, so the rules below always win) ---- */
+:where(.faq-section, .faq-section *, .faq-section *::before, .faq-section *::after) { box-sizing:border-box; }
+:where(.faq-section) :where(h2, p) { margin:0; }
+:where(.faq-section) a { text-decoration:none; }
+:where(.faq-section) button { margin:0; border:0; background:none; cursor:pointer; font:inherit; color:inherit; }
+
+/* ---- section: change the padding to suit the page's rhythm ---- */
+.faq-section { background:#FFFFFF; padding:144px 20px; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+@media (max-width:1024px) { .faq-section { padding:104px 20px; } }
+@media (max-width:640px)  { .faq-section { padding:72px 20px; } }
+
+.faq-wrap { max-width:952px; margin:0 auto; }
+.faq-title { margin:0; text-align:center; font-family:'Poppins',sans-serif; font-weight:700;
+  font-size:62px; line-height:1.25; color:#0F172A; }
+.faq-lede { margin:25px auto 0; max-width:798px; text-align:center; font-family:'Lato',sans-serif;
+  font-size:18px; line-height:1.22; color:#575757; }
+
+/* ---- question rows ---- */
+.faq-list { margin-top:56px; display:flex; flex-direction:column; gap:20px; }
+.faq-row { background:#F7F7F9; border-radius:14px; overflow:hidden; }
+.faq-q { width:100%; min-height:119px; display:flex; align-items:center; justify-content:space-between;
+  gap:24px; padding:0 36px; text-align:left; font-family:'Poppins',sans-serif; font-weight:600;
+  font-size:20px; line-height:1.4; color:#0F172A; transition:color .2s; }
+.faq-q:hover { color:#7047EB; }
+.faq-q:focus-visible { outline:2px solid #7047EB; outline-offset:-2px; border-radius:14px; }
+.faq-plus { flex:none; width:26px; height:26px; display:flex; align-items:center; justify-content:center;
+  transition:transform .3s cubic-bezier(.22,.61,.36,1), color .2s; }
+.faq-plus svg { width:22px; height:22px; }
+.faq-q[aria-expanded="true"] .faq-plus { transform:rotate(45deg); color:#7047EB; }   /* + turns into × */
+.faq-a { display:none; padding:0 36px 34px; font-family:'Lato',sans-serif; font-size:18px;
+  line-height:1.6; color:#575757; }
+.faq-a.is-open { display:block; }
+
+/* ---- "Ask Question" pill with two support faces ---- */
+.faq-ask { margin:56px auto 0; display:flex; align-items:center; gap:18px; width:274px; height:73px;
+  padding-left:38px; border-radius:9999px; background:#0B0B10; color:#FFFFFF;
+  font-family:'Poppins',sans-serif; font-weight:600; font-size:19px;
+  transition:transform .25s, background-color .25s; }
+.faq-ask:hover { transform:translateY(-2px); background:#000000; }
+.faq-ask:focus-visible { outline:2px solid #7047EB; outline-offset:3px; }
+.faq-ask .faces { display:flex; }
+.faq-ask .faces img { width:34.92px; height:34.92px; border-radius:9999px; display:block; }
+.faq-ask .faces img + img { margin-left:-0.83px; }
+
+/* ---- responsive ---- */
+@media (max-width:1400px) {
+  .faq-title { font-size:clamp(32px, 5vw, 62px); }
+  .faq-q { font-size:17px; min-height:88px; padding:0 22px; }
+  .faq-a { padding:0 22px 26px; font-size:16px; }
+}
+@media (prefers-reduced-motion: reduce) { .faq-q, .faq-plus, .faq-ask { transition:none; } }

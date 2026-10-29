@@ -1,0 +1,339 @@
+/* ══════════════════════════════════════════════════════════════════
+   Dokan header menu — nav bar, 3 mega menus (Product / Solutions /
+   Resource) and the mobile dropdown with accordions.
+   Taken from the Dokan site (site-nav.css). Every rule is scoped to
+   .site-nav, .mega-*, .menu-* or .msub-*, so it won't touch your page.
+   Fonts: Poppins 600 + Lato 400/700 (see README).
+   ══════════════════════════════════════════════════════════════════ */
+
+/* Host. In flow by default; add .is-overlay to float it over a hero. */
+.site-nav { position:relative; z-index:60; }
+.site-nav.is-overlay { position:absolute; top:0; left:0; right:0; }
+
+/* Scoped reset — :where() keeps it at zero specificity, so the rules
+   below always win (the site gets this from Tailwind's preflight). */
+:where(.site-nav, .site-nav *) { box-sizing:border-box; }
+:where(.site-nav) :where(ul) { list-style:none; margin:0; padding:0; }
+:where(.site-nav) :where(p) { margin:0; }
+:where(.site-nav) :where(a) { color:inherit; text-decoration:none; }
+:where(.site-nav) :where(button) { font:inherit; cursor:pointer; padding:0; }
+:where(.site-nav) :where(img, svg) { display:block; }
+.menu-logo img { width:100%; height:100%; }
+
+  /* Menu — padding 30px 84px on the 1700 box = 63.3px inside the card,
+     which makes the inner row exactly 1532px at design width. */
+  .hero-menu { position:relative; padding:30px 63.3px; z-index:20; }
+  .menu-row {
+    display:flex; align-items:center; justify-content:center;
+    gap:clamp(16px, calc((100% - 824px) / 2), 336px);
+    max-width:1532px; height:42px; margin:0 auto;
+  }
+  .menu-logo { width:121px; height:33px; flex:none; display:block; }
+  .menu-links { display:flex; align-items:center; gap:35px; height:19px; flex:none; }
+  .menu-links > li { display:flex; align-items:center; gap:10px; }
+  .menu-links a {
+    font-family:'Poppins',sans-serif; font-weight:600; font-size:16px; line-height:120%;
+    color:#25252D; white-space:nowrap; transition:color .2s;
+  }
+  .menu-links a:hover { color:#7047EB; }
+  .menu-chev { width:10px; height:6px; flex:none; color:#64748B; }
+  .menu-right { display:flex; align-items:center; gap:31px; height:42px; flex:none; }
+  .menu-login {
+    font-family:'Poppins',sans-serif; font-weight:600; font-size:16px; line-height:120%;
+    color:#25252D; white-space:nowrap; transition:color .2s;
+  }
+  .menu-login:hover { color:#7047EB; }
+  .menu-pricing {
+    display:flex; align-items:center; justify-content:center; padding:0 22px;
+    width:97px; height:42px; background:#7047EB; border-radius:9999px;
+    font-family:'Lato',sans-serif; font-weight:700; font-size:14px; color:#FFFFFF;
+    white-space:nowrap; transition:background-color .2s, transform .2s;
+  }
+  .menu-pricing:hover { background:#5d36d6; transform:translateY(-1px); }
+
+  /* Mobile menu toggle (desktop design unchanged; only appears <1200px) */
+  .menu-toggle { display:none; width:42px; height:42px; border-radius:9999px;
+    align-items:center; justify-content:center; background:rgba(255,255,255,.7);
+    border:1px solid #E9E9E9; color:#25252D; flex:none; }
+  .menu-toggle svg { width:20px; height:20px; }
+
+  @media (max-width:1200px) {
+    .menu-toggle { display:flex; }
+    /* the desktop row is centred with a huge computed gap; below 1200 it has to
+       simply fit, so it becomes edge-to-edge with real-world padding */
+    .hero-menu { padding:24px 28px; }
+    .menu-row { position:relative; justify-content:space-between; gap:14px;
+      max-width:none; }
+    .menu-right { gap:18px; }
+    .menu-links {
+      position:absolute; top:calc(100% + 10px); left:0; right:0; height:auto;
+      flex-direction:column; align-items:stretch; gap:2px; padding:14px 18px;
+      background:#FFFFFF; border:1px solid #E9E9E9; border-radius:16px;
+      box-shadow:0 18px 40px -18px rgba(20,20,40,.25); z-index:40; display:none;
+    }
+    .menu-links.is-open { display:flex; }
+    .menu-links > li { width:100%; justify-content:space-between; padding:9px 0; }
+  }
+
+  @media (max-width:560px) {
+    .hero-menu { padding:18px 16px; }
+    .menu-logo { width:100px; height:27px; }
+    .menu-right { gap:12px; }
+    .menu-login { font-size:14px; }
+    .menu-pricing { width:auto; padding:0 15px; height:36px; font-size:13px; }
+    .menu-toggle { width:36px; height:36px; }
+    .menu-toggle svg { width:18px; height:18px; }
+  }
+
+  /* ═══════════ MEGA MENU (Product) ═══════════
+     A white sheet that drops from the top of the hero card. The nav sits
+     on top of it (nav z-20 > sheet z-15), so the bar reads on white and
+     the sheet's 20px radius matches the card. Columns divide the full
+     panel width into exact thirds; the rule under the nav is inset to the
+     nav's own content edge. */
+  .mega {
+    position:absolute; top:0; left:0; right:0; z-index:15;
+    /* Solid white sheet. The page behind is dimmed by .mega-shade (see
+       below), drawn outside the hero card so it isn't clipped. */
+    background:#FFFFFF; border-radius:20px; padding-top:102px;
+    opacity:0; visibility:hidden; pointer-events:none;
+  }
+  .mega.is-open { opacity:1; visibility:visible; pointer-events:auto; }
+  /* The panel sits inside centred page furniture, which was leaking
+     text-align:center into it — that pushed every column heading and the
+     "All features" / "View all modules" links into the middle of their
+     column while the items under them stayed left-aligned. */
+  .mega { text-align:left; }
+
+  /* The panel is a full-bleed white sheet, but its CONTENT is capped at the
+     Figma panel width (1660) and centred. Without this the columns keep
+     growing with the viewport — at 1990px they hit 627px each while the
+     text inside is only 239px, which leaves ~287px of dead space in every
+     row and pulls the columns out of line with the nav above. Capping
+     freezes the panel at its designed proportions on any wider screen. */
+  .mega-rule { height:1px; background:#EDEDF0;
+    width:calc(100% - 168px); max-width:1492px; margin:0 auto; }
+  .mega-inner { display:grid; grid-template-columns:repeat(3,1fr);
+    max-width:1660px; margin:0 auto; }
+  .mega-col { padding:58px 20px 47px 81px; }
+  .mega-col + .mega-col,
+  .mega-listcol + .mega-listcol { border-left:1px solid #EDEDF0; }
+
+  .mega-head {
+    padding-left:18px; margin-bottom:12px;
+    font-family:'Poppins',sans-serif; font-weight:600; font-size:18px; line-height:1.3;
+    color:#94A3B8;
+  }
+  /* Figma centres the three groups vertically; "Extend" has no footer link
+     (22px link + 20px gap), so its stack sits half of that — 21px — lower. */
+  .mega-col:last-child > .mega-head { margin-top:21px; }
+
+  /* Figma Card 356x86, stacked flush: 27px icon at (15,16), text column at x 54 / y 17 */
+  .mega-item {
+    display:flex; align-items:flex-start; gap:12px;
+    padding:15px 14px; min-height:86px; border-radius:10px;
+    max-width:356px; box-sizing:border-box;   /* Figma card width: the hover box stops short of the column */
+    border:1px solid transparent;   /* reserved so the hover border doesn't nudge the text */
+    transition:background-color .22s ease, border-color .22s ease;
+  }
+  .mega-item svg { width:27px; height:27px; flex:none; color:#64748B; transition:color .22s ease; }
+  .mega-item > span { display:block; min-width:0; padding-top:1px; }
+  .mega-item .t { display:block; font-family:'Poppins',sans-serif; font-weight:600;
+    font-size:18px; line-height:1.3; color:#0F172A; transition:color .22s ease; }
+  .mega-item .d { display:block; margin-top:6px; font-family:'Lato',sans-serif;
+    font-weight:400; font-size:16px; line-height:1.3; color:#475569; }
+
+  .mega-item:hover, .mega-item:focus-visible { background:#F3F3F3; border-color:#E5E7EB; }
+  .mega-item:hover .t, .mega-item:focus-visible .t,
+  .mega-item:hover svg, .mega-item:focus-visible svg { color:#7047EB; }
+
+  /* Figma "Buttons Dokan": Lato Bold 18, arrow 20px 8px after the label, lined up
+     with the card text column (54px) and 20px under the last card. No hover motion. */
+  .mega-more {
+    display:inline-flex; align-items:center; gap:8px; margin:20px 0 0 54px;
+    font-family:'Lato',sans-serif; font-weight:700; font-size:18px; color:#0E0E0F;
+    text-decoration:underline; text-underline-offset:5px;
+    transition:color .22s ease;
+  }
+  .mega-more svg { width:20px; height:20px; flex:none; }
+  .mega-more:hover { color:#7047EB; }
+
+  /* Product trigger reflects the open state */
+  .menu-links li.has-mega > a { cursor:pointer; }
+  .menu-links li.has-mega.is-open > a { color:#7047EB; }
+  .menu-links li.has-mega.is-open .menu-chev { color:#7047EB; transform:rotate(180deg); }
+  .menu-chev { transition:transform .25s ease, color .2s ease; }
+
+  @media (max-width:1600px) { .mega-col { padding-left:56px; } .mega-rule { margin:0 48px; } }
+  @media (max-width:1400px) {
+    .mega-col { padding:44px 16px 36px 36px; }
+    .mega-item .t { font-size:18px; } .mega-item .d { font-size:15px; }
+    .mega-head { font-size:16px; }
+  }
+  /* Below the desktop nav breakpoint the hamburger list takes over */
+  @media (max-width:1200px) { .mega { display:none !important; } }
+  /* Full-bleed heroes: match the home page, whose hero card is inset 20px on
+     every side — the sheet keeps a 20px gap above it and the nav row sits
+     30px inside the sheet, exactly as on the home page. */
+  @media (min-width:1201px) {
+    .site-nav.nav-bleed .hero-menu { padding:50px 83.3px 30px; }
+    .site-nav.nav-bleed .mega { top:20px; left:20px; right:20px; }
+  }
+
+  /* ═══════════ Mega menus: Solutions (48:1323) + Resource (48:6733) ═══════════
+     Figma panel spans x 17.7..1682.3 (1665 wide) with the rule at x 102..1598,
+     i.e. an 84.3px inset on both sides — which is also the first column's
+     content inset. Dividers sit on exact thirds (Solutions) / fifths (Resource)
+     of the panel and run the full height below the rule. */
+  .mega-inner--3 { grid-template-columns:repeat(3,1fr); min-height:703px; }
+  .mega-inner--5 { grid-template-columns:repeat(5,1fr); min-height:482px; }
+
+  /* Column padding-top 50 = header top (152.3) minus the rule (102.3) */
+  .mega-listcol { padding:50px 16px 60px 84px; }
+  /* Resource: only the first column carries the 84px panel inset; the rest sit
+     34px after their divider (exactly as drawn in the file). */
+  /* Figma: card frames sit ~16px after each divider (col 1 at 65px from the
+     panel edge); the extra 18px to the header/icon is the card's own padding. */
+  .mega-inner--5 .mega-listcol { padding-left:16px; padding-right:8px; padding-bottom:102px; }
+  .mega-inner--5 .mega-listcol:first-child { padding-left:65px; }
+
+  .mega-h {
+    padding-left:18px; margin-bottom:12px; height:23px;
+    font-family:'Poppins',sans-serif; font-weight:600; font-size:15px; line-height:23px;
+    letter-spacing:.08em; text-transform:uppercase; color:#9296A7; white-space:nowrap;
+  }
+  .mega-h.is-plain { text-transform:none; letter-spacing:.01em; }
+
+  .mega-card {
+    display:flex; align-items:flex-start; gap:16px; padding:17px;
+    max-width:356px; box-sizing:border-box;
+    border-radius:10px; border:1px solid transparent;
+    transition:background-color .22s ease, border-color .22s ease;
+  }
+  .mega-card svg { width:20px; height:20px; flex:none; margin-top:2px; color:#334155;
+    transition:color .22s ease; }
+  .mega-card .t { display:block; font-family:'Poppins',sans-serif; font-weight:600;
+    font-size:18px; line-height:1.3; color:#25252D; transition:color .22s ease; }
+  .mega-card .d { display:block; margin-top:4px; font-family:'Lato',sans-serif;
+    font-weight:400; font-size:16px; line-height:1.3; color:#828282; }
+  .mega-card > span { display:block; min-width:0; }
+
+  .mega-card:hover, .mega-card:focus-visible { background:#F3F3F3; border-color:#E5E7EB; }
+  .mega-card:hover .t, .mega-card:focus-visible .t,
+  .mega-card:hover svg, .mega-card:focus-visible svg { color:#7047EB; }
+
+  /* Footer links sit under the title column (card padding 18 + icon 20 + gap 16);
+     type comes from the shared .mega-more (Figma: Lato Bold 18 in every menu) */
+  .mega-listcol .mega-more { margin:20px 0 0 54px; }
+
+  @media (max-width:1600px) {
+    .mega-listcol { padding-left:56px; }
+    .mega-inner--5 .mega-listcol { padding-left:12px; }
+    .mega-inner--5 .mega-listcol:first-child { padding-left:44px; }
+  }
+  @media (max-width:1400px) {
+    .mega-listcol { padding:40px 10px 40px 34px; }
+    .mega-inner--5 .mega-listcol { padding-left:16px; padding-bottom:40px; }
+    .mega-inner--5 .mega-listcol:first-child { padding-left:34px; }
+    .mega-inner--3, .mega-inner--5 { min-height:0; }
+    .mega-card { padding:14px 12px; gap:12px; }
+    .mega-card .t { font-size:16px; } .mega-card .d { font-size:14px; }
+    .mega-h { font-size:13px; padding-left:12px; }
+  }
+
+/* ── Dark hero variant (demo details) ── */
+.site-nav[data-variant="dark"] .menu-links a,
+.site-nav[data-variant="dark"] .menu-login { color:#FFFFFF; }
+.site-nav[data-variant="dark"] .menu-links a:hover,
+.site-nav[data-variant="dark"] .menu-login:hover { color:#B49DFF; }
+.site-nav[data-variant="dark"] .menu-chev { color:rgba(255,255,255,.6); }
+.site-nav[data-variant="dark"] .menu-toggle {
+  background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.18); color:#fff; }
+/* Panels stay light in both variants, so nav text flips back while open */
+.site-nav[data-variant="dark"] .has-mega.is-open > a { color:#7047EB; }
+
+/* A dark-hero nav sits on the white mega sheet while it is open, so the
+   bar has to flip back to dark ink or it vanishes. */
+.site-nav[data-variant="dark"].is-mega-open .menu-links a,
+.site-nav[data-variant="dark"].is-mega-open .menu-login { color:#25252D; }
+.site-nav[data-variant="dark"].is-mega-open .menu-chev { color:#64748B; }
+.site-nav[data-variant="dark"].is-mega-open .menu-links a:hover,
+.site-nav[data-variant="dark"].is-mega-open .menu-login:hover { color:#7047EB; }
+.site-nav[data-variant="dark"].is-mega-open .has-mega.is-open > a { color:#7047EB; }
+.site-nav[data-variant="dark"].is-mega-open .menu-toggle {
+  background:rgba(255,255,255,.7); border-color:#E9E9E9; color:#25252D; }
+
+/* Dim overlay while a mega menu is open: a 15% black wash over everything
+   EXCEPT the panel. site-nav.js lays this box exactly over the open panel;
+   an unblurred, huge-spread shadow paints only outside the box, so the page
+   darkens while the panel stays a clean rounded window. (A plain full-page
+   layer would also cover the panel, which sits in the hero card's own
+   stacking layer.) pointer-events:none lets outside clicks close the menu. */
+.mega-shade { position:absolute; left:0; top:0; width:0; height:0; z-index:30; border-radius:20px;
+  box-shadow:0 0 0 200vmax rgba(0,0,0,.20); pointer-events:none; opacity:0; transition:opacity .3s ease; }
+.mega-shade.is-on { opacity:1; }
+@media (max-width:1200px) { .mega-shade { display:none; } }
+
+/* ════════ Mobile polish (every page) ════════ */
+/* Dark-hero pages: the hamburger dropdown is white, so its links go dark */
+@media (max-width:1200px) {
+  .site-nav[data-variant="dark"] .menu-links a { color:#25252D; }
+  .site-nav[data-variant="dark"] .menu-links a:hover { color:#7047EB; }
+  .site-nav[data-variant="dark"] .menu-links .menu-chev { color:#64748B; }
+}
+/* Small phones: Login leaves the crowded bar for the dropdown */
+.menu-links > li.menu-links-login { display:none; }
+@media (max-width:430px) {
+  .menu-right .menu-login { display:none; }
+  .menu-links > li.menu-links-login { display:flex; margin-top:4px; padding-top:13px; border-top:1px solid #EFEFF3; }
+}
+
+/* ── Mobile menu: mega sheets as accordions (built by menu.js) ── */
+.msub { display:none; }
+@media (max-width:1200px) {
+  .menu-links { overflow-y:auto; overscroll-behavior:contain; }
+  .menu-links > li { flex-wrap:wrap; }
+  .menu-links > li:not([data-mega]) > .menu-chev { display:none; }   /* no sub-menu, no chevron */
+  .menu-links > li > .menu-chev { transition:transform .25s ease; }
+  .menu-links > li.is-open > .menu-chev { transform:rotate(180deg); color:#7047EB; }
+  .menu-links > li.is-open > a { color:#7047EB; }
+  .msub { display:grid; grid-template-rows:0fr; flex:0 0 100%; transition:grid-template-rows .3s ease; }
+  .menu-links > li.is-open > .msub { grid-template-rows:1fr; }
+  .msub-inner { overflow:hidden; min-height:0; }
+  .msub-group { padding:14px 0 4px; display:grid; grid-template-columns:1fr 1fr; column-gap:14px; }
+  .msub-group + .msub-group { border-top:1px solid #F1F1F4; margin-top:6px; }
+  .msub-h { grid-column:1 / -1; margin:0 0 4px; font-family:'Lato',sans-serif; font-weight:700;
+    font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#94A3B8; }
+  .menu-links .msub a { display:block; padding:8px 0; font-family:'Lato',sans-serif; font-weight:500;
+    font-size:14px; line-height:1.35; color:#334155; white-space:normal; }
+  .menu-links .msub a:hover { color:#7047EB; }
+  .menu-links .msub a.msub-more { grid-column:1 / -1; font-weight:700; color:#7047EB; }
+  .menu-links .msub a.msub-more::after { content:' \2192'; }
+}
+@media (max-width:1200px) and (prefers-reduced-motion: reduce) { .msub { transition:none; } }
+
+
+/* ── Drop-in motion (the site uses GSAP; this is the same move in CSS) ── */
+@keyframes dk-mega-in { from { transform:translateY(-10px); } to { transform:none; } }
+@keyframes dk-col-in  { from { transform:translateY(14px); opacity:0; } to { transform:none; opacity:1; } }
+.mega.is-open { animation:dk-mega-in .32s cubic-bezier(.215,.61,.355,1); }
+.mega.is-open .mega-col, .mega.is-open .mega-listcol {
+  animation:dk-col-in .38s cubic-bezier(.215,.61,.355,1) both; }
+.mega.is-open :is(.mega-col, .mega-listcol):nth-child(2) { animation-delay:.05s; }
+.mega.is-open :is(.mega-col, .mega-listcol):nth-child(3) { animation-delay:.10s; }
+.mega.is-open :is(.mega-col, .mega-listcol):nth-child(4) { animation-delay:.15s; }
+.mega.is-open :is(.mega-col, .mega-listcol):nth-child(5) { animation-delay:.20s; }
+
+/* ── Pricing pill: label roll on hover (markup is pre-built in menu.html) ── */
+.pb-label { position:relative; display:inline-block; }
+.pb-mask { position:relative; display:block; overflow:hidden; margin:-.18em 0 -.22em; }
+.pb-t { display:block; padding:.18em 0 .22em; white-space:nowrap;
+  transition:transform .2s cubic-bezier(.22, .61, .36, 1); }
+.pb-t.pb-clone { position:absolute; left:0; top:100%; }
+@media (hover:hover) { .pb:hover .pb-t { transform:translateY(-100%); } }
+.pb:focus-visible .pb-t { transform:translateY(-100%); }
+
+@media (prefers-reduced-motion: reduce) {
+  .mega.is-open, .mega.is-open .mega-col, .mega.is-open .mega-listcol { animation:none; }
+  .pb-t, .menu-chev, .mega-shade { transition:none; }
+}

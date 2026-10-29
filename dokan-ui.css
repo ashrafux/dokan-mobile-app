@@ -1,0 +1,178 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Dokan UI — Typography + Buttons
+   Extracted from the Dokan marketing site (home page = source of truth).
+   Fonts: Poppins (headings) + Lato (body). Load in <head>:
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* brand */
+  --dk-primary:        #7047EB;
+  --dk-primary-hover:  #5D36D6;
+  /* text */
+  --dk-title:          #0F172A;   /* H1 / H2 */
+  --dk-heading:        #0E0E0F;   /* button labels, tertiary links */
+  --dk-subtitle:       #25252D;   /* small headings, nav */
+  --dk-para:           #334155;   /* body copy */
+  --dk-para-2:         #475569;   /* secondary body copy */
+  --dk-small:          #575757;   /* card copy, small print */
+  --dk-muted:          #828282;   /* muted labels */
+  /* lines + surfaces */
+  --dk-stroke:         #E9E9E9;   /* button / card border on white */
+  --dk-divider:        #E2E2E7;
+  --dk-surface:        #FFFFFF;
+  --dk-dark:           #0D0C0F;   /* footer / dark sections */
+  /* fonts */
+  --dk-font-display:   'Poppins', sans-serif;
+  --dk-font-body:      'Lato', sans-serif;
+  /* motion */
+  --dk-ease:           cubic-bezier(.22, .61, .36, 1);   /* default hover */
+  --dk-ease-tertiary:  cubic-bezier(.65, 0, .35, 1);
+  --dk-ease-radial:    cubic-bezier(.16, 1, .3, 1);
+}
+
+/* ─────────────────────────── TYPOGRAPHY ─────────────────────────── */
+
+.dk-h1 {            /* hero headline */
+  margin:0; font-family:var(--dk-font-display); font-weight:700;
+  font-size:62px; line-height:1.25; color:var(--dk-title); }
+.dk-h2 {            /* section heading */
+  margin:0; font-family:var(--dk-font-display); font-weight:700;
+  font-size:clamp(28px, 4.1vw, 52px); line-height:1.2; color:var(--dk-title); }
+.dk-h3 {            /* card / block title */
+  margin:0; font-family:var(--dk-font-display); font-weight:700;
+  font-size:clamp(20px, 2.2vw, 28px); line-height:1.3; color:var(--dk-title); }
+.dk-h4 {            /* sub-heading, list group title */
+  margin:0; font-family:var(--dk-font-display); font-weight:600;
+  font-size:clamp(17px, 1.6vw, 22px); line-height:1.3; color:var(--dk-title); }
+.dk-stat {          /* big number */
+  margin:0; font-family:var(--dk-font-display); font-weight:500;
+  font-size:clamp(44px, 4.4vw, 72px); line-height:1.25; color:var(--dk-title); }
+.dk-eyebrow {       /* small uppercase label above a heading */
+  margin:0; font-family:var(--dk-font-body); font-weight:700;
+  font-size:13px; line-height:20px; letter-spacing:.12em; text-transform:uppercase; color:#555555; }
+.dk-lead {          /* paragraph under a heading */
+  margin:0; font-family:var(--dk-font-body); font-weight:400;
+  font-size:20px; line-height:1.5; color:var(--dk-para); }
+.dk-body {          /* regular paragraph */
+  margin:0; font-family:var(--dk-font-body); font-weight:400;
+  font-size:16px; line-height:1.55; color:var(--dk-para-2); }
+.dk-small {         /* captions, card copy, fine print */
+  margin:0; font-family:var(--dk-font-body); font-weight:400;
+  font-size:14px; line-height:1.5; color:var(--dk-small); }
+
+@media (min-width:1024px) and (max-width:1279px) { .dk-h1 { font-size:52px; } .dk-lead { font-size:18px; } }
+@media (max-width:1023px) { .dk-h1 { font-size:clamp(34px, 4.4vw, 62px); } }
+@media (max-width:767px)  { .dk-lead { font-size:18px; } }
+
+/* ──────────────────────────── BUTTONS ───────────────────────────── */
+/* Base: a 68px pill, Lato 700. Variants set colour + their hover. */
+.dk-btn {
+  position:relative; display:inline-flex; align-items:center; justify-content:center;
+  box-sizing:border-box; height:68px; padding:0 40px; border-radius:9999px;
+  font-family:var(--dk-font-body); font-weight:700; font-size:16.85px; line-height:1.5;
+  white-space:nowrap; text-decoration:none; cursor:pointer;
+  border:1px solid transparent; background:none;
+  transition:background-color .25s, border-color .25s, transform .25s, box-shadow .25s; }
+.dk-btn:focus-visible { outline:2px solid var(--dk-primary); outline-offset:3px; }
+
+/* 1. PRIMARY — purple pill, white label, white circle with a purple arrow */
+.dk-btn--primary { justify-content:flex-start; padding:0 82px 0 40px;
+  background:var(--dk-primary); color:#FFFFFF; }
+.dk-btn--primary:hover { background:var(--dk-primary-hover); transform:translateY(-2px); }
+.dk-btn__icon { position:absolute; right:11px; top:50%; transform:translateY(-50%);
+  width:46px; height:46px; border-radius:9999px; background:#FFFFFF; color:var(--dk-primary);
+  display:grid; place-items:center; overflow:hidden; }
+.dk-btn__icon svg { width:23px; height:23px; }
+
+/* 1b. PRIMARY ON BRAND — the same button for purple / dark bands:
+       white pill, dark label, black circle with a white arrow */
+.dk-btn--on-brand { background:#FFFFFF; color:var(--dk-heading); border-color:var(--dk-stroke);
+  box-shadow:0 1.87px 5.62px rgba(0,0,0,.05); }
+.dk-btn--on-brand:hover { background:#FFFFFF; transform:translateY(-2px); box-shadow:0 14px 30px -12px rgba(0,0,0,.35); }
+.dk-btn--on-brand .dk-btn__icon { background:var(--dk-heading); color:#FFFFFF; }
+
+/* 2. SECONDARY — white pill, 1px grey border, dark label, no icon.
+      Hover = radial fill only (dokan-ui.js). No lift, no border change. */
+.dk-btn--secondary { background:#FFFFFF; color:var(--dk-heading); border-color:var(--dk-stroke); }
+
+/* 3. GHOST — for dark backgrounds: translucent white pill, white label.
+      Hover = inverse radial fill (white circle, dark label). */
+.dk-btn--ghost { background:rgba(255,255,255,.10); color:#FFFFFF; border-color:rgba(255,255,255,.16); }
+
+/* 4. TERTIARY — text link + arrow, underlined. Hover = label roll,
+      diagonal arrow, underline slides with a 14px gap (dokan-ui.js). */
+.dk-btn--tertiary { height:auto; padding:0; border:0; border-radius:0; gap:8px;
+  font-size:18px; line-height:1; color:var(--dk-heading);
+  text-decoration:underline; text-underline-offset:5px; text-decoration-thickness:1.5px; }
+.dk-btn--tertiary svg { width:20px; height:20px; flex:none; }
+.dk-btn--tertiary:focus-visible { outline-offset:6px; }
+
+/* Phones: stacked CTAs go full width */
+@media (max-width:640px) {
+  .dk-btn-row { flex-direction:column; align-items:stretch; }
+  .dk-btn-row .dk-btn:not(.dk-btn--tertiary) { width:100%; max-width:300px; }
+}
+.dk-btn-row { display:flex; flex-wrap:wrap; align-items:center; gap:20px; }
+
+/* ─────────────── hover motion (markup added by dokan-ui.js) ─────────────── */
+
+/* Primary: label rolls up (copy rises from below) + arrow swaps through the circle */
+.dk-roll { position:relative; display:inline-block; }
+.dk-roll__mask { position:relative; display:block; overflow:hidden; margin:-.18em 0 -.22em; }
+.dk-roll__t { display:block; padding:.18em 0 .22em; white-space:nowrap; }
+.dk-roll__t.is-clone { position:absolute; left:0; top:100%; }
+.dk-swap { position:absolute; inset:0; overflow:hidden; border-radius:inherit; }
+.dk-swap__i { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+.dk-swap__i.is-clone { transform:translateX(-100%); }
+.dk-roll__t, .dk-swap__i { transition:transform .2s var(--dk-ease); }
+@media (hover:hover) {
+  .dk-btn--primary:hover .dk-roll__t { transform:translateY(-100%); }
+  .dk-btn--primary:hover .dk-swap__i { transform:translateX(100%); }
+  .dk-btn--primary:hover .dk-swap__i.is-clone { transform:translateX(0); }
+}
+.dk-btn--primary:focus-visible .dk-roll__t { transform:translateY(-100%); }
+.dk-btn--primary:focus-visible .dk-swap__i { transform:translateX(100%); }
+.dk-btn--primary:focus-visible .dk-swap__i.is-clone { transform:translateX(0); }
+
+/* Secondary / ghost: radial fill that grows from the pointer, follows it, shrinks to the exit */
+@property --dk-rb-p { syntax:"<number>"; inherits:true; initial-value:0; }
+.dk-rb { overflow:hidden; isolation:isolate; }
+.dk-rb > .dk-rb__label { position:relative; transition:color 180ms ease 90ms; }
+.dk-rb.is-active > .dk-rb__label { color:#9A9A9A; transition:color 120ms ease; }
+.dk-rb__fill { position:absolute; inset:0; z-index:1; pointer-events:none; box-sizing:border-box;
+  display:flex; align-items:center; justify-content:center; border-radius:inherit;
+  background:var(--dk-rb-fill, #292A29); color:#FFFFFF;
+  --dk-rb-p:0; transition:--dk-rb-p 500ms var(--dk-ease-radial);
+  clip-path:circle(calc(var(--dk-rb-p) * var(--dk-rb-r, 0) * 1px) at var(--dk-rb-x, 50%) var(--dk-rb-y, 50%)); }
+.dk-rb.is-active > .dk-rb__fill { --dk-rb-p:1; }
+.dk-rb__fill .dk-rb__label { color:#FFFFFF; white-space:nowrap; }
+.dk-btn--ghost .dk-rb__fill .dk-rb__label { color:var(--dk-heading); }
+.dk-btn--ghost.is-active > .dk-rb__label { color:rgba(255,255,255,.55); }
+
+/* Tertiary: label roll + diagonal arrow + travelling underline */
+.dk-tb { text-decoration:none !important; }
+.dk-tb__label { position:relative; display:inline-block; }
+.dk-tb__mask { position:relative; display:block; overflow:hidden; }
+.dk-tb__t { display:block; box-sizing:border-box; white-space:nowrap; }
+.dk-tb__t.is-clone { position:absolute; left:0; top:100%; }
+.dk-tb__line { position:absolute; left:0; right:0; top:100%; height:2px; overflow:hidden; pointer-events:none; }
+.dk-tb__line i { position:absolute; inset:0; background:currentColor; }
+.dk-tb__line i.is-clone { transform:translateX(calc(-100% - 14px)); }
+.dk-tb__ico { position:relative; display:inline-flex; flex:none; overflow:hidden; }
+.dk-tb__io { display:flex; }
+.dk-tb__io.is-clone { position:absolute; inset:0; transform:translate(-100%, 100%); }
+.dk-tb__t, .dk-tb__io, .dk-tb__line i { transition:transform .35s var(--dk-ease-tertiary); }
+.dk-tb__io { transition-delay:.04s; }
+.dk-tb:hover .dk-tb__t, .dk-tb:focus-visible .dk-tb__t { transform:translateY(-100%); }
+.dk-tb:hover .dk-tb__io, .dk-tb:focus-visible .dk-tb__io { transform:translate(100%, -100%); }
+.dk-tb:hover .dk-tb__io.is-clone, .dk-tb:focus-visible .dk-tb__io.is-clone { transform:translate(0, 0); }
+.dk-tb:hover .dk-tb__line i, .dk-tb:focus-visible .dk-tb__line i { transform:translateX(calc(100% + 14px)); }
+.dk-tb:hover .dk-tb__line i.is-clone, .dk-tb:focus-visible .dk-tb__line i.is-clone { transform:translateX(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .dk-btn, .dk-roll__t, .dk-swap__i, .dk-tb__t, .dk-tb__io, .dk-tb__line i { transition:none !important; }
+  .dk-rb__fill, .dk-rb > .dk-rb__label { transition-duration:0s !important; transition-delay:0s !important; }
+}

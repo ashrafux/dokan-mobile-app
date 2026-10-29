@@ -1,0 +1,39 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="33.0332" height="36.8178" viewBox="0 0 33.0332 36.8178" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Google Play logo">
+<path id="Vector" d="M0.667151 0.580404C0.198129 1.14119 -0.0386952 1.86011 0.00519843 2.58986V34.223C-0.0388228 34.9527 0.198016 35.6717 0.667151 36.2324L0.772995 36.3356L18.4932 18.6155V18.1974L0.772995 0.476562L0.667151 0.580404Z" fill="url(#paint0_linear_0_19)"/>
+<path id="Vector_2" d="M24.3986 24.5281L18.4922 18.6188V18.2008L24.4 12.293L24.5331 12.3689L31.5314 16.3454C33.5304 17.481 33.5304 19.3393 31.5314 20.4757L24.5331 24.4521L24.3986 24.5281Z" fill="url(#paint1_linear_0_19)"/>
+<path id="Vector_3" d="M24.535 24.4517L18.4941 18.4102L0.667969 36.2361C1.07528 36.5953 1.59543 36.8008 2.13828 36.8168C2.68114 36.8328 3.21251 36.6585 3.64032 36.3239L24.535 24.4517Z" fill="url(#paint2_linear_0_19)"/>
+<path id="Vector_4" d="M24.535 12.3661L3.64032 0.493903C3.21251 0.159342 2.68114 -0.0150238 2.13828 0.00101562C1.59543 0.017055 1.07528 0.222489 0.667969 0.581725L18.4941 18.4078L24.535 12.3661Z" fill="url(#paint3_linear_0_19)"/>
+<path id="Vector_5" opacity="0.2" d="M24.4018 24.3164L3.64032 36.1127C3.22898 36.4258 2.72694 36.5967 2.20998 36.5994C1.69302 36.6022 1.18919 36.4367 0.774528 36.128L0.667969 36.2346L0.773813 36.3377L0.774528 36.337C1.18912 36.6459 1.69298 36.8114 2.20998 36.8087C2.72699 36.8059 3.22905 36.635 3.64032 36.3217L24.535 24.4494L24.4018 24.3164Z" fill="black"/>
+<path id="Vector_6" opacity="0.12" d="M0.667118 36.0251C0.198141 35.4643 -0.0386769 34.7454 0.00516554 34.0156V34.2246C-0.0387032 34.9543 0.198118 35.6733 0.667118 36.2341L0.773677 36.1275L0.667118 36.0251Z" fill="black"/>
+<path id="Vector_7" opacity="0.12" d="M31.5338 20.2657L24.4023 24.3181L24.5355 24.4511L31.5338 20.4747C31.9454 20.296 32.3017 20.0103 32.5654 19.6472C32.8291 19.2841 32.9906 18.8569 33.0332 18.4102C32.9447 18.8147 32.7631 19.1931 32.5028 19.5152C32.2425 19.8373 31.9107 20.0943 31.5338 20.2657V20.2657Z" fill="black"/>
+<path id="Vector_8" opacity="0.25" d="M3.63821 0.702161L31.5312 16.5501C31.9083 16.7215 32.2402 16.9786 32.5005 17.3008C32.7608 17.6231 32.9423 18.0017 33.0306 18.4064C32.9883 17.9595 32.8269 17.5321 32.5632 17.1688C32.2994 16.8055 31.943 16.5197 31.5312 16.3411L3.63821 0.493191C1.63919 -0.642627 0.00390625 0.300812 0.00390625 2.59047V2.79944C0.00390625 0.509925 1.63919 -0.433514 3.63821 0.702161Z" fill="white"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_19" x1="16.9218" y1="2.25632" x2="-7.08243" y2="26.2606" gradientUnits="userSpaceOnUse">
+<stop stop-color="#00A0FF"/>
+<stop offset="0.00657" stop-color="#00A1FF"/>
+<stop offset="0.2601" stop-color="#00BEFF"/>
+<stop offset="0.5122" stop-color="#00D2FF"/>
+<stop offset="0.7604" stop-color="#00DFFF"/>
+<stop offset="1" stop-color="#00E3FF"/>
+</linearGradient>
+<linearGradient id="paint1_linear_0_19" x1="34.1341" y1="18.4105" x2="-0.475178" y2="18.4105" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFE000"/>
+<stop offset="0.4087" stop-color="#FFBD00"/>
+<stop offset="0.7754" stop-color="#FFA500"/>
+<stop offset="1" stop-color="#FF9C00"/>
+</linearGradient>
+<linearGradient id="paint2_linear_0_19" x1="21.2525" y1="21.6929" x2="-11.2991" y2="54.2445" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FF3A44"/>
+<stop offset="1" stop-color="#C31162"/>
+</linearGradient>
+<linearGradient id="paint3_linear_0_19" x1="-3.82048" y1="-9.94804" x2="10.7152" y2="4.58762" gradientUnits="userSpaceOnUse">
+<stop stop-color="#32A071"/>
+<stop offset="0.0685" stop-color="#2DA771"/>
+<stop offset="0.4762" stop-color="#15CF74"/>
+<stop offset="0.8009" stop-color="#06E775"/>
+<stop offset="1" stop-color="#00F076"/>
+</linearGradient>
+</defs>
+</svg>

@@ -1,0 +1,85 @@
+/* Additions to the drop-in Dokan menu (menu.css): the header takes the page's hero colour (--top-bg on .page),
+   the "Apps" mega panel (used by partials/dokan-menu-main.html), and the Dokan Mobile App menu. */
+
+.site-nav { background: var(--top-bg, #fff); }
+
+/* ═══════════ Apps mega panel ═══════════ */
+.mega-inner--apps { grid-template-columns: repeat(3, 1fr); }
+.mega-listcol.mega-appcol { padding: 50px 56px 60px; }
+
+.mega-app { display: flex; flex-direction: column; gap: 32px; }
+.mega-app .t {
+  display: block; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 32px; line-height: 1.2;
+  color: #0F172A; transition: color .22s ease;
+}
+.mega-app:hover .t, .mega-app:focus-visible .t { color: #7047EB; }
+.mega-app__art {
+  position: relative; display: block; aspect-ratio: 473 / 306; border-radius: 12px; overflow: hidden;
+  container-type: inline-size; transition: transform .3s ease, box-shadow .3s ease;
+}
+.mega-app:hover .mega-app__art, .mega-app:focus-visible .mega-app__art {
+  transform: translateY(-4px); box-shadow: 0 18px 40px -18px rgba(20, 20, 40, .35);
+}
+
+/* Dokan Mobile App (customer) */
+.mega-app__art--customer { background: linear-gradient(215deg, #ff6b8b 0%, #e2479e 35%, #9a3fe0 75%, #7b35e6 100%); }
+.mega-app__badge {
+  position: absolute; left: 8.5cqw; top: 11.5cqw; display: flex; align-items: center; gap: 1.5cqw;
+  padding: 1.2cqw 1.8cqw; border-radius: 1.6cqw; background: #fff;
+}
+.mega-app__badge img { width: 4.2cqw; height: auto; }
+.mega-app__badge b { display: block; font: 700 2.6cqw/1.1 'Poppins', sans-serif; color: #1d1d1f; }
+.mega-app__badge small { display: block; font: 700 1.6cqw/1.2 'Lato', sans-serif; color: #7047EB; }
+.mega-app__head { position: absolute; left: 8.5cqw; top: 22cqw; font: 700 5.6cqw/1.2 'Poppins', sans-serif; color: #fff; }
+.mega-app__sub { position: absolute; left: 8.5cqw; top: 38.5cqw; font: 400 2.9cqw/1.4 'Lato', sans-serif; letter-spacing: .02em; color: rgba(255, 255, 255, .9); }
+.mega-app__shot {
+  position: absolute; left: 66cqw; top: 3cqw; width: 30cqw; padding: .9cqw; border-radius: 4cqw;
+  background: #fff; transform: rotate(30deg); transform-origin: top left;
+  box-shadow: 0 2cqw 5cqw rgba(60, 10, 90, .35);
+}
+.mega-app__shot img { width: 100%; height: auto; border-radius: 3.2cqw; }
+
+/* Delivery driver + vendor: a phone peeking up from the bottom */
+.mega-app__art--driver { background: linear-gradient(135deg, #fde7df 0%, #f9c3b8 100%); }
+.mega-app__art--vendor { background: #33425e; }
+.mini-phone {
+  position: absolute; left: 50%; top: 13cqw; width: 30cqw; aspect-ratio: 342.5 / 685; transform: translateX(-50%);
+  filter: drop-shadow(0 2cqw 4cqw rgba(15, 23, 42, .25));
+}
+.mini-phone__screen { position: absolute; left: 6.42%; top: 2.92%; width: 87%; height: 94.45%; border-radius: 10.07% / 4.64%; overflow: hidden; background: #fff; }
+.mini-phone__screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.mini-phone__frame { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+@media (max-width: 1600px) { .mega-listcol.mega-appcol { padding: 46px 40px 54px; } }
+@media (max-width: 1400px) {
+  .mega-listcol.mega-appcol { padding: 40px 28px 44px; }
+  .mega-app { gap: 24px; }
+  .mega-app .t { font-size: 24px; }
+}
+
+/* Dropdown (≤1200px): the three apps as a plain one-column list */
+@media (max-width: 1200px) {
+  .menu-links > li[data-mega="megaApps"] .msub-group { grid-template-columns: 1fr; padding: 2px 0; }
+  .menu-links > li[data-mega="megaApps"] .msub-group + .msub-group { margin-top: 0; border-top: 0; }
+}
+
+/* ═══════════ Dokan Mobile App menu ═══════════
+   On the app's own pages the bar's links are Overview / Features / Pricing / Get help. */
+.app-nav .hero-menu { padding-left: var(--gutter); padding-right: var(--gutter); }   /* line up with the page content */
+@media (min-width: 1201px) {
+  .app-nav .menu-row { justify-content: space-between; max-width: 1496px; }
+}
+.app-nav .menu-links a[aria-current="page"] { color: #7047EB; }
+.site-nav.app-nav[data-variant="dark"] .menu-links a[aria-current="page"] { color: #B49DFF; }
+@media (max-width: 1200px) {
+  .site-nav.app-nav[data-variant="dark"] .menu-links a[aria-current="page"] { color: #7047EB; }
+}
+
+/* "Dokan Mobile App" tag above the home page heading */
+.app-tag {
+  display: flex; align-items: center; gap: 8px; width: fit-content; padding: 7px 16px; border-radius: 999px;
+  background: #fff; border: 1px solid rgba(15, 23, 42, .08); box-shadow: 0 2px 5px rgba(0, 0, 0, .06);
+  font: 700 14px/1.3 'Lato', sans-serif; color: #25252D;
+}
+.app-tag img { width: 14px; height: auto; }
+@media (prefers-reduced-motion: reduce) { .mega-app__art { transition: none; } }

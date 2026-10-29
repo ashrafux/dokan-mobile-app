@@ -1,0 +1,94 @@
+/* ══════════ Dokan footer ══════════
+   Drop-in styles for footer.html. Everything is scoped to .site-footer /
+   .sf-* so it won't touch the host site.
+
+   Fonts: Poppins (600, 700) and Lato (400, 700). If the host site doesn't
+   already load them, add this to <head>:
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+   Brand colours used: #0D0C0F (background), #7047EB / #5d36d6 (button),
+   #25272C (field), the newsletter ring gradient #FF7D92 → #E3397D →
+   #800CD2 → #155DFC. */
+
+/* ---- scoped reset: keeps the footer identical whatever the host's CSS does ---- */
+/* :where() keeps these at zero specificity, so the .sf-* rules below always win */
+:where(.site-footer, .site-footer *, .site-footer *::before, .site-footer *::after) { box-sizing:border-box; }
+.site-footer { -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+:where(.site-footer) :where(h5, p) { margin:0; }
+:where(.site-footer) ul { margin:0; padding:0; }
+:where(.site-footer) a { color:inherit; text-decoration:none; }
+:where(.site-footer) :where(img, svg) { max-width:100%; }
+:where(.site-footer) :where(button, input) { font:inherit; margin:0; }
+
+/* ---- content width: 1700px max, side gutters 98 / 48 / 20px ---- */
+.sf-wrap { width:100%; max-width:1700px; margin:0 auto; padding-left:98px; padding-right:98px; }
+@media (max-width:1200px) { .sf-wrap { padding-left:48px; padding-right:48px; } }
+@media (max-width:700px)  { .sf-wrap { padding-left:20px; padding-right:20px; } }
+
+.site-footer { background:#0D0C0F; color:#fff; }
+.site-footer .sf-inner { padding-top:144px; padding-bottom:40px; }
+@media (max-width:1024px) { .site-footer .sf-inner { padding-top:104px; } }
+@media (max-width:640px)  { .site-footer .sf-inner { padding-top:72px; } }
+.sf-grid { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); column-gap:40px; row-gap:56px; }
+@media (min-width:768px) { .sf-grid { grid-template-columns:repeat(4, minmax(0, 1fr)); } }
+.sf-logo { display:inline-block; margin-bottom:36px; }
+.sf-logo img { display:block; width:139px; height:38px; }
+.sf-h { margin:36px 0 20px; font-family:'Poppins',sans-serif; font-weight:600; font-size:17px; line-height:1.375; color:#fff; }
+.sf-col > .sf-h:first-child { margin-top:0; }
+.sf-links { margin:0; padding:0; list-style:none; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:rgba(255,255,255,.7); }
+.sf-links li + li { margin-top:13px; }
+.sf-links a { color:inherit; display:inline-block; transition:color .2s, transform .2s; }
+.sf-links a:hover { color:#fff; }
+@media (hover:hover) { .sf-links a:hover { transform:translateX(3px); } }
+.sf-news { margin-top:90px; display:flex; align-items:flex-start; justify-content:space-between; gap:40px; }
+.sf-news-title { margin:0 0 14px; font-family:'Poppins',sans-serif; font-weight:700; font-size:25px; line-height:1.2; color:#fff; }
+/* Newsletter field: a colour runs around the 1px ring, with a soft glow of the
+   same colours under the pill (reference video). The ring is a conic gradient
+   drawn in the border box; only its angle animates, one turn every 8s. */
+@property --sf-a { syntax:"<angle>"; inherits:false; initial-value:0deg; }
+.sf-ring { position:relative; display:inline-block; width:466px; max-width:100%; }
+.sf-ring::before { content:''; position:absolute; inset:2px; border-radius:999px; pointer-events:none;
+  background:conic-gradient(from var(--sf-a), rgba(255,125,146,.72), rgba(227,57,125,.72), rgba(128,12,210,.72), rgba(21,93,252,.72), rgba(128,12,210,.72), rgba(227,57,125,.72), rgba(255,125,146,.72));
+  filter:blur(12px); opacity:.38; animation:sf-ring 8s linear infinite; }
+.sf-form { position:relative; display:flex; align-items:center; width:100%; height:66px; box-sizing:border-box; padding:8.5px 8.5px 8.5px 22px;
+  border:1px solid transparent; border-radius:999px;
+  background:
+    linear-gradient(#25272C, #25272C) padding-box,
+    conic-gradient(from var(--sf-a), rgba(255,125,146,.72), rgba(227,57,125,.72), rgba(128,12,210,.72), rgba(21,93,252,.72), rgba(128,12,210,.72), rgba(227,57,125,.72), rgba(255,125,146,.72)) border-box;
+  animation:sf-ring 8s linear infinite; transition:box-shadow .25s; }
+@keyframes sf-ring { to { --sf-a:360deg; } }
+.sf-form:focus-within { box-shadow:0 0 0 3px rgba(112,71,235,.25); }
+@media (prefers-reduced-motion: reduce) { .sf-form, .sf-ring::before { animation:none; } }
+.sf-form input { flex:1; min-width:0; height:100%; padding:0 14px 0 6px; border:0; background:transparent; outline:none;
+  font-family:'Lato',sans-serif; font-size:17px; color:#fff; }
+.sf-form input::placeholder { color:#8B8E97; }
+.sf-form button { flex:none; width:133px; max-width:45%; height:49px; border:0; border-radius:999px; background:#7047EB; color:#fff; cursor:pointer;
+  font-family:'Lato',sans-serif; font-size:16px; white-space:nowrap; transition:background-color .25s; }
+.sf-form button:hover { background:#5d36d6; }
+.sf-form button:focus-visible { outline:2px solid #fff; outline-offset:2px; }
+.sf-trust { display:flex; flex-direction:column; align-items:flex-start; gap:28px; }
+.sf-social { display:flex; gap:10px; }
+.sf-social a { display:block; width:41px; height:41px; border-radius:50%; transition:transform .25s cubic-bezier(.22,.61,.36,1); }
+.sf-social a:hover { transform:translateY(-3px); }
+.sf-social a:focus-visible { outline:2px solid #7047EB; outline-offset:3px; }
+.sf-social img { display:block; width:100%; height:100%; }
+.sf-pay { display:block; width:384px; max-width:100%; height:auto; }
+.sf-wordmark { display:block; width:100%; height:auto; margin-top:72px; pointer-events:none; user-select:none; }
+.sf-bottom { margin-top:24px; padding:44px 0 16px; border-top:1px solid rgba(255,255,255,.18);
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:16px; font-family:'Lato',sans-serif; font-size:16px; color:#A1A1AA; }
+.sf-by { display:flex; align-items:center; gap:12px; }
+.sf-by img { display:block; width:136px; height:auto; }
+.sf-copy { text-align:center; }
+.sf-lang { justify-self:end; display:inline-flex; align-items:center; gap:8px; border:0; background:none; cursor:pointer;
+  font-family:'Lato',sans-serif; font-size:17px; color:#C9C9CF; transition:color .25s; }
+.sf-lang:hover { color:#fff; }
+.sf-lang svg { width:16px; height:16px; }
+@media (max-width:1023px) {
+  .sf-news { flex-direction:column; align-items:stretch; gap:36px; }
+  .sf-bottom { grid-template-columns:minmax(0,1fr); justify-items:center; text-align:center; }
+  .sf-lang { justify-self:center; }
+}
+@media (max-width:767px) { .sf-wordmark { margin-top:48px; } .sf-bottom { margin-top:16px; } }
+.site-footer .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }

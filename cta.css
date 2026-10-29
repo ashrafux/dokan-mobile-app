@@ -1,0 +1,92 @@
+/* ══════════ Dokan CTA — "Launch Your Marketplace Today!" ══════════
+   Drop-in styles for cta.html. Every selector starts with .cta-shell or
+   .cta-*, so nothing else on the host page is touched.
+
+   Fonts: Poppins (700) and Lato (400, 700). If the host site doesn't already
+   load them, add this to <head>:
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+   Layout: the section is a 20px white gutter; inside it the purple band
+   (#7047EB, 20px radius) is 646px tall on desktop with the copy 84px in and
+   vertically centred, and the storefront image bottom-anchored 61px from the
+   right. Under 1024px everything stacks. */
+
+/* ---- scoped reset (zero specificity, so the rules below always win) ---- */
+:where(.cta-shell, .cta-shell *, .cta-shell *::before, .cta-shell *::after) { box-sizing:border-box; }
+:where(.cta-shell) :where(h2, p) { margin:0; }
+:where(.cta-shell) a { text-decoration:none; }
+:where(.cta-shell) img { max-width:100%; }
+
+/* ---- section + band ---- */
+.cta-shell { background:#FFFFFF; padding:20px; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+.cta-band  { position:relative; width:100%; height:646px; border-radius:20px; overflow:hidden; background:#7047EB; }
+.cta-waves { position:absolute; left:-22px; top:-35px; width:calc(100% + 44px); height:calc(100% + 78px);
+  opacity:.15; pointer-events:none; }
+
+/* ---- copy ---- */
+.cta-copy { position:absolute; left:84px; top:50%; transform:translateY(-50%); width:443px;
+  display:flex; flex-direction:column; gap:56px; z-index:2; }
+.cta-copy-top { display:flex; flex-direction:column; gap:28px; }
+.cta-title { margin:0; width:430px; font-family:'Poppins',sans-serif; font-weight:700;
+  font-size:62px; line-height:125%; color:#FFFFFF; }
+.cta-text { margin:0; font-family:'Lato',sans-serif; font-weight:400; font-size:20px;
+  line-height:150%; color:#FFFFFF; opacity:.7; }
+
+/* ---- button: white pill, black circle with a white arrow ---- */
+.cta-btn { position:relative; box-sizing:border-box; display:flex; align-items:center;
+  width:252.31px; height:68px; padding-left:39.31px; background:#FFFFFF;
+  border:.94px solid #E9E9E9; box-shadow:0 1.87px 5.62px rgba(0,0,0,.05); border-radius:187.18px;
+  font-family:'Lato',sans-serif; font-weight:700; font-size:16.85px; line-height:150%;
+  color:#0E0E0F; white-space:nowrap; transition:transform .25s, box-shadow .25s; }
+.cta-btn:hover { transform:translateY(-2px); box-shadow:0 14px 30px -12px rgba(0,0,0,.35); }
+.cta-btn:focus-visible { outline:2px solid #FFFFFF; outline-offset:3px; }
+.cta-btn .circle { position:absolute; right:11.68px; top:50%; transform:translateY(-50%);
+  width:45.86px; height:45.86px; border-radius:135.19px; background:#0E0E0F;
+  display:grid; place-items:center; overflow:hidden; }
+.cta-btn .circle svg { width:22.98px; height:22.98px; color:#FFFFFF; }
+
+/* hover motion: the label rolls up while a copy rises from below, and the
+   arrow leaves the circle to the right while a copy enters from the left.
+   Leaving reverses both. ~200ms ease-out; nothing else changes size. */
+.cta-btn .pb-label { position:relative; display:inline-block; }
+.cta-btn .pb-mask { position:relative; display:block; overflow:hidden; margin:-.18em 0 -.22em; }
+.cta-btn .pb-t { display:block; padding:.18em 0 .22em; white-space:nowrap; }
+.cta-btn .pb-t.pb-clone { position:absolute; left:0; top:100%; }
+.cta-btn .pb-ico { position:absolute; inset:0; overflow:hidden; border-radius:inherit; }
+.cta-btn .pb-i { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+.cta-btn .pb-i > svg { display:block; }
+.cta-btn .pb-i.pb-clone { transform:translateX(-100%); }
+.cta-btn .pb-t, .cta-btn .pb-i { transition:transform .2s cubic-bezier(.22, .61, .36, 1); }
+@media (hover:hover) {
+  .cta-btn:hover .pb-t { transform:translateY(-100%); }
+  .cta-btn:hover .pb-i { transform:translateX(100%); }
+  .cta-btn:hover .pb-i.pb-clone { transform:translateX(0); }
+}
+.cta-btn:focus-visible .pb-t { transform:translateY(-100%); }
+.cta-btn:focus-visible .pb-i { transform:translateX(100%); }
+.cta-btn:focus-visible .pb-i.pb-clone { transform:translateX(0); }
+@media (prefers-reduced-motion: reduce) { .cta-btn, .cta-btn .pb-t, .cta-btn .pb-i { transition:none; } }
+
+/* ---- storefront image: shown whole (no crop), bottom-right; it shrinks on
+   narrower bands so it always keeps 620px clear for the copy ---- */
+.cta-art { position:absolute; right:61px; bottom:0; top:auto; z-index:1;
+  width:min(678px, calc(100% - 620px)); height:auto; }
+
+/* ---- responsive ---- */
+@media (min-width:1024px) and (max-width:1279px) {
+  .cta-copy { width:380px; gap:40px; } .cta-copy-top { gap:20px; }
+  .cta-title { width:380px; font-size:52px; } .cta-text { font-size:18px; }
+}
+@media (max-width:1023px) {                       /* tablet portrait + mobile: stacked */
+  .cta-band { height:auto; }
+  .cta-copy { position:static; transform:none; width:auto; max-width:443px; padding:56px 32px 0; }
+  .cta-art { position:static; display:block; width:min(100%, 678px); height:auto; margin:40px 0 0 auto; }
+}
+@media (max-width:640px) {
+  .cta-copy { padding:40px 20px 0; gap:32px; }
+  .cta-title { width:auto; font-size:40px; }
+  .cta-btn { width:100%; max-width:252.31px; }
+  .cta-art { margin-top:32px; }
+}

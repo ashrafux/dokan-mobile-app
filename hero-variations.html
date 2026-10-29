@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pricing Hero — 10 Layout Variations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dokan-ui.css">
+  <style>
+    /* Design exploration: ten layouts for the pricing page heading section.
+       Same content, the Dokan UI kit type roles (dk-*) and kit colours throughout. */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body { background: #fff; color: var(--dk-title); font-family: var(--dk-font-body); -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    ul { margin: 0; padding: 0; list-style: none; }
+    button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+
+    .container { width: 100%; max-width: 1464px; margin: 0 auto; padding: 0 32px; }
+    @media (max-width: 639px) { .container { padding: 0 16px; } }
+
+    /* ---- page intro + variation labels ---- */
+    .intro { padding: 72px 0 40px; text-align: center; }
+    .intro p { max-width: 620px; margin: 16px auto 0; }
+    .tag { display: flex; align-items: center; gap: 12px; padding: 20px 0; border-top: 1px solid var(--dk-divider); }
+    .tag b { display: inline-grid; place-items: center; min-width: 40px; height: 28px; padding: 0 10px; border-radius: 999px; background: #efeaff; color: var(--dk-primary); font: 700 13px/1 var(--dk-font-body); letter-spacing: .06em; }
+    .tag span { font: 700 13px/20px var(--dk-font-body); letter-spacing: .12em; text-transform: uppercase; color: #555; }
+    .tag em { font-style: normal; color: var(--dk-muted); font-size: 14px; }
+    @media (max-width: 639px) { .tag em { display: none; } }
+    .v { position: relative; overflow: clip; }
+
+    /* ---- shared pieces ---- */
+    .notes { display: flex; flex-wrap: wrap; gap: 10px 28px; }
+    .notes li { display: flex; align-items: center; gap: 8px; }
+    .notes li::before { content: ""; flex-shrink: 0; width: 20px; height: 20px; background: url("assets/p-circle-check.svg") center / 100% 100% no-repeat; }
+    .tabs { display: inline-flex; align-items: center; gap: 4px; padding: 6px; border: 1px solid #e4e4e4; border-radius: 9999px; background: #fff; }
+    .tabs button { display: flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 9999px; font: 700 16px/1.2 var(--dk-font-body); color: var(--dk-subtitle); white-space: nowrap; transition: background-color .2s, color .2s; }
+    .tabs button:hover { color: var(--dk-primary); }
+    .tabs button.is-active { background: var(--dk-primary); color: #fff; }
+    .save { padding: 4px 8px; border-radius: 20px; background: #ddf; font: 400 12px/1 var(--dk-font-body); color: #0e0e0f; }
+    @media (max-width: 639px) {
+      .tabs button { gap: 6px; padding: 10px 14px; font-size: 14px; }
+      .save { padding: 3px 6px; font-size: 11px; }
+    }
+    .eyebrow-pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 6px; border-radius: 999px; background: #fff; border: 1px solid var(--dk-stroke); }
+    .eyebrow-pill i { font-style: normal; padding: 4px 10px; border-radius: 999px; background: var(--dk-primary); color: #fff; font: 700 12px/1.2 var(--dk-font-body); letter-spacing: .04em; }
+    .phone { position: relative; aspect-ratio: 342.5 / 685; }
+    .phone__screen { position: absolute; left: 6.42%; top: 2.92%; width: 87%; height: 94.45%; border-radius: 10.07% / 4.64%; overflow: hidden; }
+    .phone__screen img { position: absolute; left: 0; top: 0; width: 100%; height: 103.4%; }
+    .phone__frame { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .ic { display: inline-grid; flex-shrink: 0; }
+    .ic img { grid-area: 1 / 1; }
+    .ic img + img { margin: 5px 0 0 7px; }
+    .hl { color: var(--dk-primary); }
+    .grad { background: linear-gradient(90deg, #9774ff, #ff68a2 45.666%, #ffc870); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+    /* ═══ 01 — Centered with eyebrow & chips ═══ */
+    .v1 { background: #ededee; padding: 120px 0 104px; text-align: center; }
+    .v1 .dk-lead { max-width: 580px; margin: 24px auto 0; }
+    .v1 .eyebrow-pill { margin-bottom: 28px; }
+    .v1 .notes { justify-content: center; margin-top: 32px; }
+    .v1 .notes li { padding: 8px 16px 8px 12px; border-radius: 999px; background: #fff; border: 1px solid var(--dk-stroke); }
+    .v1 .tabs { margin-top: 48px; }
+
+    /* ═══ 02 — Split: text left, phone right ═══ */
+    .v2 { background: #f5f3ff; padding: 96px 0 0; }
+    .v2 .container { display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 64px; align-items: end; }
+    .v2 .copy { padding-bottom: 96px; }
+    .v2 .dk-lead { max-width: 540px; margin-top: 24px; }
+    .v2 .notes { flex-direction: column; margin-top: 28px; }
+    .v2 .tabs { margin-top: 40px; }
+    .v2 .art { height: 560px; overflow: hidden; }
+    .v2 .phone { width: 340px; margin: 0 auto; }
+    @media (max-width: 1023px) {
+      .v2 .container { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+      .v2 .copy { padding-bottom: 0; }
+      .v2 .art { height: 420px; }
+      .v2 .phone { width: 260px; }
+    }
+
+    /* ═══ 03 — Purple band, tabs overlapping the edge ═══ */
+    .v3 { padding: 20px 20px 0; }
+    .v3 .band { position: relative; padding: 112px 32px 120px; border-radius: 24px; background: var(--dk-primary); text-align: center; overflow: hidden; }
+    .v3 .band::before, .v3 .band::after { content: ""; position: absolute; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .14); }
+    .v3 .band::before { width: 720px; height: 720px; left: -260px; top: -360px; }
+    .v3 .band::after { width: 560px; height: 560px; right: -200px; bottom: -320px; }
+    .v3 .dk-h1 { color: #fff; position: relative; }
+    .v3 .dk-lead { max-width: 580px; margin: 24px auto 0; color: #fff; opacity: .7; position: relative; }
+    .v3 .notes { justify-content: center; margin-top: 32px; color: #fff; position: relative; }
+    .v3 .notes li::before { filter: brightness(0) invert(1); opacity: .9; }
+    .v3 .tabwrap { display: flex; justify-content: center; margin-top: -34px; position: relative; padding-bottom: 72px; }
+    .v3 .tabs { box-shadow: 0 18px 40px -16px rgba(17, 24, 39, .35); }
+
+    /* ═══ 04 — Dark hero with glow ═══ */
+    .v4 { background: var(--dk-dark); padding: 128px 0 112px; text-align: center; }
+    .v4 .glow { position: absolute; width: 520px; height: 520px; border-radius: 50%; filter: blur(110px); opacity: .45; pointer-events: none; }
+    .v4 .glow--a { background: #7148ec; left: 8%; top: -180px; }
+    .v4 .glow--b { background: #e23b7b; right: 6%; top: 60px; opacity: .3; }
+    .v4 .container { position: relative; }
+    .v4 .dk-h1 { color: #fff; }
+    .v4 .dk-lead { max-width: 580px; margin: 24px auto 0; color: #fff; opacity: .7; }
+    .v4 .notes { justify-content: center; margin-top: 36px; }
+    .v4 .notes li { padding: 10px 18px 10px 12px; border-radius: 999px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .12); color: #fff; }
+    .v4 .tabs { margin-top: 48px; background: rgba(255, 255, 255, .06); border-color: rgba(255, 255, 255, .14); }
+    .v4 .tabs button { color: #fff; }
+
+    /* ═══ 05 — Feature boxes under the headline ═══ */
+    .v5 { background: #fff; padding: 112px 0 104px; text-align: center; }
+    .v5 .dk-lead { max-width: 580px; margin: 24px auto 0; }
+    .v5 .boxes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; max-width: 1080px; margin: 56px auto 0; text-align: left; }
+    .v5 .box { display: flex; gap: 16px; align-items: flex-start; padding: 24px; border-radius: 16px; background: #f8f9f8; }
+    .v5 .box span { flex-shrink: 0; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 12px; background: #efeaff; color: var(--dk-primary); font: 700 18px/1 var(--dk-font-display); }
+    .v5 .tabs { margin-top: 48px; }
+    @media (max-width: 899px) { .v5 .boxes { grid-template-columns: minmax(0, 1fr); max-width: 480px; } }
+
+    /* ═══ 06 — Editorial: big headline left, details right, divider ═══ */
+    .v6 { background: #fbf8ed; padding: 120px 0 96px; }
+    .v6 .row { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 64px; align-items: end; padding-bottom: 48px; border-bottom: 1px solid #e7e2cf; }
+    .v6 .dk-h1 { font-size: clamp(40px, 5.2vw, 84px); line-height: 1.08; }
+    .v6 .notes { flex-direction: column; gap: 12px; margin-top: 24px; }
+    .v6 .foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; margin-top: 40px; }
+    @media (max-width: 1023px) { .v6 .row { grid-template-columns: minmax(0, 1fr); gap: 28px; } }
+
+    /* ═══ 07 — Floating platform icons around a centred title ═══ */
+    .v7 { background: #f3faff; padding: 140px 0 112px; text-align: center; }
+    .v7 .dk-lead { max-width: 580px; margin: 24px auto 0; }
+    .v7 .notes { justify-content: center; margin-top: 32px; }
+    .v7 .tabs { margin-top: 48px; }
+    .v7 .float { position: absolute; display: grid; place-items: center; width: 84px; height: 84px; border-radius: 22px; background: #fff; box-shadow: 0 18px 40px -18px rgba(17, 24, 39, .35); animation: bob 6s ease-in-out infinite; }
+    .v7 .float img { width: 44px; height: 44px; }
+    .v7 .f1 { left: 9%; top: 120px; rotate: -12deg; }
+    .v7 .f2 { right: 10%; top: 150px; rotate: 10deg; animation-delay: -2s; }
+    .v7 .f3 { left: 16%; bottom: 90px; rotate: 8deg; animation-delay: -4s; }
+    .v7 .f4 { right: 15%; bottom: 120px; rotate: -8deg; animation-delay: -3s; }
+    @keyframes bob { 50% { translate: 0 -12px; } }
+    @media (max-width: 1199px) { .v7 .float { display: none; } }
+    @media (prefers-reduced-motion: reduce) { .v7 .float { animation: none; } }
+
+    /* ═══ 08 — Card on a soft background, tabs inside the card ═══ */
+    .v8 { background: linear-gradient(180deg, #efeaff 0%, #fff 100%); padding: 96px 0; }
+    .v8 .card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 440px); gap: 56px; align-items: center; padding: 56px; border-radius: 28px; background: #fff; border: 1px solid var(--dk-stroke); box-shadow: 0 30px 60px -40px rgba(112, 71, 235, .45); }
+    .v8 .dk-lead { margin-top: 20px; max-width: 520px; }
+    .v8 .side { display: flex; flex-direction: column; gap: 24px; padding: 32px; border-radius: 20px; background: #f8f8fa; }
+    .v8 .side .notes { flex-direction: column; gap: 14px; }
+    .v8 .side .tabs { align-self: flex-start; }
+    @media (max-width: 1023px) { .v8 .card { grid-template-columns: minmax(0, 1fr); padding: 32px; gap: 32px; } }
+    @media (max-width: 639px) { .v8 .card { padding: 24px 20px; } .v8 .side { padding: 20px; } }
+
+    /* ═══ 09 — Platform picker: Android / iOS / Business icons up front ═══ */
+    .v9 { background: #fff; padding: 112px 0 104px; text-align: center; }
+    .v9 .icons { display: flex; justify-content: center; align-items: center; gap: 12px; margin-bottom: 32px; }
+    .v9 .plus { font: 600 22px/1 var(--dk-font-display); color: var(--dk-muted); }
+    .v9 .dk-lead { max-width: 580px; margin: 24px auto 0; }
+    .v9 .notes { justify-content: center; margin-top: 32px; }
+    .v9 .divider { display: flex; align-items: center; gap: 16px; max-width: 640px; margin: 48px auto 0; }
+    .v9 .divider::before, .v9 .divider::after { content: ""; flex: 1; height: 1px; background: var(--dk-divider); }
+
+    /* ═══ 10 — Asymmetric grid: stats column + headline ═══ */
+    .v10 { background: #ededee; padding: 112px 0 96px; }
+    .v10 .grid { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 72px; align-items: start; }
+    .v10 .facts { display: flex; flex-direction: column; gap: 0; border-left: 2px solid var(--dk-primary); }
+    .v10 .fact { padding: 4px 0 24px 24px; }
+    .v10 .fact + .fact { padding-top: 20px; border-top: 1px solid #dcdce0; }
+    .v10 .fact strong { display: block; font: 500 44px/1.1 var(--dk-font-display); color: var(--dk-title); }
+    .v10 .dk-lead { max-width: 600px; margin-top: 24px; }
+    .v10 .tabs { margin-top: 40px; }
+    @media (max-width: 1023px) {
+      .v10 .grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+      .v10 .facts { order: 2; flex-direction: row; flex-wrap: wrap; border-left: 0; border-top: 2px solid var(--dk-primary); }
+      .v10 .fact, .v10 .fact + .fact { flex: 1 1 200px; padding: 20px 20px 0 0; border-top: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="intro container">
+  <p class="dk-eyebrow">Pricing page · heading section</p>
+  <h1 class="dk-h2">10 Layout Variations</h1>
+  <p class="dk-body">Same content in ten different layouts. Each one uses the Dokan UI kit type styles and colours, and works down to phone width. Tabs are clickable.</p>
+</header>
+
+<!-- 01 -->
+<div class="container tag"><b>01</b><span>Centered · eyebrow &amp; chips</span><em>Current layout, with a label above and the tags as pills</em></div>
+<section class="v v1">
+  <div class="container">
+    <span class="eyebrow-pill"><i>NEW</i><span class="dk-small">Native iOS &amp; Android apps for Dokan</span></span>
+    <h2 class="dk-h1">Get Your Marketplace<br>App Ready!</h2>
+    <p class="dk-lead">Start with Android or iOS whichever your customers use, or select both and save huge!</p>
+    <ul class="notes dk-body"><li>All plans include a 14-day Free Trial</li><li>One-time Setup Fee applies</li><li>Prerequisite: Dokan Multi-Vendor Plugin</li></ul>
+    <div class="tabs" role="tablist"><button class="is-active">Monthly</button><button>Yearly <span class="save">Save 20%</span></button><button>Lifetime</button></div>
+  </div>
+</section>
+
+<!-- 02 -->
+<div class="container tag"><b>02</b><span>Split · phone on the right</span><em>Text left, the vendor app on the right, cropped at the bottom</em></div>
+<section class="v v2">
+  <div class="container">
+    <div class="copy">
+      <p class="dk-eyebrow">Dokan Mobile App Pricing</p>
+      <h2 class="dk-h1" style="margin-top:16px">Get Your Marketplace<br>App Ready!</h2>
+      <p class="dk-lead">Start with Android or iOS whichever your customers use, or select both and save huge!</p>
+      <ul class="notes dk-body"><li>All plans include a 14-day Free Trial</li><li>One-time Setup Fee applies</li><li>Prerequisite: Dokan Multi-Vendor Plugin</li></ul>
+      <div class="tabs" role="tablist"><button class="is-active">Monthly</button><button>Yearly <span class="save">Save 20%</span></button><button>Lifetime</button></div>
+    </div>
+    <div class="art">
+      <div class="phone"><span class="phone__screen"><img src="assets/e-stats.png" alt="Dokan vendor app dashboard"></span><img class="phone__frame" src="assets/e-iphone.png" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 -->
+<div class="container tag"><b>03</b><span>Purple band · tabs on the edge</span><em>Brand-colour band; the tabs sit across its bottom edge</em></div>
+<section class="v v3">
+  <div class="band">
+    <h2 class="dk-h1">Get Your Marketplace<br>App Ready!</h2>
+    <p class="dk-lead">Start with Android or iOS whichever your customers use, or select both and save huge!</p>
+    <ul class="notes dk-body"><li>All plans include a 14-day Free Trial</li><li>One-time Setup Fee applies</li><li>Prerequisite: Dokan Multi-Vendor Plugin</li></ul>
+  </div>
+  <div class="tabwrap"><div class="tabs" role="tablist"><button class="is-active">Monthly</button><button>Yearly <span class="save">Save 20%</span></button><button>Lifetime</button></div></div>
+</section>
+
+<!-- 04 -->
+<div class="container tag"><b>04</b><span>Dark · gradient headline</span><em>Black hero with soft glows, gradient word and glass chips</em></div>
+<section class="v v4">
+  <span class="glow glow--a"></span><span class="glow glow--b"></span>
+  <div class="container">
+    <h2 class="dk-h1">Get Your Marketplace<br><span class="grad">App Ready!</span></h2>
+    <p class="dk-lead">Start with Android or iOS whichever your customers use, or select both and save huge!</p>
+    <ul class="notes dk-body"><li>All plans include a 14-day Free Trial</li><li>One-time Setup Fee applies</li><li>Prerequisite: Dokan Multi-Vendor Plugin</li></ul>
+    <div class="tabs" role="tablist"><button class="is-active">Monthly</button><button>Yearly <span class="save">Save 20%</span></button><button>Lifetime</button></div>
+  </div>
+</section>
+
+<!-- 05 -->
+<div class="container tag"><b>05</b><span>Centered · feature boxes</span><em>The three tags become numbered info boxes</em></div>
+<section class="v v5">
+  <div class="container">
+    <h2 class="dk-h1">Get Your Marketplace <span class="hl">App</span> Ready!</h2>
+    <p class="dk-lead">Start with Android or iOS whichever your customers use, or select both and save huge!</p>
+    <div class="boxes">
+      <div class="box"><span>14</span><div><p class="dk-h4">14-day Free Trial</p><p class="dk-small" style="margin-top:6px">Every plan starts with a free trial.</p></div></div>
+      <div class="box"><span>1×</span><div><p class="dk-h4">One-time Setup Fee</p><p class="dk-small" style="margin-top:6px">Paid once, when your app is set up.</p></div></div>
+      <div class="box"><span>✓</span><div><p class="dk-h4">Dokan Multi-Vendor</p><p class="dk-small" style="margin-top:6px">The plugin is required to use the app.</p></div></div>
+    </div>
+    <div class="tabs" role="tablist"><button class="is-active">Monthly</button><button>Yearly <span class="save">Save 20%</span></button><button>Lifetime</button></div>
+  </div>
+</section>
+
+<!-- 06 -->
+<div class="container tag"><b>06</b><span>Editorial · oversized headline</span><em>Very large title left, details right, tabs below a divider</em></div>
+<section class="v v6">
+  <div class="container">
+    <div class="row">
+      <h2 class="dk-h1">Get Your Marketplace App Ready!</h2>
+      <div>
+        <p class="dk-lead">Start with Android or iOS whichever your customers use, or select both and save huge!</p>
+        <ul class="notes dk-body"><li>All plans include a 14-day Free Trial</li><li>One-time Setup Fee applies</li><li>Prerequisite: Dokan Multi-Vendor Plugin</li></ul>
+      </div>
+    </div>
+    <div class="foot">
+      <p class="dk-h4">Choose how you want to pay</p>
+      <div class="tabs" role="tablist"><button class="is-active">Monthly</button><button>Yearly <span class="save">Save 20%</span></button><button>Lifetime</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 -->
+<div class="container tag"><b>07</b><span>Floating icons</span><em>Centred title with platform tiles floating around it</em></div>
+<section class="v v7">
+  <span class="float f1"><img src="assets/hero-googleplay.svg" alt=""></span>
+  <span class="float f2"><img src="assets/f3-logo-apple.svg" alt=""></span>
+  <span class="float f3"><img src="assets/c-dokan-icon.svg" alt=""></span>
+  <span class="float f4"><img src="assets/f3-logo-google.svg" alt=""></span>
+  <div class="container">
+    <h2 class="dk-h1">Get Your Marketplace<br>App Ready!</h2>
+    <p class="dk-lead">Start with Android or iOS whichever your customers use, or select both and save huge!</p>
+    <ul class="notes dk-body"><li>All plans include a 14-day Free Trial</li><li>One-time Setup Fee applies</li><li>Prerequisite: Dokan Multi-Vendor Plugin</li></ul>
+    <div class="tabs" role="tablist"><button class="is-active">Monthly</button><button>Yearly <span class="save">Save 20%</span></button><button>Lifetime</button></div>
+  </div>
+</section>
+
+<!-- 08 -->
+<div class="container tag"><b>08</b><span>Card · plan picker panel</span><em>Everything in one card; tags and tabs in a side panel</em></div>
+<section class="v v8">
+  <div class="container">
+    <div class="card">
+      <div>
+        <h2 class="dk-h1">Get Your Marketplace<br>App Ready!</h2>
+        <p class="dk-lead">Start with Android or iOS whichever your customers use, or select both and save huge!</p>
+      </div>
+      <div class="side">
+        <p class="dk-h4">Every plan includes</p>
+        <ul class="notes dk-body"><li>All plans include a 14-day Free Trial</li><li>One-time Setup Fee applies</li><li>Prerequisite: Dokan Multi-Vendor Plugin</li></ul>
+        <div class="tabs" role="tablist"><button class="is-active">Monthly</button><button>Yearly <span class="save">Save 20%</span></button><button>Lifetime</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 -->
+<div class="container tag"><b>09</b><span>Platform icons up front</span><em>Android + iOS icons lead into the headline; tabs after a divider</em></div>
+<section class="v v9">
+  <div class="container">
+    <div class="icons">
+      <span class="ic"><img src="assets/p-android-ring.svg" alt="Android" width="61" height="61"><img src="assets/p-android.png" alt="" width="47" height="47"></span>
+      <span class="plus">+</span>
+      <img src="assets/p-ios.svg" alt="iOS" width="61" height="61">
+    </div>
+    <h2 class="dk-h1">Get Your Marketplace<br>App Ready!</h2>
+    <p class="dk-lead">Start with Android or iOS whichever your customers use, or select both and save huge!</p>
+    <ul class="notes dk-body"><li>All plans include a 14-day Free Trial</li><li>One-time Setup Fee applies</li><li>Prerequisite: Dokan Multi-Vendor Plugin</li></ul>
+    <div class="divider"><div class="tabs" role="tablist"><button class="is-active">Monthly</button><button>Yearly <span class="save">Save 20%</span></button><button>Lifetime</button></div></div>
+  </div>
+</section>
+
+<!-- 10 -->
+<div class="container tag"><b>10</b><span>Asymmetric · facts column</span><em>A narrow column of key facts beside the headline</em></div>
+<section class="v v10">
+  <div class="container grid">
+    <ul class="facts">
+      <li class="fact"><strong>14 days</strong><span class="dk-small">Free trial on every plan</span></li>
+      <li class="fact"><strong>1 time</strong><span class="dk-small">Setup fee, non-refundable</span></li>
+      <li class="fact"><strong>2 apps</strong><span class="dk-small">Android and iOS in Business</span></li>
+    </ul>
+    <div>
+      <p class="dk-eyebrow">Dokan Mobile App Pricing</p>
+      <h2 class="dk-h1" style="margin-top:16px">Get Your Marketplace<br>App Ready!</h2>
+      <p class="dk-lead">Start with Android or iOS whichever your customers use, or select both and save huge! Requires the Dokan Multi-Vendor plugin.</p>
+      <div class="tabs" role="tablist"><button class="is-active">Monthly</button><button>Yearly <span class="save">Save 20%</span></button><button>Lifetime</button></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Tabs are clickable so each variation can be tried; they only switch the highlight.
+  document.querySelectorAll('.tabs').forEach(function (group) {
+    group.querySelectorAll('button').forEach(function (b) {
+      b.setAttribute('role', 'tab');
+      b.addEventListener('click', function () {
+        group.querySelectorAll('button').forEach(function (x) { x.classList.toggle('is-active', x === b); });
+      });
+    });
+  });
+</script>
+</body>
+</html>

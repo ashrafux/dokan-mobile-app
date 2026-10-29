@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dokan Mobile App Features</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dokan-ui.css">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="features.css">
+  <link rel="stylesheet" href="cta.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="menu.css">
+  <link rel="stylesheet" href="app-nav.css">
+</head>
+<body>
+<div class="page" style="--top-bg:#0a0a0a">
+
+  <!-- ============ HEADER: Dokan Mobile App menu (dokan-menu kit) ============ -->
+  <header class="site-nav app-nav" id="site-nav" data-variant="dark"
+          data-logo-light="assets/dokan-logo.svg" data-logo-dark="assets/dokan-logo-white.svg">
+    <div class="hero-menu">
+      <div class="menu-row">
+        <a href="#" class="menu-logo" aria-label="Dokan home">
+          <img src="assets/dokan-logo-white.svg" alt="Dokan" width="121" height="33" />
+        </a>
+        <ul class="menu-links" id="menuLinks" aria-label="Dokan Mobile App">
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="features.html" aria-current="page">Features</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="index.html#faq">Get help</a></li>
+          <li class="menu-links-login"><a href="#">Login</a></li>
+        </ul>
+
+        <div class="menu-right">
+          <a href="#" class="menu-login">Login</a>
+          <a href="#" class="menu-pricing pb" aria-label="Pricing"><span class="pb-label"><span class="pb-mask"><span class="pb-t">Pricing</span><span class="pb-t pb-clone" aria-hidden="true">Pricing</span></span></span></a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="menuLinks">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="f-hero">
+    <div class="wrap">
+      <div class="f-hero__grid">
+        <div class="f-hero__copy">
+          <span class="f-tag"><span class="f-tag__dot"></span>Features</span>
+          <h1 class="f-hero__title dk-h1">Things that<br>Amaze in Dokan<br>Mobile App</h1>
+          <p class="f-hero__desc dk-lead">Pair the Dokan Shoppers’ App with your marketplace and take your sale to the optimal level.</p>
+          <div class="f-hero__actions dk-btn-row">
+            <a href="#" class="dk-btn dk-btn--primary">Get Started Now <span class="dk-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+          </div>
+          <div class="f-hero__stores">
+            <a class="store-btn" href="#" aria-label="Download on the App Store">
+              <img class="store-btn__icon" src="assets/store-apple.svg" alt="" width="30" height="36">
+              <span class="store-btn__text"><span class="store-btn__small">Download on the</span><span class="store-btn__big">App Store</span></span>
+            </a>
+            <a class="store-btn" href="#" aria-label="Get it on Google Play">
+              <img class="store-btn__icon store-btn__icon--play" src="assets/store-playstore.svg" alt="" width="31" height="36">
+              <span class="store-btn__text store-btn__text--play"><span class="store-btn__get">Get it on</span><img class="store-btn__gp" src="assets/store-googleplay-text.svg" alt="" width="110" height="22"></span>
+            </a>
+          </div>
+        </div>
+        <div class="f-hero__art">
+          <img src="assets/ft-hero-phones.png" alt="Dokan customer app: home, account and product list screens" width="736" height="521">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURE CARDS ============ -->
+  <section class="f-bento">
+    <div class="wrap">
+      <div class="f-bento__pair">
+      <article class="fcard" style="--bg:#f6ebf1">
+        <div class="fcard__text">
+          <h2 class="fcard__title dk-h2">Interactive Slider</h2>
+          <p class="fcard__desc dk-lead">Gain deep insights into your sales, customers, and performance with real-time analytics. Identify trends, track profits, and make smarter business decisions that drive consistent growth.</p>
+        </div>
+        <div class="fcard__media"><img src="assets/ft-slider.png" alt="Home screen with an interactive banner slider" width="442" height="920" loading="lazy"></div>
+      </article>
+      <article class="fcard" style="--bg:#dff1ff">
+        <div class="fcard__text">
+          <h2 class="fcard__title dk-h2">Layout Switching</h2>
+          <p class="fcard__desc dk-lead">Different users prefer different layouts and sorting system. Offer your users the full liberty of sorting and layout switching on the products.</p>
+        </div>
+        <div class="fcard__media"><img src="assets/ft-layout.png" alt="Product list in grid layout with filter and sort" width="442" height="920" loading="lazy"></div>
+      </article>
+      </div>
+      <article class="fwide">
+        <div class="fwide__text">
+          <h2 class="fcard__title dk-h2">Push Notifications</h2>
+          <p class="fcard__desc dk-lead">Increase your app engagement by sending custom and timely messages directly to your app users.</p>
+        </div>
+        <div class="fwide__media">
+          <div class="fwide__clip"><img src="assets/ft-push.png" alt="Product details screen" width="442" height="920" loading="lazy"></div>
+          <div class="fnote" aria-hidden="true">
+            <span class="fnote__logo"><img src="assets/p-dokan-icon.svg" alt="" width="18" height="22"><img src="assets/p-dokan-wordmark.svg" alt="" width="57" height="12.5"></span>
+            <span class="fnote__time">Now</span>
+            <span class="fnote__title">Getting Notification</span>
+            <span class="fnote__text">Welcome to the app...</span>
+          </div>
+        </div>
+      </article>
+      <article class="fwide fwide--flip">
+        <div class="fwide__text">
+          <h2 class="fcard__title dk-h2">Product Search</h2>
+          <p class="fcard__desc dk-lead">Your customers can shop from different sellers at a time. To ensure they can check out the items in one go, the cart is managed swiftly in Dokan Mobile App.</p>
+        </div>
+        <div class="fwide__media">
+          <div class="fwide__clip"><img src="assets/ft-search.png" alt="Search screen with search history" width="442" height="920" loading="lazy"></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ FEATURE ROWS ============ -->
+  <section class="frow" style="--c:#d8e8f5">
+    <div class="frow__media"><img src="assets/ft-cart.png" alt="Cart grouped by vendor" width="322" height="671" loading="lazy"></div>
+    <div class="frow__text">
+      <div class="frow__copy">
+        <h2 class="frow__title dk-h2">Multi-vendor Cart<br>Management</h2>
+        <p class="frow__desc dk-lead">Your customers can shop from different sellers at a time. To ensure they can check out the items in one go, the cart is managed swiftly in Dokan Mobile App.</p>
+      </div>
+    </div>
+  </section>
+  <section class="frow" style="--c:#eddcdc">
+    <div class="frow__media"><img src="assets/ft-profile.png" alt="My Account screen" width="322" height="671" loading="lazy"></div>
+    <div class="frow__text">
+      <div class="frow__copy">
+        <h2 class="frow__title dk-h2">Customer Profile</h2>
+        <p class="frow__desc dk-lead">Offer a personalized profile for every customer of yours. As well as registering, they’ll be able to edit their profiles from the app as they like.</p>
+      </div>
+    </div>
+  </section>
+  <section class="frow" style="--c:#e3efe6">
+    <div class="frow__media"><img src="assets/ft-rating.png" alt="Store page with product reviews" width="322" height="671" loading="lazy"></div>
+    <div class="frow__text">
+      <div class="frow__copy">
+        <h2 class="frow__title dk-h2">Product &amp; Vendor<br>Rating System</h2>
+        <p class="frow__desc dk-lead">Rating for products and vendors is very important for a marketplace. Your customers can easily rate and review the vendors directly from the app.</p>
+      </div>
+    </div>
+  </section>
+  <section class="frow" style="--c:#fbe88a">
+    <div class="frow__media"><img src="assets/ft-store.png" alt="Store contact page with map" width="322" height="671" loading="lazy"></div>
+    <div class="frow__text">
+      <div class="frow__copy">
+        <h2 class="frow__title dk-h2">Store Details</h2>
+        <p class="frow__desc dk-lead">Vendor profile is available to increase trust among customers. Besides browsing Products, Reviews, people can directly contact a seller, or locate a store on the map from here.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MORE FEATURE CARDS ============ -->
+  <section class="f-bento f-bento--last">
+    <div class="wrap">
+      <div class="f-bento__pair">
+      <article class="fcard fcard--top" style="--bg:#f6ebf1">
+        <div class="fcard__text">
+          <h2 class="fcard__title dk-h2">Social Login</h2>
+          <p class="fcard__desc dk-lead">To make the register or login process effortless, the Facebook login feature is available in Dokan Multi-vendor Mobile App.</p>
+        </div>
+        <div class="fcard__media"><img src="assets/ft-login.png" alt="Login screen with social sign-in" width="442" height="920" loading="lazy"></div>
+      </article>
+      <article class="fcard" style="--bg:#dff1ff">
+        <div class="fcard__text">
+          <h2 class="fcard__title dk-h2">Wishlist Page</h2>
+          <p class="fcard__desc dk-lead">Reduce cart abandonment and allow customers to easily find their favorite items later. Utilize the Wishlist feature of your marketplace app.</p>
+        </div>
+        <div class="fcard__media"><img src="assets/ft-wishlist.png" alt="Wishlist screen" width="442" height="920" loading="lazy"></div>
+      </article>
+      </div>
+      <article class="fwide fwide--orders">
+        <div class="fwide__text">
+          <h2 class="fcard__title dk-h2">Order Status</h2>
+          <p class="fcard__desc dk-lead">Customers can view their order list and check order status anytime with a single tap.</p>
+        </div>
+        <div class="fwide__media">
+          <div class="fwide__clip"><img src="assets/ft-orders.png" alt="My Orders screen with order status" width="442" height="920" loading="lazy"></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ DOWNLOAD ============ -->
+  <section class="cta-shell download">
+  <div class="cta-band">
+    <svg class="cta-waves" preserveAspectRatio="none" viewBox="0 0 1000 500" fill="none" stroke="#FFFFFF" stroke-width="2" aria-hidden="true">
+      <path d="M-40 430 C 240 340 620 380 1050 210"/><path d="M-40 500 C 280 410 640 440 1050 300"/>
+      <path d="M-40 360 C 240 280 620 320 1050 140"/><path d="M-40 290 C 240 220 620 260 1050 80"/>
+    </svg>
+    <div class="cta-copy">
+      <div class="cta-copy-top">
+        <h2 class="cta-title">Get Your Dokan<br />Multivendor App</h2>
+        <p class="cta-text">We are here to provide you with the right tools, but it is You who must believe in your ability and start.</p>
+      </div>
+      <div class="download__stores">
+          <a href="#" aria-label="Download on the App Store"><img src="assets/p-appstore.png" alt="" style="width:208.459px;height:69.748px"></a>
+          <a href="#" aria-label="Get it on Google Play"><img src="assets/p-googleplay.png" alt="" style="width:207.945px;height:69.576px"></a>
+        </div>
+    </div>
+    <div class="cta-app">
+      <div class="cta-app__phone">
+        <span class="cta-app__screen cta-app__screen--scroll"><img src="assets/hero-homepage.png" alt="Dokan customer app home screen" loading="lazy"></span>
+        <img class="cta-app__frame" src="assets/e-iphone.png" alt="" loading="lazy">
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+  <div class="sf-wrap sf-inner">
+    <div class="sf-grid">
+      <div class="sf-col">
+        <a href="#" class="sf-logo"><img src="assets/dokan-logo-footer.svg" alt="Dokan" width="139" height="38" /></a>
+        <ul class="sf-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Brand Assets</a></li>
+          <li><a href="#">Changelog</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Career</a></li>
+        </ul>
+        <h5 class="sf-h">Use Cases</h5>
+        <ul class="sf-links">
+          <li><a href="#">Fashion</a></li>
+          <li><a href="#">Furniture</a></li>
+          <li><a href="#">Print on demand</a></li>
+          <li><a href="#">Electronics</a></li>
+          <li><a href="#">Auction</a></li>
+          <li><a href="#">Booking</a></li>
+          <li><a href="#">View All</a></li>
+        </ul>
+        <h5 class="sf-h">Demo's</h5>
+        <ul class="sf-links">
+          <li><a href="#">Dokan WordPress Plugin</a></li>
+          <li><a href="#">Dokan Mobile App</a></li>
+          <li><a href="#">Delivery Driver App</a></li>
+          <li><a href="#">Otel Theme</a></li>
+        </ul>
+      </div>
+      <div class="sf-col">
+        <h5 class="sf-h">Resources</h5>
+        <ul class="sf-links">
+          <li><a href="#">Blogs</a></li>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Video Tutorials</a></li>
+          <li><a href="#">Webinars</a></li>
+        </ul>
+        <h5 class="sf-h">Policies</h5>
+        <ul class="sf-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Sevice</a></li>
+          <li><a href="#">Support Policy</a></li>
+          <li><a href="#">Affiliate Policy</a></li>
+          <li><a href="#">Refund Policy</a></li>
+        </ul>
+        <h5 class="sf-h">Support &amp;<br />Success Stories</h5>
+        <ul class="sf-links">
+          <li><a href="#">Success Stories</a></li>
+          <li><a href="#">Testimonials</a></li>
+          <li><a href="#">Support</a></li>
+        </ul>
+      </div>
+      <div class="sf-col">
+        <h5 class="sf-h">Important Links</h5>
+        <ul class="sf-links">
+          <li><a href="#">Modules</a></li>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Payment Integrations</a></li>
+          <li><a href="#">Compatible Plugins</a></li>
+          <li><a href="#">Compatible Themes</a></li>
+          <li><a href="#">Compare</a></li>
+        </ul>
+        <h5 class="sf-h">Solutions</h5>
+        <ul class="sf-links">
+          <li><a href="#">Marketplace (Hosted by you)</a></li>
+          <li><a href="#">eCommerce Shop (Hosted by us)</a></li>
+          <li><a href="#">Marketplace (Hosted by us)</a></li>
+          <li><a href="#">Mobile App</a></li>
+          <li><a href="#">Delivery Driver App</a></li>
+          <li><a href="#">Otel Theme</a></li>
+          <li><a href="#">Dokan Care</a></li>
+          <li><a href="#">wePOS</a></li>
+          <li><a href="#">StoreGrowth</a></li>
+          <li><a href="#">weLab</a></li>
+        </ul>
+      </div>
+      <div class="sf-col">
+        <h5 class="sf-h">Partnership<br />&amp; Affiliate</h5>
+        <ul class="sf-links">
+          <li><a href="#">Partner with Us</a></li>
+          <li><a href="#">Join Our Affiliate Program</a></li>
+          <li><a href="#">Affiliate Policy</a></li>
+          <li><a href="#">Affiliate</a></li>
+          <li><a href="#">Influencer Program</a></li>
+        </ul>
+        <h5 class="sf-h">Guide to Build a<br />Marketplace Like</h5>
+        <ul class="sf-links">
+          <li><a href="#">Etsy</a></li>
+          <li><a href="#">Amazon</a></li>
+          <li><a href="#">eBay</a></li>
+          <li><a href="#">Alibaba</a></li>
+          <li><a href="#">Airbnb</a></li>
+          <li><a href="#">More Examples</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sf-news">
+      <div>
+        <h5 class="sf-news-title">Keep Updated</h5>
+        <div class="sf-ring">
+          <form class="sf-form" onsubmit="return false" aria-label="Newsletter">
+            <label class="sr-only" for="sf-email">Email address</label>
+            <input id="sf-email" type="email" placeholder="Enter your email..." autocomplete="email" />
+            <button type="submit">Stay Updated</button>
+          </form>
+        </div>
+      </div>
+      <div class="sf-trust">
+        <div class="sf-social">
+          <a href="#" aria-label="Dokan on Facebook"><img src="assets/social-facebook.png" alt="" width="41" height="41" loading="lazy" /></a>
+          <a href="#" aria-label="Dokan on X (Twitter)"><img src="assets/social-x.png" alt="" width="41" height="41" loading="lazy" /></a>
+          <a href="#" aria-label="Dokan on YouTube"><img src="assets/social-youtube.png" alt="" width="41" height="41" loading="lazy" /></a>
+          <a href="#" aria-label="Dokan on LinkedIn"><img src="assets/social-linkedin.png" alt="" width="41" height="41" loading="lazy" /></a>
+          <a href="#" aria-label="Dokan on Medium"><img src="assets/social-medium.png" alt="" width="41" height="41" loading="lazy" /></a>
+        </div>
+        <img class="sf-pay" src="assets/payments.png" alt="GDPR compliant, secure payment with Stripe and PayPal" width="384" height="32" loading="lazy" />
+      </div>
+    </div>
+    <svg class="sf-wordmark" viewBox="67.57 13.65 163.43 35.7" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Dokan"> <defs> <linearGradient id="sfWm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".085"/><stop offset=".9" stop-color="#fff" stop-opacity="0"/></linearGradient> </defs> <path d="M227.151 23.0724C225.964 21.8939 224.563 20.9604 222.98 20.3023C221.396 19.6238 219.688 19.282 217.902 19.282C216.246 19.282 214.626 19.5779 213.095 20.1696C211.58 20.741 210.205 21.5725 209.002 22.6438L208.606 22.9959L205.846 19.8687H204.721V45.4831C204.721 47.3043 206.236 48.7889 208.095 48.7889C209.955 48.7889 211.47 47.3043 211.47 45.4831V32.1887C211.47 31.3367 211.637 30.5256 211.97 29.7757C212.298 29.0156 212.757 28.3371 213.335 27.7708C213.913 27.2046 214.6 26.7556 215.387 26.4291C216.173 26.1077 217.017 25.9394 217.902 25.9394C218.766 25.9394 219.595 26.1026 220.365 26.4291C221.126 26.7505 221.808 27.2046 222.381 27.7657C222.959 28.332 223.417 29.0054 223.75 29.7757C224.079 30.5256 224.25 31.3367 224.25 32.1836V45.4831C224.25 47.3043 225.766 48.7889 227.625 48.7889C229.484 48.7889 231 47.3043 231 45.4831V32.1887C231 30.4236 230.651 28.7401 229.958 27.1944C229.276 25.6129 228.333 24.2304 227.151 23.0724Z" fill="url(#sfWm)"/><path d="M190.685 21.5062C189.894 20.945 189.045 20.4553 188.165 20.037C187.285 19.6238 186.368 19.2973 185.436 19.0626C184.514 18.833 183.566 18.7157 182.624 18.7157C180.551 18.7157 178.577 19.0983 176.744 19.8482C174.931 20.5828 173.317 21.6388 171.942 22.9805C170.588 24.3222 169.505 25.9598 168.718 27.8473C167.927 29.7145 167.531 31.8061 167.531 34.0558C167.531 36.4739 167.932 38.6573 168.718 40.5449C169.505 42.4273 170.588 44.0445 171.942 45.3505C173.307 46.636 174.921 47.6359 176.728 48.3144C178.561 48.998 180.546 49.3449 182.624 49.3449C183.561 49.3449 184.498 49.2276 185.405 48.998C186.337 48.7633 187.259 48.4471 188.144 48.0491C189.024 47.6359 189.868 47.1513 190.659 46.6105C191.477 46.0494 192.253 45.4423 192.977 44.8046L193.409 44.4271L196.617 48.7837H197.716V19.9196H196.596L193.373 23.7049L192.972 23.3325C192.263 22.6795 191.498 22.0623 190.685 21.5062ZM190.238 37.3003C189.816 38.3206 189.227 39.244 188.488 40.05C187.743 40.8408 186.852 41.4886 185.853 41.9835C184.847 42.463 183.764 42.7079 182.624 42.7079C181.499 42.7079 180.421 42.5191 179.41 42.1416C178.41 41.7641 177.525 41.1979 176.77 40.4582C176.036 39.7184 175.447 38.8053 175.025 37.7391C174.603 36.6576 174.39 35.423 174.39 34.0609C174.39 32.6988 174.603 31.4694 175.025 30.4083C175.447 29.3267 176.03 28.4034 176.765 27.6637C177.52 26.924 178.41 26.3577 179.405 25.9802C180.415 25.6027 181.493 25.4139 182.618 25.4139C183.764 25.4139 184.853 25.669 185.853 26.1689C186.852 26.6383 187.738 27.2913 188.488 28.0973C189.227 28.8778 189.816 29.8063 190.243 30.8521C190.68 31.8724 190.909 32.9539 190.909 34.0609C190.904 35.1679 190.68 36.2596 190.238 37.3003Z" fill="url(#sfWm)"/><path d="M156.068 31.8317L161.896 24.659C162.615 23.7764 162.75 22.5929 162.25 21.5726C161.75 20.5523 160.719 19.9197 159.563 19.9197C158.646 19.9197 157.792 20.3227 157.224 21.0318L145.73 35.3058V16.9864C145.73 15.1499 144.205 13.65 142.324 13.65C140.444 13.65 138.918 15.1448 138.918 16.9864V46.1923C138.918 47.6258 140.106 48.7889 141.569 48.7889C142.371 48.7889 143.126 48.4369 143.632 47.8247L145.84 45.1465L151.735 37.4892L157.209 47.1003C157.802 48.141 158.927 48.7889 160.146 48.7889C161.359 48.7889 162.443 48.1768 163.052 47.1514C163.661 46.126 163.667 44.8965 163.068 43.866L156.068 31.8317Z" fill="url(#sfWm)"/><path d="M128.846 22.9295C127.492 21.5878 125.883 20.542 124.055 19.8278C122.238 19.0932 120.259 18.7157 118.17 18.7157C116.103 18.7157 114.124 19.1085 112.296 19.8788C110.483 20.6492 108.869 21.7307 107.494 23.0979C106.14 24.4446 105.051 26.072 104.265 27.9392C103.479 29.8063 103.078 31.8673 103.078 34.0609C103.078 36.2188 103.479 38.2594 104.265 40.1266C105.051 41.9784 106.14 43.6058 107.499 44.973C108.869 46.3146 110.489 47.4012 112.306 48.1869C114.129 48.9572 116.108 49.3449 118.175 49.3449C120.264 49.3449 122.238 48.9521 124.05 48.1818C125.883 47.391 127.498 46.3095 128.852 44.9627C130.206 43.6007 131.294 41.9733 132.081 40.1215C132.867 38.2543 133.268 36.2137 133.268 34.0558C133.268 31.7499 132.867 29.6328 132.081 27.7657C131.284 25.8833 130.201 24.2559 128.846 22.9295ZM125.789 37.5809C125.368 38.642 124.774 39.5654 124.024 40.3204C123.274 41.0754 122.378 41.6672 121.368 42.0855C120.378 42.5038 119.3 42.713 118.17 42.713C117.035 42.713 115.946 42.4936 114.936 42.0549C113.941 41.5958 113.061 40.9734 112.311 40.2031C111.582 39.4277 110.999 38.5094 110.577 37.4687C110.155 36.428 109.942 35.2802 109.942 34.066C109.942 32.7753 110.155 31.5918 110.577 30.5511C110.999 29.49 111.582 28.5666 112.311 27.8167C113.061 27.0413 113.952 26.4444 114.947 26.0465C116.962 25.215 119.384 25.215 121.373 26.0516C122.378 26.4444 123.274 27.0413 124.029 27.8167C124.774 28.5666 125.368 29.49 125.795 30.5562C126.232 31.5918 126.456 32.7753 126.456 34.0711C126.456 35.3312 126.232 36.5147 125.789 37.5809Z" fill="url(#sfWm)"/><path d="M94.349 13.65C92.4742 13.65 90.943 15.1448 90.943 16.9864V23.0673L89.9952 21.7154C89.615 21.1747 89.1411 20.7105 88.589 20.338C88.0214 19.9554 87.4016 19.6442 86.7402 19.4198C86.0788 19.1698 85.3966 18.9913 84.6935 18.8841C84.0009 18.777 83.3134 18.7209 82.6624 18.7209C80.5949 18.7209 78.6158 19.1137 76.7879 19.884C74.9755 20.6543 73.361 21.7359 71.9862 23.103C70.6321 24.4651 69.5436 26.1027 68.7572 27.9698C67.9708 29.8319 67.5698 31.8827 67.5698 34.061C67.5698 36.2546 67.9708 38.3156 68.7572 40.1828C69.5488 42.0346 70.6321 43.662 71.9914 45.0292C73.361 46.3708 74.9807 47.4472 76.7931 48.2176C78.6211 48.9675 80.5949 49.3501 82.6676 49.3501C83.6103 49.3501 84.5425 49.2328 85.4487 49.0032C86.3861 48.7685 87.3079 48.4522 88.188 48.0543C89.0682 47.6411 89.9171 47.1565 90.7035 46.6157C91.5159 46.0545 92.2971 45.4475 93.021 44.8098L93.4532 44.4323L96.6613 48.7889H97.7602V16.9864C97.755 15.1448 96.2291 13.65 94.349 13.65ZM90.2816 37.3055C89.8598 38.3258 89.2713 39.2492 88.5317 40.0552C87.787 40.8459 86.8965 41.4938 85.8965 41.9887C84.8914 42.4682 83.8082 42.7131 82.6676 42.7131C81.5323 42.7131 80.4386 42.4784 79.4231 42.0244C78.4336 41.5704 77.5534 40.9378 76.8035 40.147C76.0744 39.3563 75.4963 38.4279 75.0745 37.3872C74.6526 36.3414 74.4391 35.2241 74.4391 34.0661C74.4391 32.7397 74.6526 31.5307 75.0745 30.4696C75.4963 29.4034 76.0848 28.4902 76.8139 27.7556C77.5638 27.0006 78.4492 26.4139 79.4439 26.016C80.4542 25.6181 81.5375 25.4191 82.6676 25.4191C83.8134 25.4191 84.9018 25.6742 85.9017 26.1741C86.9017 26.6435 87.787 27.2913 88.537 28.1025C89.2765 28.8881 89.8702 29.8166 90.292 30.8573C90.7347 31.8776 90.9586 32.9591 90.9586 34.0661C90.9482 35.168 90.7243 36.2597 90.2816 37.3055Z" fill="url(#sfWm)"/> </svg>
+    <div class="sf-bottom">
+      <span class="sf-by">A <img src="assets/wedevs-logo.png" alt="weDevs" width="136" height="30" loading="lazy" /> Product</span>
+      <span class="sf-copy">&copy; 2025, Dokan. All Rights Reserved.</span>
+      <button type="button" class="sf-lang">English <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+    </div>
+  </div>
+</footer>
+
+</div>
+<script src="script.js"></script>
+<script src="menu.js"></script>
+<script src="dokan-ui.js" defer></script>
+</body>
+</html>

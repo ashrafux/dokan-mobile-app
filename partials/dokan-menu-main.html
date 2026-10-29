@@ -1,0 +1,217 @@
+<!-- Main Dokan site menu (dokan-menu kit + the Apps panel). Needs menu.css, app-nav.css and menu.js.
+     The Mobile App pages use the app menu instead (see index.html). -->
+<header class="site-nav" id="site-nav" data-variant="light"
+        data-logo-light="assets/dokan-logo.svg" data-logo-dark="assets/dokan-logo-white.svg">
+    <div class="hero-menu">
+      <div class="menu-row">
+        <a href="#" class="menu-logo" aria-label="Dokan home">
+          <img src="assets/dokan-logo.svg" alt="Dokan" width="121" height="33" />
+        </a>
+
+        <ul class="menu-links" id="menuLinks">
+          <li class="has-mega" id="megaTrigger" data-mega="megaProduct"><a href="#" role="button" aria-expanded="false" aria-controls="megaProduct">Product</a><svg class="menu-chev" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l4 4 4-4"/></svg></li>
+          <li class="has-mega" data-mega="megaSolutions"><a href="#" role="button" aria-expanded="false" aria-controls="megaSolutions">Solutions</a><svg class="menu-chev" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l4 4 4-4"/></svg></li>
+          <li class="has-mega" data-mega="megaApps"><a href="#" role="button" aria-expanded="false" aria-controls="megaApps">Apps</a><svg class="menu-chev" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l4 4 4-4"/></svg></li>
+          <li class="has-mega" data-mega="megaResource"><a href="#" role="button" aria-expanded="false" aria-controls="megaResource">Resource</a><svg class="menu-chev" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l4 4 4-4"/></svg></li>
+          <li><a href="#">Demo</a></li>
+          <li class="menu-links-login"><a href="#">Login</a></li>
+        </ul>
+
+        <div class="menu-right">
+          <a href="#" class="menu-login">Login</a>
+          <a href="#" class="menu-pricing pb" aria-label="Pricing"><span class="pb-label"><span class="pb-mask"><span class="pb-t">Pricing</span><span class="pb-t pb-clone" aria-hidden="true">Pricing</span></span></span></a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="menuLinks">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ Mega menu: Product (Figma 44:957) ═══════════ -->
+    <div class="mega" id="megaProduct" role="region" aria-label="Product menu">
+      <div class="mega-rule"></div>
+      <div class="mega-inner">
+
+        <!-- Features -->
+        <div class="mega-col">
+          <p class="mega-head">Features</p>
+
+          <a href="#" class="mega-item">
+            <svg viewBox="0 0 27 27" width="27" height="27" fill="none" aria-hidden="true"><path d="M22.5 23.63V21.38C22.5 20.18 22.03 19.04 21.18 18.19C20.34 17.35 19.19 16.88 18 16.88H9C7.81 16.88 6.66 17.35 5.82 18.19C4.97 19.04 4.5 20.18 4.5 21.38V23.63" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 12.38C15.99 12.38 18 10.36 18 7.88C18 5.39 15.99 3.38 13.5 3.38C11.01 3.38 9 5.39 9 7.88C9 10.36 11.01 12.38 13.5 12.38Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><span class="t">Admin features</span><span class="d">Lorem Ipsum is simply dummy text</span></span>
+          </a>
+
+          <a href="#" class="mega-item">
+            <svg viewBox="0 0 27 27" width="27" height="27" fill="none" aria-hidden="true"><path d="M3.38 12.38L3.38 17.44C3.38 20.62 3.38 22.21 4.36 23.2C5.35 24.19 6.94 24.19 10.13 24.19L16.88 24.19C20.06 24.19 21.65 24.19 22.64 23.2C23.63 22.21 23.63 20.62 23.63 17.44V12.38" stroke="currentColor" stroke-width="2"/><path d="M16.88 19.13C16.11 19.81 14.88 20.25 13.5 20.25C12.12 20.25 10.89 19.81 10.13 19.13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8.97 10.13L9.93 9.87C9.8 9.38 9.33 9.07 8.84 9.13C8.34 9.2 7.97 9.62 7.97 10.13H8.97ZM2.38 11.3L3.31 10.95H3.31L2.38 11.3ZM24.62 11.3L23.69 10.95L23.69 10.95L24.62 11.3ZM18.03 10.13H19.03C19.03 9.62 18.66 9.2 18.16 9.13C17.67 9.07 17.2 9.38 17.07 9.87L18.03 10.13ZM2.76 9.09L3.63 9.59L3.63 9.59L2.76 9.09ZM3.85 7.2L2.98 6.71L2.98 6.71L3.85 7.2ZM24.24 9.09L23.37 9.59V9.59L24.24 9.09ZM23.15 7.2L24.02 6.71L24.02 6.71L23.15 7.2ZM24.74 10.38L23.74 10.47V10.47L24.74 10.38ZM2.26 10.38L1.27 10.3V10.3L2.26 10.38ZM8.97 10.13H7.97C7.97 11.43 6.9 12.5 5.57 12.5L5.57 13.5V14.5C7.99 14.5 9.97 12.55 9.97 10.13H8.97ZM5.57 13.5L5.57 12.5C4.53 12.5 3.65 11.85 3.31 10.95L2.38 11.3L1.44 11.64C2.06 13.31 3.68 14.5 5.57 14.5V13.5ZM24.62 11.3L23.69 10.95C23.35 11.85 22.47 12.5 21.43 12.5V13.5V14.5C23.32 14.5 24.94 13.31 25.56 11.64L24.62 11.3ZM21.43 13.5V12.5C20.1 12.5 19.03 11.43 19.03 10.13H18.03H17.03C17.03 12.55 19.01 14.5 21.43 14.5V13.5ZM13.5 13.5V12.5C11.76 12.5 10.33 11.36 9.93 9.87L8.97 10.13L8 10.38C8.64 12.77 10.88 14.5 13.5 14.5L13.5 13.5ZM18.03 10.13L17.07 9.87C16.67 11.36 15.24 12.5 13.5 12.5V13.5L13.5 14.5C16.12 14.5 18.36 12.77 19 10.38L18.03 10.13ZM2.76 9.09L3.63 9.59L4.72 7.7L3.85 7.2L2.98 6.71L1.9 8.59L2.76 9.09ZM24.24 9.09L25.1 8.59L24.02 6.71L23.15 7.2L22.28 7.7L23.37 9.59L24.24 9.09ZM6.65 2.81V3.81L20.35 3.81V2.81V1.81L6.65 1.81V2.81ZM22.57 5.02H23.57C23.57 3.24 22.12 1.81 20.35 1.81V2.81V3.81C21.03 3.81 21.57 4.36 21.57 5.02H22.57ZM23.15 7.2L24.02 6.71C23.72 6.19 23.57 5.61 23.57 5.02H22.57H21.57C21.57 5.96 21.81 6.89 22.28 7.7L23.15 7.2ZM4.43 5.02L5.43 5.02C5.43 4.36 5.97 3.81 6.65 3.81V2.81V1.81C4.88 1.81 3.43 3.24 3.43 5.02H4.43ZM24.62 11.3L25.56 11.64C25.61 11.52 25.68 11.32 25.72 11.08C25.76 10.83 25.76 10.58 25.73 10.3L24.74 10.38L23.74 10.47C23.76 10.68 23.75 10.75 23.75 10.77C23.74 10.78 23.74 10.8 23.69 10.95L24.62 11.3ZM24.24 9.09L23.37 9.59C23.68 10.12 23.72 10.22 23.74 10.47L24.74 10.38L25.73 10.3C25.67 9.55 25.4 9.11 25.1 8.59L24.24 9.09ZM3.85 7.2L4.72 7.7C5.19 6.89 5.43 5.96 5.43 5.02L4.43 5.02H3.43C3.43 5.61 3.28 6.19 2.98 6.71L3.85 7.2ZM2.38 11.3L3.31 10.95C3.26 10.8 3.26 10.78 3.25 10.77C3.25 10.75 3.24 10.68 3.26 10.47L2.26 10.38L1.27 10.3C1.24 10.58 1.24 10.83 1.28 11.08C1.32 11.32 1.39 11.52 1.44 11.64L2.38 11.3ZM2.76 9.09L1.9 8.59C1.6 9.11 1.33 9.55 1.27 10.3L2.26 10.38L3.26 10.47C3.28 10.22 3.32 10.12 3.63 9.59L2.76 9.09Z" fill="currentColor"/></svg>
+            <span><span class="t">Vendor Features</span><span class="d">Lorem Ipsum is simply dummy text</span></span>
+          </a>
+
+          <a href="#" class="mega-item">
+            <svg viewBox="0 0 27 27" width="27" height="27" fill="none" aria-hidden="true"><path d="M17.18 21.78V19.94C17.18 18.97 16.79 18.03 16.1 17.34C15.41 16.65 14.48 16.26 13.5 16.26H7.06C6.08 16.26 5.14 16.65 4.45 17.34C3.76 18.03 3.38 18.97 3.38 19.94V21.78" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.28 12.58C12.31 12.58 13.96 10.93 13.96 8.9C13.96 6.86 12.31 5.22 10.28 5.22C8.24 5.22 6.6 6.86 6.6 8.9C6.6 10.93 8.24 12.58 10.28 12.58Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.1 12.58L19.94 14.42L23.63 10.74" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><span class="t">Customer Features</span><span class="d">Lorem Ipsum is simply dummy text</span></span>
+          </a>
+
+          <a href="#" class="mega-item">
+            <svg viewBox="0 0 27 27" width="27" height="27" fill="none" aria-hidden="true"><path d="M9.57 1.98C10.6 1.83 11.77 2.26 12.41 3.18H12.41C12.64 3.53 12.83 3.94 12.95 4.18V4.18L13.49 5.25C13.89 6.04 14.02 6.27 14.18 6.44C14.34 6.59 14.56 6.73 15.34 7.12H15.34L16.58 7.75H16.58C16.8 7.85 17.15 8.02 17.47 8.24C18.3 8.82 18.68 9.76 18.69 10.64C18.69 11.52 18.33 12.47 17.52 13.07C17.35 13.2 17.14 13.32 16.95 13.42L16.47 13.65L15.36 14.21C14.68 14.55 14.45 14.67 14.27 14.82C14.13 14.95 13.97 15.14 13.67 15.75L13.67 15.75L12.97 17.13C12.76 17.54 12.52 18.08 12.13 18.49C11.69 18.98 11.12 19.25 10.37 19.36L10.36 19.37L10.35 19.37C9.33 19.51 8.2 19.09 7.55 18.19V18.19C7.55 18.19 7.54 18.19 7.54 18.18C7.54 18.18 7.54 18.17 7.53 18.17V18.17C7.38 17.96 7.28 17.75 7.2 17.6C7.11 17.41 7.07 17.32 7.01 17.21C6.75 16.77 6.49 16.17 6.3 15.8C6.08 15.36 5.89 15.04 5.67 14.84V14.83C5.59 14.76 5.45 14.66 5.23 14.54C5.01 14.42 4.81 14.33 4.55 14.2V14.2L3.33 13.58C3.14 13.49 2.74 13.3 2.44 13.09L2.44 13.08C1.81 12.62 1.4 11.93 1.28 11.16L1.28 11.16C1.13 10.13 1.47 8.96 2.43 8.26H2.43C2.76 8.02 3.26 7.8 3.47 7.69L3.47 7.69L4.57 7.14C5.37 6.74 5.73 6.57 5.96 6.18C6.21 5.74 6.44 5.27 6.69 4.75C6.94 4.25 7.2 3.71 7.52 3.19C7.78 2.77 8.17 2.49 8.51 2.32C8.86 2.14 9.23 2.03 9.57 1.98H9.57ZM9.86 3.96L9.86 3.96C9.72 3.98 9.56 4.03 9.42 4.1C9.28 4.17 9.23 4.23 9.23 4.24C8.96 4.66 8.73 5.12 8.49 5.63C8.25 6.12 7.99 6.66 7.69 7.18C7.09 8.2 6.06 8.63 5.47 8.92L4.36 9.48L4.36 9.48C4.11 9.61 3.9 9.7 3.74 9.79L3.61 9.88C3.36 10.06 3.2 10.44 3.26 10.86L3.26 10.87C3.3 11.11 3.43 11.33 3.62 11.47C3.75 11.56 3.94 11.65 4.23 11.8H4.22L5.45 12.41C5.63 12.5 5.93 12.65 6.19 12.79C6.39 12.9 6.62 13.03 6.84 13.21L7.06 13.39L7.23 13.57C7.61 13.99 7.88 14.48 8.09 14.91C8.37 15.45 8.52 15.83 8.74 16.21C8.85 16.4 8.94 16.61 9 16.72C9.03 16.79 9.06 16.85 9.08 16.89L9.15 17L9.16 17.01L9.17 17.02C9.34 17.27 9.71 17.43 10.07 17.39C10.46 17.32 10.59 17.22 10.66 17.14C10.81 16.98 10.92 16.76 11.18 16.23L11.88 14.85L11.88 14.85C12.21 14.19 12.51 13.7 12.96 13.31C13.38 12.95 13.9 12.71 14.46 12.42L15.57 11.87L16.03 11.64C16.15 11.58 16.25 11.52 16.33 11.46C16.54 11.3 16.69 11.01 16.69 10.66C16.68 10.31 16.53 10.03 16.32 9.88C16.16 9.77 15.98 9.69 15.68 9.53L15.68 9.53L14.45 8.91H14.44C13.74 8.56 13.19 8.28 12.76 7.84C12.33 7.4 12.06 6.85 11.71 6.15V6.15L11.17 5.08C10.99 4.74 10.89 4.51 10.76 4.31C10.6 4.08 10.21 3.91 9.86 3.96Z" fill="currentColor"/><path d="M18.88 12.84C21.06 12.7 20.83 14.45 21.95 15.63C22.86 16.59 24.44 16.42 24.72 18.08C24.78 18.44 24.75 18.8 24.63 19.14C24.19 20.44 22.77 20.39 21.93 21.27C20.92 22.34 21.14 23.76 19.4 24.04C17.18 24.17 17.46 22.46 16.31 21.25C15.4 20.29 13.8 20.45 13.54 18.77C13.49 18.43 13.52 18.08 13.63 17.75C14.07 16.43 15.5 16.5 16.34 15.6C17.34 14.53 17.14 13.1 18.88 12.84ZM19.11 15.14C18.08 16.56 16.91 17.59 15.18 18.44C16.62 19.2 17.84 20.05 18.75 21.27C18.82 21.37 19.06 21.68 19.15 21.74C20.2 20.29 21.34 19.31 23.09 18.44C21.84 17.82 20.84 17.1 19.93 16.13C19.77 15.96 19.23 15.22 19.11 15.14Z" fill="currentColor"/></svg>
+            <span><span class="t">Dokan AI (New)</span><span class="d">Lorem Ipsum is simply dummy text</span></span>
+          </a>
+        </div>
+
+        <!-- Modules -->
+        <div class="mega-col">
+          <p class="mega-head">Modules 42+</p>
+
+          <a href="#" class="mega-item">
+            <svg viewBox="0 0 27 27" width="27" height="27" fill="none" aria-hidden="true"><path d="M23.56 18.94C22.82 14.5 20.52 11.19 18.53 9.25C17.94 8.68 17.65 8.4 17.01 8.14C16.37 7.88 15.82 7.88 14.71 7.88H12.29C11.18 7.88 10.63 7.88 9.99 8.14C9.35 8.4 9.06 8.68 8.47 9.25C6.48 11.19 4.18 14.5 3.44 18.94C2.89 22.25 5.94 24.75 9.35 24.75H17.65C21.06 24.75 24.11 22.25 23.56 18.94Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14.4 12.38C14.4 11.82 13.95 11.38 13.4 11.38C12.85 11.38 12.4 11.82 12.4 12.38L13.4 12.38L14.4 12.38ZM12.4 20.25C12.4 20.8 12.85 21.25 13.4 21.25C13.95 21.25 14.4 20.8 14.4 20.25H13.4H12.4ZM14.48 14.67C14.82 15.11 15.45 15.19 15.89 14.86C16.33 14.52 16.41 13.9 16.08 13.46L15.28 14.06L14.48 14.67ZM12.19 18C11.78 17.63 11.15 17.67 10.78 18.08C10.41 18.49 10.45 19.12 10.86 19.49L11.53 18.74L12.19 18ZM13.4 16.2V15.2C12.68 15.2 12.39 15.08 12.3 15.02C12.28 15.01 12.27 15 12.27 15C12.27 15 12.27 15 12.27 14.99C12.27 14.99 12.25 14.95 12.25 14.84H11.25H10.25C10.25 15.53 10.5 16.22 11.18 16.68C11.77 17.08 12.56 17.2 13.4 17.2V16.2ZM11.25 14.84H12.25C12.25 14.79 12.27 14.67 12.47 14.52C12.67 14.37 13 14.25 13.4 14.25V13.25V12.25C12.62 12.25 11.87 12.48 11.29 12.91C10.71 13.34 10.25 14.01 10.25 14.84H11.25ZM15.75 17.79H14.75C14.75 17.91 14.72 17.97 14.7 18.01C14.68 18.04 14.64 18.09 14.55 18.15C14.34 18.27 13.96 18.38 13.4 18.38V19.38V20.38C14.14 20.38 14.93 20.25 15.58 19.86C16.28 19.44 16.75 18.73 16.75 17.79H15.75ZM13.4 16.2V17.2C14.13 17.2 14.47 17.31 14.62 17.41C14.67 17.44 14.69 17.47 14.7 17.5C14.72 17.53 14.75 17.62 14.75 17.79H15.75H16.75C16.75 16.95 16.44 16.21 15.71 15.73C15.07 15.31 14.24 15.2 13.4 15.2V16.2ZM13.4 13.25L14.4 13.25L14.4 12.38L13.4 12.38L12.4 12.38L12.4 13.25L13.4 13.25ZM13.4 19.38H12.4V20.25H13.4H14.4V19.38H13.4ZM13.4 13.25V14.25C13.97 14.25 14.34 14.48 14.48 14.67L15.28 14.06L16.08 13.46C15.48 12.67 14.45 12.25 13.4 12.25V13.25ZM13.4 19.38V18.38C12.83 18.38 12.41 18.19 12.19 18L11.53 18.74L10.86 19.49C11.51 20.07 12.44 20.38 13.4 20.38V19.38Z" fill="currentColor"/><path d="M8.16 5C7.93 4.66 7.6 4.2 8.29 4.1C9 3.99 9.75 4.48 10.47 4.47C11.13 4.46 11.46 4.17 11.82 3.75C12.2 3.31 12.79 2.25 13.5 2.25C14.21 2.25 14.8 3.31 15.18 3.75C15.54 4.17 15.87 4.46 16.53 4.47C17.25 4.48 18 3.99 18.71 4.1C19.4 4.2 19.07 4.66 18.84 5L17.79 6.53C17.34 7.18 17.11 7.51 16.64 7.69C16.17 7.88 15.57 7.88 14.35 7.88H12.65C11.43 7.88 10.83 7.88 10.36 7.69C9.89 7.51 9.66 7.18 9.21 6.53L8.16 5Z" stroke="currentColor" stroke-width="2"/></svg>
+            <span><span class="t">Payments</span><span class="d">Lorem Ipsum is simply dummy text</span></span>
+          </a>
+
+          <a href="#" class="mega-item">
+            <svg viewBox="0 0 27 27" width="27" height="27" fill="none" aria-hidden="true"><path d="M3.44 17.09L3.86 14.76C4.34 12.01 4.58 10.63 5.55 9.82C6.51 9 7.89 9 10.65 9H16.35C19.11 9 20.49 9 21.45 9.82C22.42 10.63 22.66 12.01 23.14 14.76L23.56 17.09C24.23 20.9 24.56 22.81 23.53 24.06C22.49 25.31 20.58 25.31 16.76 25.31H10.24C6.42 25.31 4.51 25.31 3.47 24.06C2.44 22.81 2.77 20.9 3.44 17.09Z" stroke="currentColor" stroke-width="2"/><path d="M8.44 9L8.63 6.73C8.84 4.2 10.96 2.25 13.5 2.25C16.04 2.25 18.16 4.2 18.37 6.73L18.56 9" stroke="currentColor" stroke-width="2"/><path d="M16.88 12.38C16.73 13.96 15.26 15.19 13.5 15.19C11.74 15.19 10.27 13.96 10.13 12.38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <span><span class="t">Shipping and delivery</span><span class="d">Lorem Ipsum is simply dummy text</span></span>
+          </a>
+
+          <a href="#" class="mega-item">
+            <svg viewBox="0 0 27 27" width="27" height="27" fill="none" aria-hidden="true"><ellipse cx="20.25" cy="11.25" rx="4.5" ry="9" stroke="currentColor" stroke-width="2"/><path d="M20.25 2.25C16.76 2.25 9.52 4.92 5.37 6.59C3.46 7.35 2.25 9.2 2.25 11.25C2.25 13.3 3.46 15.15 5.37 15.91C9.52 17.58 16.76 20.25 20.25 20.25" stroke="currentColor" stroke-width="2"/><path d="M12.38 24.75L10.19 23.55C7.81 22.24 6.46 19.59 6.8 16.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><span class="t">Marketing and growth</span><span class="d">Lorem Ipsum is simply dummy text</span></span>
+          </a>
+
+          <a href="#" class="mega-item">
+            <svg viewBox="0 0 27 27" width="27" height="27" fill="none" aria-hidden="true"><path d="M22.62 17.56V9.45C22.62 9.1 22.52 8.75 22.35 8.44C22.17 8.13 21.91 7.88 21.61 7.7L14.51 3.65C14.21 3.47 13.86 3.38 13.5 3.38C13.14 3.38 12.79 3.47 12.49 3.65L5.39 7.7C5.09 7.88 4.83 8.13 4.65 8.44C4.48 8.75 4.38 9.1 4.38 9.45V17.56C4.38 17.91 4.48 18.26 4.65 18.57C4.83 18.88 5.09 19.13 5.39 19.31L12.49 23.36C12.79 23.54 13.14 23.63 13.5 23.63C13.86 23.63 14.21 23.54 14.51 23.36L21.61 19.31C21.91 19.13 22.17 18.88 22.35 18.57C22.52 18.26 22.62 17.91 22.62 17.56Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.66 8.4L13.5 13.51L22.34 8.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 23.72V13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><span class="t">Product types</span><span class="d">Lorem Ipsum is simply dummy text</span></span>
+          </a>
+
+          <a href="#" class="mega-more">View all modules
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.17 10H15.83"/><path d="M10 4.17L15.83 10L10 15.83"/></svg>
+          </a>
+        </div>
+
+        <!-- Extend -->
+        <div class="mega-col">
+          <p class="mega-head">Extend</p>
+
+          <a href="#" class="mega-item">
+            <svg viewBox="0 0 27 27" width="27" height="27" fill="none" aria-hidden="true"><path d="M4.66 2.25C4.02 2.25 3.41 2.5 2.96 2.96C2.5 3.41 2.25 4.02 2.25 4.66V19.93C2.25 21.21 2.76 22.43 3.66 23.34C4.11 23.79 4.64 24.14 5.23 24.38C5.81 24.62 6.44 24.75 7.07 24.75C8.35 24.75 9.58 24.24 10.48 23.34C11.38 22.43 11.89 21.21 11.89 19.93V4.66C11.89 4.02 11.64 3.41 11.19 2.96C10.73 2.5 10.12 2.25 9.48 2.25H4.66ZM4.66 3.86H9.48C9.7 3.86 9.9 3.94 10.05 4.09C10.2 4.24 10.29 4.45 10.29 4.66V19.93C10.29 20.78 9.95 21.6 9.34 22.2C8.74 22.8 7.92 23.14 7.07 23.14C6.65 23.14 6.23 23.06 5.84 22.9C5.45 22.74 5.1 22.5 4.8 22.2C4.2 21.6 3.86 20.78 3.86 19.93V4.66C3.86 4.45 3.94 4.24 4.09 4.09C4.24 3.94 4.45 3.86 4.66 3.86Z" fill="currentColor"/><path d="M17.85 3.36C17.21 3.36 16.6 3.61 16.15 4.06C16.15 4.06 16.14 4.06 16.14 4.06L10.52 9.72C10.44 9.79 10.38 9.88 10.34 9.98C10.3 10.08 10.28 10.18 10.28 10.29C10.28 10.39 10.31 10.5 10.35 10.6C10.39 10.69 10.45 10.78 10.52 10.86C10.68 11.01 10.88 11.09 11.09 11.09C11.31 11.09 11.51 11.01 11.66 10.85L17.29 5.19C17.44 5.05 17.64 4.97 17.85 4.97C18.06 4.97 18.26 5.05 18.41 5.2L21.8 8.6C21.95 8.75 22.03 8.96 22.03 9.17C22.03 9.38 21.95 9.59 21.8 9.74L9.35 22.2C9.2 22.36 9.11 22.56 9.11 22.77C9.11 22.99 9.2 23.19 9.35 23.34C9.5 23.49 9.7 23.58 9.91 23.58C10.13 23.58 10.33 23.49 10.48 23.34L22.94 10.87C22.94 10.87 22.94 10.87 22.94 10.87C23.39 10.42 23.64 9.8 23.64 9.17C23.64 8.53 23.39 7.92 22.94 7.47L19.55 4.06C19.55 4.06 19.55 4.06 19.55 4.06C19.09 3.61 18.48 3.36 17.85 3.36Z" fill="currentColor"/><path d="M16.71 15.11C16.5 15.11 16.3 15.19 16.15 15.34C16 15.49 15.91 15.7 15.91 15.91C15.91 16.12 16 16.33 16.15 16.48C16.3 16.63 16.5 16.71 16.71 16.71H22.34C22.55 16.71 22.76 16.8 22.91 16.95C23.06 17.1 23.14 17.3 23.14 17.52V22.34C23.14 22.55 23.06 22.76 22.91 22.91C22.76 23.06 22.55 23.14 22.34 23.14H7.07C6.86 23.14 6.65 23.23 6.5 23.38C6.35 23.53 6.27 23.73 6.27 23.95C6.27 24.16 6.35 24.36 6.5 24.51C6.65 24.67 6.86 24.75 7.07 24.75H22.34C22.98 24.75 23.59 24.5 24.04 24.04C24.5 23.59 24.75 22.98 24.75 22.34V17.52C24.75 16.88 24.5 16.27 24.04 15.81C23.59 15.36 22.98 15.11 22.34 15.11H16.71Z" fill="currentColor"/><path d="M3.05 8.68C2.84 8.68 2.64 8.76 2.49 8.91C2.33 9.06 2.25 9.27 2.25 9.48C2.25 9.7 2.33 9.9 2.49 10.05C2.64 10.2 2.84 10.29 3.05 10.29H11.09C11.3 10.29 11.51 10.2 11.66 10.05C11.81 9.9 11.89 9.7 11.89 9.48C11.89 9.27 11.81 9.06 11.66 8.91C11.51 8.76 11.3 8.68 11.09 8.68H3.05Z" fill="currentColor"/><path d="M3.05 15.11C2.84 15.11 2.64 15.19 2.49 15.34C2.33 15.49 2.25 15.7 2.25 15.91C2.25 16.12 2.33 16.33 2.49 16.48C2.64 16.63 2.84 16.71 3.05 16.71H11.09C11.3 16.71 11.51 16.63 11.66 16.48C11.81 16.33 11.89 16.12 11.89 15.91C11.89 15.7 11.81 15.49 11.66 15.34C11.51 15.19 11.3 15.11 11.09 15.11H3.05Z" fill="currentColor"/></svg>
+            <span><span class="t">Compatible themes</span><span class="d">Lorem Ipsum is simply dummy text</span></span>
+          </a>
+
+          <a href="#" class="mega-item">
+            <svg viewBox="0 0 27 27" width="27" height="27" fill="none" aria-hidden="true"><path d="M18.51 3.38L22.19 7.06L18.51 10.74" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.63 12.58V10.74C5.63 9.76 6.01 8.82 6.7 8.13C7.39 7.44 8.33 7.06 9.31 7.06H22.19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.31 23.63L5.63 19.94L9.31 16.26" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22.19 14.42V16.26C22.19 17.24 21.81 18.17 21.11 18.86C20.42 19.55 19.49 19.94 18.51 19.94H5.63" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><span class="t">Compatible plugins</span><span class="d">Lorem Ipsum is simply dummy text</span></span>
+          </a>
+
+          <a href="#" class="mega-item">
+            <svg viewBox="0 0 27 27" width="27" height="27" fill="none" aria-hidden="true"><path transform="translate(3.375 2.25)" d="M10.13 0 C4.53 0 0 4.32 0 9.67 L0 14.59 C0 16.04 1.24 17.23 2.76 17.23 C4.28 17.23 5.52 16.04 5.52 14.59 L5.52 11.43 C5.52 9.97 4.28 8.79 2.76 8.79 C2.45 8.79 2.16 8.84 1.88 8.93 C2.27 4.91 5.82 1.76 10.13 1.76 C14.43 1.76 17.98 4.91 18.37 8.93 C18.09 8.84 17.8 8.79 17.49 8.79 C15.97 8.79 14.73 9.97 14.73 11.43 L14.73 14.59 C14.73 16.04 15.97 17.23 17.49 17.23 C17.77 17.23 18.04 17.19 18.29 17.11 C17.95 18.19 16.89 18.98 15.65 18.98 L12.73 18.98 C12.35 17.96 11.33 17.23 10.13 17.23 C8.6 17.23 7.36 18.41 7.36 19.86 C7.36 21.32 8.6 22.5 10.13 22.5 C11.33 22.5 12.35 21.77 12.73 20.74 L15.65 20.74 C18.19 20.74 20.25 18.77 20.25 16.35 L20.25 9.67 C20.25 4.32 15.72 0 10.13 0 Z M2.76 10.55 C3.27 10.55 3.68 10.94 3.68 11.43 L3.68 14.59 C3.68 15.07 3.27 15.47 2.76 15.47 C2.25 15.47 1.84 15.07 1.84 14.59 L1.84 11.43 C1.84 10.94 2.25 10.55 2.76 10.55 Z M10.13 20.74 C9.62 20.74 9.2 20.35 9.2 19.86 C9.2 19.38 9.62 18.98 10.13 18.98 C10.63 18.98 11.05 19.38 11.05 19.86 C11.05 20.35 10.63 20.74 10.13 20.74 Z M17.49 15.47 C16.98 15.47 16.57 15.07 16.57 14.59 L16.57 11.43 C16.57 10.94 16.98 10.55 17.49 10.55 C18 10.55 18.41 10.94 18.41 11.43 L18.41 14.59 C18.41 15.07 18 15.47 17.49 15.47 Z" fill="currentColor"/></svg>
+            <span><span class="t">Elementor support</span><span class="d">Lorem Ipsum is simply dummy text</span></span>
+          </a>
+
+          <a href="#" class="mega-item">
+            <svg viewBox="0 0 27 27" width="27" height="27" fill="none" aria-hidden="true"><circle cx="13.5" cy="13.5" r="11.25" stroke="currentColor" stroke-width="2"/><path d="M9 12.99V11.28C9 10.83 9.37 10.46 9.82 10.46H17.5L16 8.44M18 13.5V15.72C18 16.17 17.63 16.54 17.18 16.54H9.5L11 18.56" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><span class="t">Changelog</span><span class="d">Lorem Ipsum is simply dummy text</span></span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ Mega menu: Solutions ═══ -->
+    <div class="mega" id="megaSolutions" role="region" aria-label="Solutions menu">
+      <div class="mega-rule"></div>
+      <div class="mega-inner mega-inner--3">
+        <div class="mega-listcol">
+          <p class="mega-h">Build a marketplace like</p>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Amazon</span><span class="d">Lorem Ipsum is simply dummy text</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">eBay</span><span class="d">Lorem Ipsum is simply dummy text</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Etsy</span><span class="d">Lorem Ipsum is simply dummy text</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Alibaba</span><span class="d">Lorem Ipsum is simply dummy text</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Printful (print on demand)</span><span class="d">Lorem Ipsum is simply dummy text</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Udemy</span><span class="d">Lorem Ipsum is simply dummy text</span></span></a>
+          <a href="#" class="mega-more">More examples<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.17 10H15.83"/><path d="M10 4.17L15.83 10L10 15.83"/></svg></a>
+        </div>
+        <div class="mega-listcol">
+          <p class="mega-h">Industry demos</p>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Fashion</span><span class="d">Lorem Ipsum is simply dummy text</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Furniture</span><span class="d">Lorem Ipsum is simply dummy text</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Electronics</span><span class="d">Lorem Ipsum is simply dummy text</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Auction</span><span class="d">Lorem Ipsum is simply dummy text</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Booking</span><span class="d">Lorem Ipsum is simply dummy text</span></span></a>
+          <a href="#" class="mega-more">View all demos<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.17 10H15.83"/><path d="M10 4.17L15.83 10L10 15.83"/></svg></a>
+        </div>
+        <div class="mega-listcol">
+          <p class="mega-h">By marketplace type</p>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Physical products</span><span class="d">Lorem Ipsum is simply dummy text</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Digital downloads</span><span class="d">Lorem Ipsum is simply dummy text</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Services and bookings</span><span class="d">Lorem Ipsum is simply dummy text</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Auctions</span><span class="d">Lorem Ipsum is simply dummy text</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">B2C marketplace</span><span class="d">Lorem Ipsum is simply dummy text</span></span></a>
+        </div>
+      </div>
+    </div>
+    <!-- ═══ Mega menu: Resource ═══ -->
+    <div class="mega" id="megaResource" role="region" aria-label="Resource menu">
+      <div class="mega-rule"></div>
+      <div class="mega-inner mega-inner--5">
+        <div class="mega-listcol">
+          <p class="mega-h">Learn</p>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Documentation</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Blog</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Video tutorials</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Webinars</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">FAQ</span></span></a>
+        </div>
+        <div class="mega-listcol">
+          <p class="mega-h">Compare</p>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Dokan vs other plugins</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Testimonials</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Success stories</span></span></a>
+        </div>
+        <div class="mega-listcol">
+          <p class="mega-h is-plain">Quick Links</p>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Download<br />free Dokan Lite</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Affiliate program</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Influencer program</span></span></a>
+        </div>
+        <div class="mega-listcol">
+          <p class="mega-h">Free tools</p>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Startup<br />cost calculator</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Profit margin<br />calculator</span></span></a>
+        </div>
+        <div class="mega-listcol">
+          <p class="mega-h">Community</p>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Support tickets</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">GitHub</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Roadmap and ideas</span></span></a>
+          <a href="#" class="mega-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.8 11.1V12a10 10 0 11-5.9-9.1"/><path d="M8.5 11.5l3 3 9-9"/></svg><span><span class="t">Hire experts</span></span></a>
+        </div>
+      </div>
+    </div>
+    <!-- ═══════════ Mega menu: Apps ═══════════ -->
+    <div class="mega" id="megaApps" role="region" aria-label="Apps menu">
+      <div class="mega-rule"></div>
+      <div class="mega-inner mega-inner--apps">
+        <div class="mega-listcol mega-appcol">
+          <a href="index.html" class="mega-app">
+            <span class="t">Dokan Mobile App</span>
+            <span class="mega-app__art mega-app__art--customer" aria-hidden="true">
+              <span class="mega-app__badge"><img src="assets/p-dokan-icon.svg" alt=""><span><b>Dokan</b><small>Mobile App</small></span></span>
+              <span class="mega-app__head">Multivendor<br>Marketplace</span>
+              <span class="mega-app__sub">The world of shopping is<br>at your fingertips</span>
+              <span class="mega-app__shot"><img src="assets/hero-homepage.png" alt="" loading="lazy"></span>
+            </span>
+          </a>
+        </div>
+        <div class="mega-listcol mega-appcol">
+          <a href="#" class="mega-app">
+            <span class="t">Delivery Driver App</span>
+            <span class="mega-app__art mega-app__art--driver" aria-hidden="true"><span class="mini-phone"><span class="mini-phone__screen"><img src="assets/e-map.png" alt="" loading="lazy"></span><img class="mini-phone__frame" src="assets/e-iphone.png" alt="" loading="lazy"></span></span>
+          </a>
+        </div>
+        <div class="mega-listcol mega-appcol">
+          <a href="#" class="mega-app">
+            <span class="t">Dokan Vendor App</span>
+            <span class="mega-app__art mega-app__art--vendor" aria-hidden="true"><span class="mini-phone"><span class="mini-phone__screen"><img src="assets/e-stats.png" alt="" loading="lazy"></span><img class="mini-phone__frame" src="assets/e-iphone.png" alt="" loading="lazy"></span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+</header>
