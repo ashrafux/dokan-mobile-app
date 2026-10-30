@@ -553,3 +553,23 @@
 .shots__stage.is-dragging > *, .shots__stage.is-dragging { cursor: grabbing; }
 .shots__stage img { -webkit-user-drag: none; user-select: none; }
 .shots__stage.is-dragging .shot { transform: none; }
+
+/* Driver / Vendor app cards: typography from the design
+   title 52 Poppins 700 · audience 32 Poppins 600 grey · lead 30 Poppins 600 · checks 20 Poppins 500 */
+.eco-card__title { max-width: none; font: 700 clamp(32px, 2.9vw, 52px)/1.2 'Poppins', sans-serif; color: #0e0e0f; }
+.eco-card__for { margin-top: 6px; font: 600 clamp(22px, 1.75vw, 32px)/1.3 'Poppins', sans-serif; color: #555; white-space: normal; }
+.eco-card__desc { margin-top: 28px; color: #4a4a4a; }
+.eco-card__lead { max-width: 560px; font: 600 clamp(22px, 1.65vw, 30px)/1.35 'Poppins', sans-serif; color: #25252d; }
+.eco-card__lead--nowrap { white-space: normal; }
+.check { width: 48%; padding-left: 40px; font: 500 clamp(17px, 1.1vw, 20px)/1.4 'Poppins', sans-serif; color: #333; white-space: normal; }
+.check::before {
+  top: 2px; width: 24px; height: 24px; border-radius: 50%;
+  background: #22a35a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 12.5l3.5 3.5 7.5-8'/%3E%3C/svg%3E") center / 14px no-repeat;
+}
+.eco-card .link-arrow { font-size: 20px; }
+@media (max-width: 639px) {
+  .check { width: auto; font-size: 17px; }
+  .eco-card__title { font-size: 30px; }
+  .eco-card__for { font-size: 20px; }
+  .eco-card__lead { font-size: 20px; }
+}
