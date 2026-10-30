@@ -303,10 +303,15 @@
 
   /* features */
   .features { padding: 144px 0; }
-  .stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px 72px; text-align: center; }
-  .stat { position: static; }
-  .stat__num { white-space: normal; }
-  .stat__label { margin: 8px auto 0; }
+  /* stats: one left-aligned row, short dividers between items */
+  .stats { display: flex; justify-content: center; align-items: flex-start; }
+  .stat { position: relative; left: auto; top: auto; padding: 0 clamp(20px, 2.8vw, 54px); }
+  .stat:first-child { padding-left: 0; }
+  .stat:nth-child(5) { padding-right: 0; }
+  .stat + .stat::before { content: ""; position: absolute; left: 0; top: 10px; width: 1px; height: 64px; background: #e2e4e9; }
+  .stat__num { font: 700 clamp(30px, 2.4vw, 44px)/1.2 'Poppins', sans-serif; color: #000; white-space: nowrap; }
+  .stat__label { margin-top: 14px; font: 500 clamp(16px, 1.05vw, 20px)/1.3 'Poppins', sans-serif; color: #64748b; }
+  .stat__label[style*="--w"] { width: auto; max-width: var(--w); }
   .stat__divider { display: none; }
   .features__title { position: static; transform: none; width: auto; max-width: 919px; margin: 143px auto 0; }
   .features__sub { position: static; transform: none; width: auto; max-width: 496px; margin: 28px auto 0; }
@@ -396,6 +401,10 @@
 }
 
 @media (max-width: 1023px) {
+  .stats { display: grid; grid-template-columns: repeat(3, minmax(0, auto)); justify-content: center; gap: 40px 0; }
+  .stat:nth-child(3n+1) { padding-left: 0; }
+  .stat:nth-child(3n+1)::before { display: none; }
+  .stat:nth-child(3n) { padding-right: 0; }
   .gcards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .gcard:nth-child(n) { grid-column: auto; }
   .cover .wrap { flex-direction: column; align-items: stretch; gap: 0; }
@@ -419,6 +428,13 @@
 }
 
 @media (max-width: 639px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 0; }
+  .stat, .stat:nth-child(n) { padding: 0 0 0 20px; }
+  .stat:nth-child(odd) { padding-left: 0; }
+  .stat::before, .stat:nth-child(n)::before { display: none; }
+  .stat:nth-child(even)::before { display: block; }
+  .stat__num { font-size: 26px; white-space: normal; }
+  .stat__label { margin-top: 8px; font-size: 14px; }
   .app-tag { margin-top: 40px; }
   .hero__title { margin-top: 20px; }
   .hero__sub { margin-top: 20px; }
@@ -428,7 +444,6 @@
   .features, .global, .diff, .eco { padding: 80px 0; }
   .shots { padding: 80px 0; }
   .features__title { margin-top: 80px; }
-  .features__sub, .global__sub, .shots__sub, .diff__sub, .steps__sub, .eco__sub { font-size: 17px; }
   .fgrid, .gcards, .shots__cta, .shots__stage, .dcards, .steps, .eco-card { margin-top: 40px; }
 
   .gcards { grid-template-columns: minmax(0, 1fr); gap: 16px; }
@@ -445,7 +460,7 @@
 
   .eco-card__content, .eco-card--vendor .eco-card__content { padding: 40px 24px 48px; }
 
-  .eco-card__for, .eco-card__lead { font-size: 20px; }
+  .eco-card__lead { font-size: 20px; }
   .eco-card__lead--nowrap { white-space: normal; }
   .check { display: block; width: auto; margin-top: 16px; }
   .link-arrow { margin-top: 40px; }
@@ -529,3 +544,6 @@
   .hero-pin.is-pinned > .hero { position: sticky; }
 }
 @media (max-width: 1199px) { .hero__cards { display: none; } }
+
+/* Card and step descriptions: paragraph size (18px) */
+.fcard__desc, .gcard__desc, .step__desc, .eco-card__desc { font-size: 18px; line-height: 1.55; }

@@ -44,8 +44,8 @@ a.p-tag:hover { color: #7047eb; }
   background: linear-gradient(#0e0e0f, #0e0e0f) padding-box, linear-gradient(90deg, #ff8a5c, #e23b7b, #9b6bff) border-box;
   transition: transform .2s ease, box-shadow .2s ease;
 }
-.billing-tabs__deal svg { width: 18px; height: 18px; flex: none; color: #ff8a5c; }
-.billing-tabs__deal-text { background: linear-gradient(90deg, #ff8a5c, #e23b7b 50%, #b49dff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.billing-tabs__deal svg { width: 18px; height: 18px; flex: none; color: #ffb59a; }
+.billing-tabs__deal-text { background: linear-gradient(90deg, #ffb59a, #f589b3 50%, #cfbfff); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .billing-tabs__deal:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(226, 59, 123, .55); }
 .billing-tabs__deal.is-active { background: linear-gradient(100deg, #ff8a5c, #e23b7b 50%, #7047eb) border-box; }
 .billing-tabs__deal.is-active svg { color: #fff; }
@@ -78,7 +78,7 @@ a.p-tag:hover { color: #7047eb; }
 .lt-promo__title span {
   background: linear-gradient(90deg, #ff8a5c, #e23b7b 45%, #9b6bff); -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.lt-promo__text { max-width: 420px; margin: 20px 0 0; font: 400 17px/1.55 'Lato', sans-serif; color: rgba(255, 255, 255, .72); }
+.lt-promo__text { max-width: 420px; margin: 20px 0 0; font: 400 18px/1.55 'Lato', sans-serif; color: rgba(255, 255, 255, .72); }
 .lt-promo__list { display: flex; flex-direction: column; gap: 10px; margin: 24px 0 0; padding: 0; list-style: none; }
 .lt-promo__list li { display: flex; align-items: center; gap: 10px; font: 400 16px/1.4 'Lato', sans-serif; color: #fff; }
 .lt-promo__list li::before {

@@ -69,3 +69,6 @@ section, footer { position: relative; overflow: clip; }
 .download__stores a { transition: transform .2s ease; }
 .download__stores a:hover { transform: translateY(-2px); }
 .download__stores img { border-radius: 17.213px; object-fit: cover; }
+
+/* Paragraph copy is 18px on every page (section intros, card descriptions, CTA text) */
+.dk-lead, .cta-shell .cta-text { font-size: 18px; }
