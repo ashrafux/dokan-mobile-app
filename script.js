@@ -57,14 +57,51 @@
       shot.addEventListener('click', function () { go(active + Number(shot.dataset.slot) - 2); });
     });
 
-    var startX = null;
-    stage.addEventListener('pointerdown', function (e) { startX = e.clientX; });
-    window.addEventListener('pointerup', function (e) {
-      if (startX === null) return;
-      var dx = e.clientX - startX;
-      startX = null;
-      if (Math.abs(dx) > 40) go(active + (dx < 0 ? 1 : -1));
+    // Drag / swipe: the row follows the pointer, then slides one screen over (or snaps back).
+    var SLOT = 264;                 // distance between neighbouring screens at design size
+    var startX = null, dx = 0, moved = false, busy = false;
+    var zoomOf = function () { return parseFloat(stage.style.zoom) || 1; };
+    function setX(x, animate) {
+      stage.style.transition = animate ? 'transform .3s cubic-bezier(.22, .61, .36, 1)' : 'none';
+      stage.style.transform = x ? 'translateX(' + x + 'px)' : '';
+    }
+    stage.addEventListener('pointerdown', function (e) {
+      if (busy || (e.pointerType === 'mouse' && e.button !== 0)) return;
+      startX = e.clientX; dx = 0; moved = false;
+      try { stage.setPointerCapture(e.pointerId); } catch (err) {}
     });
+    stage.addEventListener('pointermove', function (e) {
+      if (startX === null) return;
+      dx = (e.clientX - startX) / zoomOf();
+      if (!moved && Math.abs(dx) > 6) { moved = true; stage.classList.add('is-dragging'); }
+      if (moved) setX(Math.max(-SLOT, Math.min(SLOT, dx)), false);
+    });
+    function release() {
+      if (startX === null) return;
+      startX = null;
+      stage.classList.remove('is-dragging');
+      if (!moved) return;
+      if (Math.abs(dx) > 60) {
+        var step = dx < 0 ? 1 : -1;
+        busy = true;
+        setX(-step * SLOT, true);
+        setTimeout(function () {
+          // the screens have moved one slot: show the next set in place and drop the offset
+          active = mod(active + step, dots.length);
+          render();
+          setX(0, false);
+          busy = false;
+        }, 300);
+      } else {
+        setX(0, true);
+      }
+    }
+    stage.addEventListener('pointerup', release);
+    stage.addEventListener('pointercancel', release);
+    // a drag is not a click on a side screen
+    stage.addEventListener('click', function (e) {
+      if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; }
+    }, true);
     stage.addEventListener('dragstart', function (e) { e.preventDefault(); });
   }
 

@@ -547,3 +547,9 @@
 
 /* Card and step descriptions: paragraph size (18px) */
 .fcard__desc, .gcard__desc, .step__desc, .eco-card__desc { font-size: 18px; line-height: 1.55; }
+
+/* Screenshots carousel: draggable */
+.shots__stage > * { cursor: grab; }
+.shots__stage.is-dragging > *, .shots__stage.is-dragging { cursor: grabbing; }
+.shots__stage img { -webkit-user-drag: none; user-select: none; }
+.shots__stage.is-dragging .shot { transform: none; }
