@@ -44,18 +44,9 @@
 .store-btn__get { font: 400 14.92px/normal 'Product Sans', 'Google Sans', 'Inter', sans-serif; text-transform: uppercase; }
 .store-btn__gp { width: 110.441px; height: 22.387px; transform: scaleY(-1); }
 
-.f-hero__art {
-  position: relative; margin-top: -31px; aspect-ratio: 886 / 633; border-radius: 50px; overflow: hidden;
-  background: #fff;
-}
-.f-hero__art::before {
-  content: ""; position: absolute; inset: 0; filter: blur(4px);
-  background:
-    radial-gradient(99.5% 98.5% at 30% 30%, rgba(235, 152, 96, 1) 0, rgba(255, 212, 182, 0) 60%),
-    radial-gradient(99.5% 98.5% at 70% 70%, rgba(121, 78, 231, 1) 0, rgba(149, 115, 235, .75) 13.75%, rgba(176, 153, 238, .5) 27.5%, rgba(232, 227, 245, 0) 55%),
-    radial-gradient(112.8% 111.6% at 50% 100%, rgba(84, 182, 109, 1) 0, rgba(120, 197, 139, .75) 15%, rgba(156, 211, 169, .5) 30%, rgba(227, 239, 230, 0) 60%);
-}
-.f-hero__art img { position: absolute; left: 8.75%; top: 9.8%; width: 83.02%; height: auto; }
+/* Hero art: one image (gradient card + three phones, transparent rounded corners) */
+.f-hero__art { position: relative; margin-top: -31px; border-radius: 5.5% / 7.7%; overflow: hidden; background: #fff; }   /* the gradient is see-through: it sits on white */
+.f-hero__art img { display: block; width: 100%; height: auto; }
 
 /* ---------- Shared feature copy ---------- */
 .fcard__title, .frow__title { font-size: clamp(28px, 2.6vw, 42px); line-height: 1.3; }
@@ -137,7 +128,7 @@
   .f-hero__grid { grid-template-columns: minmax(0, 1fr); }
   .f-hero__title { white-space: normal; }
   .f-hero__stores { margin-top: 40px; }
-  .f-hero__art { width: 100%; max-width: 760px; margin: 56px auto 0; border-radius: clamp(24px, 5vw, 50px); }
+  .f-hero__art { width: 100%; max-width: 760px; margin: 56px auto 0; }
 
   .f-bento { padding-top: 96px; }
   .f-bento + .frow { margin-top: 96px; }
