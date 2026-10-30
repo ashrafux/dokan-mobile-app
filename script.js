@@ -193,4 +193,26 @@
       next.focus();
     });
   });
+
+  /* Lifetime deal countdown: Days : Hours : Min : Sec until data-deadline */
+  document.querySelectorAll('.lt-timer[data-deadline]').forEach(function (timer) {
+    var end = Date.parse(timer.dataset.deadline), cells = {}, id;
+    if (isNaN(end)) return;
+    timer.querySelectorAll('[data-unit]').forEach(function (b) { cells[b.dataset.unit] = b; });
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    function tick() {
+      var left = Math.max(0, Math.floor((end - Date.now()) / 1000));
+      cells.d.textContent = pad(Math.floor(left / 86400));
+      cells.h.textContent = pad(Math.floor(left % 86400 / 3600));
+      cells.m.textContent = pad(Math.floor(left % 3600 / 60));
+      cells.s.textContent = pad(left % 60);
+      if (!left) {
+        clearInterval(id);
+        timer.classList.add('is-ended');
+        timer.querySelector('.lt-timer__label').textContent = 'This deal has ended';
+      }
+    }
+    tick();
+    id = setInterval(tick, 1000);
+  });
 })();
